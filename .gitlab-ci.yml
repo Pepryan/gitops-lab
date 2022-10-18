@@ -8,7 +8,6 @@ include:
   - template: Terraform/Base.gitlab-ci.yml  # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Terraform/Base.latest.gitlab-ci.yml
 
 stages:
-  - stg_check_vm_txt
   - stg_validate
   - stg_plan
   - stg_apply
@@ -20,7 +19,7 @@ job-tf-validate:
     - echo " Validating my terraform code"
     - terraform validate
   rules:
-    exists: vm.txt
+    exists: [vm.txt]
 #   needs:
 #     - job: check-vm-txt
 
