@@ -18,7 +18,7 @@ jb-tf-validate:
   script:
     - echo " Validating my terraform code"
     - terraform validate
-  rule:
+  rules:
     - exists:
       - vm.txt
 
