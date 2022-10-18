@@ -75,5 +75,5 @@ deploy-prod:
     - echo "This job deploys something from the $CI_COMMIT_BRANCH branch."
   environment: production
 
-tags:
-  - kvm
+# tags:
+#   - kvm
