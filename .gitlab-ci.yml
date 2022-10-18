@@ -24,19 +24,22 @@ job-tf-validate:
   tags: [kvm]
 #   needs:
 #     - job: check-vm-txt
-
-
 #   except:
 #     refs:
 #       - master
-# jb-tf-plan:
-#   stage: stg_plan
-#   script:
-#     - echo "Generating terraform plan and output to file 'plan' "
-#     - terraform plan --out plan
-#   artifacts:
-#     paths:
-#       - plan
+
+jb-tf-plan:
+  stage: stg_plan
+  script:
+    - random_string=$(echo $RANDOM | md5sum | head -c 5);
+    - echo "Generating terraform plan and output to file 'plan' "
+    - ./not-tfgen.sh $GITLAB_USER_LOGIN_${random_string} vm.txt
+  needs:
+    - job: job-tf-validate
+  tags: [kvm]
+  # artifacts:
+  #   paths:
+  #     - plan
 
 # jb-tf-apply:
 #   stage: stg_apply
