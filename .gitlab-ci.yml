@@ -32,7 +32,7 @@ jb-tf-plan:
   stage: stg_plan
   script:
     - random_string=$(echo $RANDOM | md5sum | head -c 5);
-    - echo "Generating terraform plan and output to file 'plan' "
+    - echo "Generating terraform environment file"
     - ./not-tfgen.sh $GITLAB_USER_LOGIN_${random_string} vm.txt
   tags: [kvm]
   # artifacts:
