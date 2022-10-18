@@ -22,13 +22,13 @@ check-vm-txt:
     - vm.txt
   when: always
 
-job-tf-validate:
-  stage: stg_validate
-  script:
-    - echo " Validating my terraform code"
-    - terraform validate
-  needs:
-    - job: check-vm-txt
+# job-tf-validate:
+#   stage: stg_validate
+#   script:
+#     - echo " Validating my terraform code"
+#     - terraform validate
+#   needs:
+#     - job: check-vm-txt
 
 
 #   except:
