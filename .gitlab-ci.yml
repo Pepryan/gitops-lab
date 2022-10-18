@@ -8,19 +8,27 @@ include:
   - template: Terraform/Base.gitlab-ci.yml  # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Terraform/Base.latest.gitlab-ci.yml
 
 stages:
+  - stg_check_vm_txt
   - stg_validate
   - stg_plan
   - stg_apply
   - stg_destroy
 
-jb-tf-validate:
+check-vm-txt:
+  stage: stg_check_vm_txt
+  script: echo "Checking if vm.txt existing"
+  rules:
+  - exists:
+    - vm.txt
+
+job-tf-validate:
   stage: stg_validate
   script:
     - echo " Validating my terraform code"
     - terraform validate
-  rules:
-    - exists:
-      - vm.txt
+  needs:
+    - job: check-vm-txt
+
 
 #   except:
 #     refs:
