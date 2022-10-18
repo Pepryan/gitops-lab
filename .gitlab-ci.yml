@@ -20,7 +20,7 @@ job-tf-validate:
     - terraform validate
   rules:
     - exists:
-        - vm.txt
+        - vm2.txt
   tags: [kvm]
 #   needs:
 #     - job: check-vm-txt
@@ -33,7 +33,7 @@ jb-tf-plan:
   script:
     - random_string=$(echo $RANDOM | md5sum | head -c 5);
     - echo "Generating terraform environment file"
-    - ./not-tfgen.sh $GITLAB_USER_LOGIN_${random_string} vm.txt
+    - ./not-tfgen.sh $GITLAB_USER_LOGIN_${random_string} vm2.txt
   tags: [kvm]
   # artifacts:
   #   paths:
