@@ -34,8 +34,6 @@ jb-tf-plan:
     - random_string=$(echo $RANDOM | md5sum | head -c 5);
     - echo "Generating terraform plan and output to file 'plan' "
     - ./not-tfgen.sh $GITLAB_USER_LOGIN_${random_string} vm.txt
-  needs:
-    - job: job-tf-validate
   tags: [kvm]
   # artifacts:
   #   paths:
