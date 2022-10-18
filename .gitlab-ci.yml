@@ -73,16 +73,17 @@ test-job2:
   tags: [kvm]
 
 deploy-prod:
-  stage: .post
+  stage: deploy
   script:
     - echo "This job deploys something from the $CI_COMMIT_BRANCH branch."
   environment: production
   tags: [kvm]
 
-last-job:
+destroy-job:
   stage: .post
   script:
-    - echo "This job runs in the .post stage, after all other stages, this can be used for destroy terraform stage"
+    - echo "Manually trigger"
+  when: manual
   tags: [kvm]
 
 
