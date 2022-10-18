@@ -79,10 +79,10 @@ deploy-prod:
   environment: production
   tags: [kvm]
 
-destroy-job:
-  stage: destroy
+last-job:
+  stage: .post
   script:
-    - echo "Destroying environment ..."
+    - echo "This job runs in the .post stage, after all other stages, this can be used for destroy terraform stage"
   tags: [kvm]
 
 
