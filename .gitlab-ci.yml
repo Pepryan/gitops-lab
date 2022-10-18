@@ -21,6 +21,7 @@ job-tf-validate:
   rules:
     - exists:
         - vm.txt
+  tags: [kvm]
 #   needs:
 #     - job: check-vm-txt
 
