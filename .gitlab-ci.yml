@@ -14,19 +14,13 @@ stages:
   - stg_apply
   - stg_destroy
 
-check-vm-txt:
-  stage: stg_check_vm_txt
-  script: echo "Checking if vm.txt existing"
+job-tf-validate:
+  stage: stg_validate
+  script:
+    - echo " Validating my terraform code"
+    - terraform validate
   rules:
-  - exists:
-    - vm.txt
-  when: always
-
-# job-tf-validate:
-#   stage: stg_validate
-#   script:
-#     - echo " Validating my terraform code"
-#     - terraform validate
+    exists: vm.txt
 #   needs:
 #     - job: check-vm-txt
 
