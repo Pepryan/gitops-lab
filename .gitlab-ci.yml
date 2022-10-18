@@ -20,6 +20,7 @@ check-vm-txt:
   rules:
   - exists:
     - vm.txt
+  when: always
 
 job-tf-validate:
   stage: stg_validate
