@@ -34,8 +34,11 @@ jb-tf-plan:
   script:
     - random_string=$(echo $RANDOM | md5sum | head -c 5);
     - echo "Generating terraform environment file"
-    - ./not-tfgen.sh $GITLAB_USER_LOGIN_${random_string} vm2.txt
-    - if [ -f "vm2.txt" ]; then exit 1; fi
+    - ./not-tfgen.sh $GITLAB_USER_LOGIN_${random_string} vm.txt
+  rules:
+    - exists:
+        - vm.txt
+    - when: never
   tags: [kvm]
   # artifacts:
   #   paths:
