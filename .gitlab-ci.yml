@@ -42,10 +42,7 @@ generate-environment:
     - echo $random_string
     - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
     - echo ${folder}
-    - echo -n  "Name: "; read jeneng
-    - echo -n  "vcpu: "; read vcpu
-    - echo -n  "ram: "; read ram
-    - echo -n  "sda: "; read disk1
+    - ./vm.sh
     - echo
     - ./not-tfgen.sh ${folder} vm.txt
     - cd ${folder}
