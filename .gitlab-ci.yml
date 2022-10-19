@@ -38,8 +38,8 @@ generate-environment:
     - echo $random_string
     - folder=$(echo $GITLAB_USER_LOGIN $random_string);
     - echo ${folder}
-    - ./not-tfgen.sh ${folder} vm.txt
     - cd ${folder}
+    - ./not-tfgen.sh ${folder} vm.txt
     - terraform init
   rules:
     - exists:
