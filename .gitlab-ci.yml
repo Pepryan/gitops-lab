@@ -43,6 +43,10 @@ generate-environment:
     - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
     - echo ${folder}
     - echo $var
+    -  sed -i "s/NAMAS/$(echo $var | awk '{print $1}')/g" vm.txt
+    -  sed -i "s/VICPU/$(echo $var | awk '{print $2}')/g" vm.txt
+    -  sed -i "s/RAM/$(echo $var | awk '{print $3}')/g" vm.txt
+    -  sed -i "s/SDA/$(echo $var | awk '{print $4}')/g" vm.txt
     - ./not-tfgen.sh ${folder} vm.txt
     - cd ${folder}
     - pwd
