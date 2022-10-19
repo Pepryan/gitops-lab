@@ -8,9 +8,9 @@ NAME: $jeneng
 OS: ubuntu-focal.img
 NESTED: n
 VCPUS: $vcpu
-MEMORY: "$ram"G
-DISK1: "$disk1"G
-#DISK2: "$disk2"G
+MEMORY: $ram
+DISK1: $disk1
+#DISK2: 100G
 #DISK3: 5G
 IFACE_NETWORK1: 10.30.13.0
 IFACE_IP1: 10.30.13.10
