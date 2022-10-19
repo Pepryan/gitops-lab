@@ -36,12 +36,12 @@ generate-environment:
     - echo "Generating terraform environment file"
     - echo $GITLAB_USER_LOGIN
     - echo $random_string
-    - folder=$(echo $GITLAB_USER_LOGIN_${random_string});
+    - folder=$(echo $GITLAB_USER_LOGIN);
     - echo ${folder}
     - ./not-tfgen.sh ${folder} vm.txt
     - cd ${folder}
     - mkdir -p ~/.local/share/terraform/plugins/registry.terraform.io/dmacvicar/libvirt/0.6.2/linux_amd64
-    - mv provider/terraform-provider-libvirt ~/.local/share/terraform/plugins/registry.terraform.io/dmacvicar/libvirt/0.6.2/linux_amd64
+    - mv /root/lab-bri/provider/terraform-provider-libvirt ~/.local/share/terraform/plugins/registry.terraform.io/dmacvicar/libvirt/0.6.2/linux_amd64
     - terraform init
     - terraform plan
   rules:
