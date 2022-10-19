@@ -16,7 +16,7 @@ stages:
 check-file:
   stage: validate
   script:
-    - echo " Validating my terraform code test"
+    - echo " Validating my terraform code test test2"
     - terraform validate
   rules:
     - exists:
