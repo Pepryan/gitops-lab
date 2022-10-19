@@ -42,7 +42,7 @@ generate-environment:
     - echo $random_string
     - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
     - echo ${folder}
-    - echo -n
+    - echo -n "vcpu"; read vcpu
     - ./not-tfgen.sh ${folder} vm.txt
     - cd ${folder}
     - pwd
