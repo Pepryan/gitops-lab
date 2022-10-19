@@ -15,15 +15,17 @@ stages:
 
 check-file:
   stage: validate
+
   script:
     - echo " Validating my terraform code"
     - terraform validate
   rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - exists:
         - vm.txt
     - when: never
   tags: [kvm]
-  only: [main]
+
 #   needs:
 #     - job: check-vm-txt
 #   except:
@@ -32,6 +34,8 @@ check-file:
 
 generate-environment:
   stage: gen-env
+  only: 
+    - main
   script:
     - random_string=$(echo $RANDOM | md5sum | head -c 5);
     - echo "Generating terraform environment file"
@@ -47,11 +51,12 @@ generate-environment:
     - terraform plan
     - terraform apply --auto-approve
   rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     - exists:
         - vm.txt
     - when: never
   tags: [kvm]
-  only: [main]
+  
   # artifacts:
   #   paths:
   #     - plan
