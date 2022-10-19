@@ -36,6 +36,7 @@ generate-environment:
     - echo "Generating terraform environment file"
     - ./not-tfgen.sh $GITLAB_USER_LOGIN_${random_string} vm.txt
     - cd $GITLAB_USER_LOGIN_${random_string}
+    - terraform init
     - terraform plan
   rules:
     - exists:
