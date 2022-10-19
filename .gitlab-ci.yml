@@ -36,9 +36,10 @@ generate-environment:
     - echo "Generating terraform environment file"
     - echo $GITLAB_USER_LOGIN
     - echo $random_string
-    - folder=$(echo $GITLAB_USER_LOGIN $random_string);
+    - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
     - echo ${folder}
     - cd ${folder}
+    - pwd
     - ./not-tfgen.sh ${folder} vm.txt
     - terraform init
   rules:
