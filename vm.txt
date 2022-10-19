@@ -12,7 +12,7 @@ NAME: $a
 OS: ubuntu-focal.img
 NESTED: n
 VCPUS: $b
-MEMORY: $(echo $var | awk '{print $3}')G
+MEMORY: "$ram"G
 DISK1: $(echo $var | awk '{print $4}')G
 #DISK2: 100G
 #DISK3: 5G
