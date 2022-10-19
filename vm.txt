@@ -13,7 +13,7 @@ OS: ubuntu-focal.img
 NESTED: n
 VCPUS: $b
 MEMORY: 2G
-DISK1: $d
+DISK1: "$d"G
 #DISK2: 100G
 #DISK3: 5G
 IFACE_NETWORK1: 10.30.13.0
