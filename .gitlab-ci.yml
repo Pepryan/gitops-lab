@@ -21,7 +21,7 @@ check-file:
     - terraform validate
   rules:
     - if: $CI_COMMIT_BRANCH == "main"
-      when: always
+      when: never
     - exists:
         - vm.txt
     - when: never
