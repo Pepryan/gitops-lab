@@ -16,13 +16,14 @@ stages:
 check-file:
   stage: validate
   script:
-    - echo " Validating my terraform code"
+    - echo " Validating my terraform code test"
     - terraform validate
   rules:
     - exists:
         - vm.txt
     - when: never
   tags: [kvm]
+
 #   needs:
 #     - job: check-vm-txt
 #   except:
