@@ -26,6 +26,7 @@ check-file:
     - sed -i "s/icpu/$(echo $var | awk '{print $2}')/g" vm.txt
     - sed -i "s/ram/$(echo $var | awk '{print $3}')/g" vm.txt
     - sed -i "s/sda/$(echo $var | awk '{print $4}')/g" vm.txt
+    - sed -i "s/sdb/$(echo $var | awk '{print $5}')/g" vm.txt
 #    - sleep 1m
     - cat vm.txt
     - echo " Validating my terraform codes"
