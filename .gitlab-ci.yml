@@ -7,21 +7,23 @@
 include:
   - template: Terraform/Base.gitlab-ci.yml  # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Terraform/Base.latest.gitlab-ci.yml
 
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+
 stages:
   - validate
   - gen-env
   - tf_plan
   - tf_apply
 
+
 check-file:
   stage: validate
-
   script:
     - echo " Validating my terraform code"
     - terraform validate
   rules:
-    - if: $CI_COMMIT_BRANCH == "main"
-      when: never
     - exists:
         - vm.txt
     - when: never
