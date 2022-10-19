@@ -12,8 +12,8 @@ NAME: $a
 OS: ubuntu-focal.img
 NESTED: n
 VCPUS: $b
-MEMORY: 2G
-DISK1: "$d"G
+MEMORY: $(echo $var | awk '{print $3}')G
+DISK1: $(echo $var | awk '{print $4}')G
 #DISK2: 100G
 #DISK3: 5G
 IFACE_NETWORK1: 10.30.13.0
