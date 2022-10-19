@@ -20,12 +20,8 @@ check-file:
     - terraform validate
   rules:
     - exists:
-<<<<<<< HEAD
-        - vm2.txt
-=======
         - vm.txt
     - when: never
->>>>>>> test-provisioning
   tags: [kvm]
 #   needs:
 #     - job: check-vm-txt
