@@ -19,8 +19,8 @@ job-tf-validate:
     - echo " Validating my terraform code"
     - terraform validate
   rules:
-    - exists:
-        - !vm.txt
+    - not-exists:
+        - vm.txt
       when: never
     - when: always
   tags: [kvm]
