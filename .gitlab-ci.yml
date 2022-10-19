@@ -52,6 +52,7 @@ generate-environment:
     - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
     - echo ${folder}
     - echo $var
+    - cat vm.txt
     - ./not-tfgen.sh ${folder} vm.txt
     - cd ${folder}
     - pwd
