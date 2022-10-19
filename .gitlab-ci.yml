@@ -20,7 +20,8 @@ check-file:
     - echo " Validating my terraform code"
     - terraform validate
   rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == "main"
+      when: always
     - exists:
         - vm.txt
     - when: never
@@ -32,28 +33,28 @@ check-file:
 #     refs:
 #       - master
 
-generate-environment:
-  stage: gen-env
-  script:
-    - random_string=$(echo $RANDOM | md5sum | head -c 5);
-    - echo "Generating terraform environment file"
-    - echo $GITLAB_USER_LOGIN
-    - echo $random_string
-    - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
-    - echo ${folder}
-    - ./not-tfgen.sh ${folder} vm.txt
-    - cd ${folder}
-    - pwd
-    - cp ./../provider/terraform-provider-libvirt /home/gitlab-runner/.local/share/terraform/plugins/registry.terraform.io/dmacvicar/libvirt/0.6.2/linux_amd64
-    - terraform init
-    - terraform plan
-    - terraform apply --auto-approve
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    - exists:
-        - vm.txt
-    - when: never
-  tags: [kvm]
+# generate-environment:
+#   stage: gen-env
+#   script:
+#     - random_string=$(echo $RANDOM | md5sum | head -c 5);
+#     - echo "Generating terraform environment file"
+#     - echo $GITLAB_USER_LOGIN
+#     - echo $random_string
+#     - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
+#     - echo ${folder}
+#     - ./not-tfgen.sh ${folder} vm.txt
+#     - cd ${folder}
+#     - pwd
+#     - cp ./../provider/terraform-provider-libvirt /home/gitlab-runner/.local/share/terraform/plugins/registry.terraform.io/dmacvicar/libvirt/0.6.2/linux_amd64
+#     - terraform init
+#     - terraform plan
+#     - terraform apply --auto-approve
+#   rules:
+#     - if: $CI_COMMIT_BRANCH == "main"
+#     - exists:
+#         - vm.txt
+#     - when: never
+#   tags: [kvm]
   
   # artifacts:
   #   paths:
