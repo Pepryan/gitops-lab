@@ -34,8 +34,12 @@ generate-environment:
   script:
     - random_string=$(echo $RANDOM | md5sum | head -c 5);
     - echo "Generating terraform environment file"
-    - ./not-tfgen.sh $GITLAB_USER_LOGIN_${random_string} vm.txt
-    - cd $GITLAB_USER_LOGIN_${random_string}
+    - echo $GITLAB_USER_LOGIN
+    - echo $random_string
+    - folder=$(echo $GITLAB_USER_LOGIN_${random_string});
+    - echo folder
+    - ./not-tfgen.sh ${folder} vm.txt
+    - cd ${folder}
     - terraform init
     - terraform plan
   rules:
