@@ -34,8 +34,6 @@ check-file:
 
 generate-environment:
   stage: gen-env
-  only: 
-    - main
   script:
     - random_string=$(echo $RANDOM | md5sum | head -c 5);
     - echo "Generating terraform environment file"
