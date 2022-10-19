@@ -41,6 +41,7 @@ generate-environment:
     - ./not-tfgen.sh ${folder} vm.txt
     - cd ${folder}
     - pwd
+    - cp ./../provider/terraform-provider-libvirt /home/gitlab-runner/.local/share/terraform/plugins/registry.terraform.io/dmacvicar/libvirt/0.6.2/linux_amd64
     - terraform init
   rules:
     - exists:
