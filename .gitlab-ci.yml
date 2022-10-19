@@ -20,15 +20,6 @@ stages:
 check-file:
   stage: validate
   script:
-    - echo $var
-    - cat vm-tmp.txt > vm.txt
-    - sed -i "s/nama/$(echo $var | awk '{print $1}')/g" vm.txt
-    - sed -i "s/icpu/$(echo $var | awk '{print $2}')/g" vm.txt
-    - sed -i "s/ram/$(echo $var | awk '{print $3}')/g" vm.txt
-    - sed -i "s/sda/$(echo $var | awk '{print $4}')/g" vm.txt
-    - sed -i "s/sdb/$(echo $var | awk '{print $5}')/g" vm.txt
-#    - sleep 1m
-    - cat vm.txt
     - echo " Validating my terraform codes"
     - terraform validate
   rules:
@@ -51,7 +42,6 @@ generate-environment:
     - echo $random_string
     - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
     - echo ${folder}
-    - cat vm.txt
     - ./not-tfgen.sh ${folder} vm.txt
     - cd ${folder}
     - pwd
