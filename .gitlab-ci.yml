@@ -8,19 +8,24 @@ include:
   - template: Terraform/Base.gitlab-ci.yml  # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Terraform/Base.latest.gitlab-ci.yml
 
 stages:
-  - stg_validate
-  - stg_plan
-  - stg_apply
-  - stg_destroy
+  - validate
+  - gen-env
+  - tf_plan
+  - tf_apply
 
-job-tf-validate:
-  stage: stg_validate
+check-file:
+  stage: validate
   script:
     - echo " Validating my terraform code"
     - terraform validate
   rules:
     - exists:
+<<<<<<< HEAD
         - vm2.txt
+=======
+        - vm.txt
+    - when: never
+>>>>>>> test-provisioning
   tags: [kvm]
 #   needs:
 #     - job: check-vm-txt
@@ -28,25 +33,41 @@ job-tf-validate:
 #     refs:
 #       - master
 
-jb-tf-plan:
-  stage: stg_plan
+generate-environment:
+  stage: gen-env
   script:
     - random_string=$(echo $RANDOM | md5sum | head -c 5);
     - echo "Generating terraform environment file"
-    - ./not-tfgen.sh $GITLAB_USER_LOGIN_${random_string} vm2.txt
+    - echo $GITLAB_USER_LOGIN
+    - echo $random_string
+    - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
+    - echo ${folder}
+    - ./not-tfgen.sh ${folder} vm.txt
+    - cd ${folder}
+    - pwd
+    - cp ./../provider/terraform-provider-libvirt /home/gitlab-runner/.local/share/terraform/plugins/registry.terraform.io/dmacvicar/libvirt/0.6.2/linux_amd64
+    - terraform init
+    - terraform plan
+    - terraform apply --auto-approve
+  rules:
+    - exists:
+        - vm.txt
+    - when: never
   tags: [kvm]
   # artifacts:
   #   paths:
   #     - plan
 
-# jb-tf-apply:
-#   stage: stg_apply
-#   script:
-#     - echo "Spinning up resources via terraform apply step"
-#     - terraform apply --auto-approve plan
-#     - terraform state list
-#   when: always
-#   allow_failure: false
+# tf-plan:
+#    stage: tf_plan
+#    script:
+#      - echo "Spinning up resources via terraform apply step"
+#      - cd ${folder}
+#      - terraform plan
+#      - terraform state list
+#    when: always
+#    allow_failure: false
+#    tags: [kvm]
 #   artifacts:
 #     paths:
 #       - terraform.tfstate
@@ -94,3 +115,4 @@ jb-tf-plan:
 #     - echo "Manually trigger"
 #   when: manual
 #   tags: [kvm]
+
