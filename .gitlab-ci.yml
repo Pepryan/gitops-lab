@@ -29,12 +29,12 @@ check-file:
     - sleep 1m
     - cat vm.txt
     - echo " Validating my terraform codes"
-    - terraform validate
-  rules:
-    - exists:
-        - vm.txt
-    - when: never
-  tags: [kvm]
+#    - terraform validate
+#  rules:
+#    - exists:
+#        - vm.txt
+#    - when: never
+#  tags: [kvm]
 #   needs:
 #     - job: check-vm-txt
 #   except:
