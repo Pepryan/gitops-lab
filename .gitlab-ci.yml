@@ -32,13 +32,13 @@ generate-environment:
     - echo $env_name
     - whoami
     - pwd
-    # - cp vm.txt /home/gitlab-runner/environment/vm-$env_name.txt
-    # - cd /home/gitlab-runner/environment
-    # - ./not-tfgen.sh $env_name vm-$env_name.txt
-    # - cd $env_name
-    # - pwd
-    # - terraform init
-    # - terraform validate
+    - cp vm.txt /home/gitlab-runner/environment/vm-$env_name.txt
+    - cd /home/gitlab-runner/environment
+    - ./not-tfgen.sh $env_name vm-$env_name.txt
+    - cd $env_name
+    - pwd
+    - terraform init
+    - terraform validate
     # - echo $random_string
     # - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
     # - echo ${folder}
