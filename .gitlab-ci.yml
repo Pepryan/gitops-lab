@@ -42,7 +42,7 @@ job-generate:
     - cd $env_name
   tags: [kvm]
   rules:
-  - if $git_action == "create"
+  - if: $git_action == "create"
 
 # job-init:
 #   stage: init
