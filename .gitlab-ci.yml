@@ -10,14 +10,20 @@ workflow:
 # gunakan string commit untuk nama folder(environment) yang unik
 variables:
   env_name: $GITLAB_USER_LOGIN-$CI_COMMIT_SHORT_SHA
-  action: $(cat action.txt)
 
 stages:
+  - define
   - generate
   - init
   - validate
   - apply
   - destroy
+
+job-define:
+  stage: define
+  script:
+    - export git_action=$(cat action.txt)
+  tags: [kvm]
 
 job-generate:
   stage: generate
@@ -34,9 +40,9 @@ job-generate:
     - cd /home/gitlab-runner/environment
     - ./not-tfgen.sh $env_name env-$env_name.txt
     - cd $env_name
-    - echo "your workdir - $(pwd)"
-    - terraform init
   tags: [kvm]
+  rules:
+  - if $git_action == "create"
 
 # job-init:
 #   stage: init
