@@ -27,7 +27,7 @@ job-generate:
     # yang sudah disediakan script .not-tfgen.sh
     - cp vm.txt /home/gitlab-runner/environment/vm-$env_name.txt
     - cd /home/gitlab-runner/environment
-    - ./not-tfgen.sh $env_name vm-$env_name.txt
+    - ./not-tfgen.sh $env_name env-$env_name.txt
     - cd $env_name
     - echo "your workdir - $(pwd)"
     - terraform init
@@ -55,7 +55,7 @@ job-apply:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "your workdir - $(pwd)"
     # - terraform apply
-    - python3 ../management-script/append_env.py $env_name
+    - echo "$env_name,create,$(date '+%Y-%m-%d-%H:%M:%S')" >> ../list_env.csv
   tags: [kvm]
 
 
