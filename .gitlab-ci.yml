@@ -22,7 +22,8 @@ job-generate:
     - echo "env name - $env_name "
     - echo "whoami - $(whoami)"
     - echo "####################################################"
-    # copy file vm.txt untuk provisioning di folder /home/gitlab-runner/environment/
+    # copy file vm.txt untuk provisioning 
+    # ke folder /home/gitlab-runner/environment/
     # yang sudah disediakan script .not-tfgen.sh
     - cp vm.txt /home/gitlab-runner/environment/vm-$env_name.txt
     - cd /home/gitlab-runner/environment
@@ -54,6 +55,7 @@ job-apply:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "your workdir - $(pwd)"
     # - terraform apply
+    - python3 append_env.py $env_name
   tags: [kvm]
 
 
