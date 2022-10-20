@@ -1,28 +1,19 @@
-# workflow:
-#   rules:
-#   - if: $CI_COMMIT_BRANCH == "main"
+workflow:
+  rules:
+  - exists:
+    - vm.txt
+  # - if: $CI_COMMIT_BRANCH == "main"
 
 # gunakan string commit untuk nama folder(environment) yang unik
 variables:
   env_name: $GITLAB_USER_LOGIN-$CI_COMMIT_SHORT_SHA
 
 stages:
-  - check
   - generate
   - init
   - validate
   - apply
   - destroy
-
-job-check:
-  stage: check
-  script:
-    - echo "checking if vm.txt is exists"
-  rules:
-    - exists:
-        - vm.txt
-    - when: never
-  tags: [kvm]
 
 job-generate:
   stage: generate
@@ -39,10 +30,6 @@ job-generate:
     - cd $env_name
     - echo "your workdir - $(pwd)"
     - terraform init
-  rules:
-    - exists:
-        - vm.txt
-    - when: never
   tags: [kvm]
 
 job-init:
@@ -51,10 +38,6 @@ job-init:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "your workdir - $(pwd)"
     - terraform init
-  rules:
-    - exists:
-        - vm.txt
-    - when: never
   tags: [kvm]
 
 job-validate:
@@ -63,10 +46,6 @@ job-validate:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "your workdir - $(pwd)"
     - terraform validate
-  rules:
-    - exists:
-        - vm.txt
-    - when: never
   tags: [kvm]
 
 job-apply:
@@ -75,10 +54,6 @@ job-apply:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "your workdir - $(pwd)"
     # - terraform apply
-  rules:
-    - exists:
-        - vm.txt
-    - when: never
   tags: [kvm]
 
 
