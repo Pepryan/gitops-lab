@@ -54,7 +54,7 @@ job-apply:
     - echo "your workdir - $(pwd)"
     - id -G
     - terraform apply -auto-approve
-    - echo "$env_name,create,$(date '+%Y-%m-%d-%H:%M:%S')" | tee ../list_env.csv
+    - echo "$env_name,create,$(date '+%Y-%m-%d-%H:%M:%S')" | >> ../list_env.csv
   tags: [kvm]
 
 job-destroy:
@@ -62,6 +62,7 @@ job-destroy:
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "your workdir - $(pwd)"
-    # - terraform destroy_env -auto-approve
+    - terraform destroy -auto-approve
+    - echo "$env_name,destroy,$(date '+%Y-%m-%d-%H:%M:%S')" | >> ../list_env.csv
   when: manual
   tags: [kvm]
