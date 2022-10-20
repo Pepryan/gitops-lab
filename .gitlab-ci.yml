@@ -54,6 +54,7 @@ job-apply:
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "your workdir - $(pwd)"
+    - id -G
     # - terraform apply
     - echo "$env_name,create,$(date '+%Y-%m-%d-%H:%M:%S')" >> ../list_env.csv
   tags: [kvm]
