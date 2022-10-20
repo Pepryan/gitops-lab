@@ -55,7 +55,7 @@ job-apply:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "your workdir - $(pwd)"
     # - terraform apply
-    - python3 append_env.py $env_name
+    - python3 ../management-script/append_env.py $env_name
   tags: [kvm]
 
 
