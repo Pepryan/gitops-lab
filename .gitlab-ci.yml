@@ -12,24 +12,18 @@ variables:
   env_name: $GITLAB_USER_LOGIN-$CI_COMMIT_SHORT_SHA
 
 stages:
-  - define
   - generate
   - init
   - validate
   - apply
   - destroy
 
-job-define:
-  stage: define
-  script:
-    - export ci_action=$(cat action.txt)
-    - echo $ci_action
-  tags: [kvm]
+before_script:
+  - export test1 = $(cat action.txt)
 
 job-generate:
   stage: generate
   script:
-    - echo "action $ci_action"
     - echo "gitlab user - $GITLAB_USER_LOGIN"
     - echo "env name - $env_name "
     - echo "whoami - $(whoami)"
@@ -41,7 +35,7 @@ job-generate:
     - cd /home/gitlab-runner/environment
     - ./not-tfgen.sh $env_name env-$env_name.txt
     - cd $env_name
-    - echo $ci_action
+    - echo $test1
   tags: [kvm]
   # rules:
   # - if $ci_action == "create"
