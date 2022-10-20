@@ -72,7 +72,6 @@ destroy:
    - pwd 
    - terraform destroy --auto-approve
   rules:
-   - if: $CI_COMMIT_BRANCH == "main"
    - exists:
        - vm.txt
    - when: manual
