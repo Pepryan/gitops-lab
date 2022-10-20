@@ -2,11 +2,9 @@ workflow:
   rules:
   - exists:
     - vm.txt
-    - action.txt
   # uncomment untuk rule hanya branch "main"
   # - if: $CI_COMMIT_BRANCH == "main"
   
-
 # gunakan string commit untuk nama folder(environment) yang unik
 variables:
   env_name: $GITLAB_USER_LOGIN-$CI_COMMIT_SHORT_SHA
@@ -18,15 +16,11 @@ stages:
   - apply
   - destroy
 
-before_script:
-  - export env_action=$(cat action.txt)
-
 job-generate:
   stage: generate
   script:
-    - echo "gitlab user - $GITLAB_USER_LOGIN"
+    - echo "user - $GITLAB_USER_LOGIN"
     - echo "env name - $env_name "
-    - echo "whoami - $(whoami)"
     - echo "###################################################"
     # copy file vm.txt untuk provisioning 
     # ke folder /home/gitlab-runner/environment/
@@ -36,39 +30,38 @@ job-generate:
     - ./not-tfgen.sh $env_name env-$env_name.txt
     - cd $env_name
   tags: [kvm]
-  rules:
-  - if: $env_action == "create"
 
-# job-init:
-#   stage: init
-#   script:
-#     - cd /home/gitlab-runner/environment/$env_name
-#     - echo "your workdir - $(pwd)"
-#     - terraform init
-#   tags: [kvm]
+job-init:
+  stage: init
+  script:
+    - cd /home/gitlab-runner/environment/$env_name
+    - echo "your workdir - $(pwd)"
+    - terraform init
+  tags: [kvm]
 
-# job-validate:
-#   stage: validate
-#   script:
-#     - cd /home/gitlab-runner/environment/$env_name
-#     - echo "your workdir - $(pwd)"
-#     - terraform validate
-#   tags: [kvm]
+job-validate:
+  stage: validate
+  script:
+    - cd /home/gitlab-runner/environment/$env_name
+    - echo "your workdir - $(pwd)"
+    - terraform validate
+  tags: [kvm]
 
-# job-apply:
-#   stage: apply
-#   script:
-#     - cd /home/gitlab-runner/environment/$env_name
-#     - echo "your workdir - $(pwd)"
-#     - id -G
-#     # - terraform apply -auto-approve
-#     # - echo "$env_name,create,$(date '+%Y-%m-%d-%H:%M:%S')" | tee ../list_env.csv
-#   tags: [kvm]
+job-apply:
+  stage: apply
+  script:
+    - cd /home/gitlab-runner/environment/$env_name
+    - echo "your workdir - $(pwd)"
+    - id -G
+    - terraform apply -auto-approve
+    - echo "$env_name,create,$(date '+%Y-%m-%d-%H:%M:%S')" | tee ../list_env.csv
+  tags: [kvm]
 
-# job-destroy:
-#   stage: destroy
-#   script:
-#     - destroy_env=$(cat destroy.txt)
-#     - cd /home/gitlab-runner/environment/$destroy_env
-#     - echo "your workdir - $(pwd)"
-#     # - terraform destroy_env -auto-approve
+job-destroy:
+  stage: destroy
+  script:
+    - cd /home/gitlab-runner/environment/$env_name
+    - echo "your workdir - $(pwd)"
+    # - terraform destroy_env -auto-approve
+  when: manual
+  tags: [kvm]
