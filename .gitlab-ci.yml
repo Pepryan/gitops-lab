@@ -19,7 +19,7 @@ stages:
   - destroy
 
 before_script:
-  - export test1 = $(cat action.txt)
+  - export test1=$(cat action.txt)
 
 job-generate:
   stage: generate
