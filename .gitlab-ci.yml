@@ -25,7 +25,7 @@ job-generate:
     # copy file vm.txt untuk provisioning 
     # ke folder /home/gitlab-runner/environment/
     # yang sudah disediakan script .not-tfgen.sh
-    - cp vm.txt /home/gitlab-runner/environment/vm-$env_name.txt
+    - cp vm.txt /home/gitlab-runner/environment/env-$env_name.txt
     - cd /home/gitlab-runner/environment
     - ./not-tfgen.sh $env_name env-$env_name.txt
     - cd $env_name
