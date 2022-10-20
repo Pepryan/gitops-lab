@@ -3,7 +3,7 @@
 #   - if: $CI_COMMIT_BRANCH == "main"
 
 variables:
-  test_string: $CI_COMMIT_SHORT_SHA	;
+  env_name: $GITLAB_USER_LOGIN-$CI_COMMIT_SHORT_SHA;
 
 stages:
   - validate
@@ -29,9 +29,14 @@ generate-environment:
     - random_string=$(echo $RANDOM | md5sum | head -c 5);
     - echo "Generating terraform environment file"
     - echo $GITLAB_USER_LOGIN
-    - pwd
     - whoami
-    - mkdir test-pipe-$test_string
+    - pwd
+    - cp vm.txt /home/gitlab-runner/environment/vm-$env_name.txt
+    - cd /home/gitlab-runner/environment
+    - ./not-tfgen.sh $env_name vm-$env_name.txt
+    - cd $env_name
+    - pwd
+    - terraform validate
     # - echo $random_string
     # - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
     # - echo ${folder}
