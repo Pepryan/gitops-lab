@@ -19,7 +19,7 @@ stages:
   - destroy
 
 before_script:
-  - export test1=$(cat action.txt)
+  - export env_action=$(cat action.txt)
 
 job-generate:
   stage: generate
@@ -35,10 +35,9 @@ job-generate:
     - cd /home/gitlab-runner/environment
     - ./not-tfgen.sh $env_name env-$env_name.txt
     - cd $env_name
-    - echo $test1
   tags: [kvm]
-  # rules:
-  # - if $ci_action == "create"
+  rules:
+  - if $env_action == "create"
 
 # job-init:
 #   stage: init
