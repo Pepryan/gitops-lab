@@ -2,6 +2,9 @@
 #   rules:
 #   - if: $CI_COMMIT_BRANCH == "main"
 
+variables:
+  test_string: $CI_COMMIT_SHORT_SHA	;
+
 stages:
   - validate
   - gen-env
@@ -28,7 +31,7 @@ generate-environment:
     - echo $GITLAB_USER_LOGIN
     - pwd
     - whoami
-    - mkdir test-pipe
+    - mkdir test-pipe-$test_string
     # - echo $random_string
     # - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
     # - echo ${folder}
