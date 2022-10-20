@@ -3,6 +3,7 @@ workflow:
   - exists:
     - vm.txt
   # - if: $CI_COMMIT_BRANCH == "main"
+  tags: [kvm]
 
 # gunakan string commit untuk nama folder(environment) yang unik
 variables:
@@ -30,7 +31,6 @@ job-generate:
     - cd $env_name
     - echo "your workdir - $(pwd)"
     - terraform init
-  tags: [kvm]
 
 job-init:
   stage: init
@@ -38,7 +38,6 @@ job-init:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "your workdir - $(pwd)"
     - terraform init
-  tags: [kvm]
 
 job-validate:
   stage: validate
@@ -46,7 +45,6 @@ job-validate:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "your workdir - $(pwd)"
     - terraform validate
-  tags: [kvm]
 
 job-apply:
   stage: apply
@@ -54,6 +52,5 @@ job-apply:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "your workdir - $(pwd)"
     # - terraform apply
-  tags: [kvm]
 
 
