@@ -22,13 +22,14 @@ stages:
 job-define:
   stage: define
   script:
-    - export git_action=$(cat action.txt)
+    - export ci_action=$(cat action.txt)
+    - echo $ci_action
   tags: [kvm]
 
 job-generate:
   stage: generate
   script:
-    - echo "action $action"
+    - echo "action $ci_action"
     - echo "gitlab user - $GITLAB_USER_LOGIN"
     - echo "env name - $env_name "
     - echo "whoami - $(whoami)"
@@ -40,9 +41,10 @@ job-generate:
     - cd /home/gitlab-runner/environment
     - ./not-tfgen.sh $env_name env-$env_name.txt
     - cd $env_name
+    - echo $ci_action
   tags: [kvm]
-  rules:
-  - if: $git_action == "create"
+  # rules:
+  # - if $ci_action == "create"
 
 # job-init:
 #   stage: init
@@ -77,5 +79,3 @@ job-generate:
 #     - cd /home/gitlab-runner/environment/$destroy_env
 #     - echo "your workdir - $(pwd)"
 #     # - terraform destroy_env -auto-approve
-
-
