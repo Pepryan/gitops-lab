@@ -22,7 +22,8 @@ stages:
 job-generate:
   stage: generate
   script:
-    - echo "gitlab user - $GITLAB_USER_LOGIN "
+    - echo "action $action"
+    - echo "gitlab user - $GITLAB_USER_LOGIN"
     - echo "env name - $env_name "
     - echo "whoami - $(whoami)"
     - echo "###################################################"
