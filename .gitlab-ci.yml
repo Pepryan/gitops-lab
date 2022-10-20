@@ -2,6 +2,7 @@ workflow:
   rules:
   - exists:
     - vm.txt
+  # uncomment untuk rule hanya branch "main"
   # - if: $CI_COMMIT_BRANCH == "main"
 
 # gunakan string commit untuk nama folder(environment) yang unik
@@ -56,7 +57,7 @@ job-apply:
     - echo "your workdir - $(pwd)"
     - id -G
     # - terraform apply
-    - echo "$env_name,create,$(date '+%Y-%m-%d-%H:%M:%S')" | tee list_env.csv
+    - echo "$env_name,create,$(date '+%Y-%m-%d-%H:%M:%S')" | tee ../list_env.csv
   tags: [kvm]
 
 
