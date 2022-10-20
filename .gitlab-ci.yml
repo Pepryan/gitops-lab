@@ -11,8 +11,6 @@ workflow:
   rules:
   - if: $CI_COMMIT_BRANCH == "main"
 
-variables:
-  test_var: echo $RANDOM | md5sum | head -c 5;
 
 stages:
   - validate
@@ -40,10 +38,11 @@ check-file:
 generate-environment:
   stage: gen-env
   script:
+    - random_string=$(echo $RANDOM | md5sum | head -c 5);
     - echo "Generating terraform environment file"
     - echo $GITLAB_USER_LOGIN
-    - echo $test_var
-    - folder=$(echo $GITLAB_USER_LOGIN-$test_var);
+    - echo $random_string
+    - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
     - echo ${folder}
     - ./not-tfgen.sh ${folder} vm.txt
     - cd ${folder}
@@ -58,20 +57,23 @@ generate-environment:
     - when: never
   tags: [kvm]
 
-destroy:
-  stage: destroying
-  script:
-   - echo $test_var
-   - folder=$(echo $GITLAB_USER_LOGIN-$test_var)
-   - echo ${folder}
-   - cd ${folder}
-   - pwd
-   - terraform destroy --auto-approve
-  rules:
-   - exists:
-       - vm.txt
-   - when: manual
-  tags: [kvm]
+#destroy:
+#  stage: destroying
+#  script:
+#   - random_string=$(echo $RANDOM | md5sum | head -c 5)
+#   - echo "Destroying VM"
+#   - echo $GITLAB_USER_LOGIN
+#   - echo $random_string
+#   - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
+#   - echo ${folder}
+#   - cd ${folder}
+#   - pwd 
+#   - terraform destroy --auto-approve
+#  rules:
+#   - exists:
+#       - vm.txt
+#   - when: manual
+#  tags: [kvm]
 
 
 # tf-plan:
