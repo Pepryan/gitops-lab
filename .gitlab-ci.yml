@@ -63,5 +63,6 @@ job-destroy:
     - echo "your workdir - $(pwd)"
     - terraform destroy -auto-approve
     - echo "$env_name,destroy,$(date '+%Y-%m-%d-%H:%M:%S')" >> ../list_env.csv
+    # delete folder dan env-<env_name>.txt
   when: manual
   tags: [kvm]
