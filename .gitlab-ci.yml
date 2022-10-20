@@ -16,6 +16,7 @@ stages:
   - gen-env
   - tf_plan
   - tf_apply
+  - destroying
 
 check-file:
   stage: validate
@@ -59,7 +60,7 @@ generate-environment:
   #     - plan
 
 destroy:
-  stage: Destroying
+  stage: destroying
   script:
    - random_string=$(echo $RANDOM | md5sum | head -c 5)
    - echo "Destroying VM"
