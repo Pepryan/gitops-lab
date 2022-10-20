@@ -2,12 +2,15 @@ workflow:
   rules:
   - exists:
     - vm.txt
+    - action.txt
   # uncomment untuk rule hanya branch "main"
   # - if: $CI_COMMIT_BRANCH == "main"
+  
 
 # gunakan string commit untuk nama folder(environment) yang unik
 variables:
   env_name: $GITLAB_USER_LOGIN-$CI_COMMIT_SHORT_SHA
+  action: cat action.txt
 
 stages:
   - generate
@@ -34,30 +37,38 @@ job-generate:
     - terraform init
   tags: [kvm]
 
-job-init:
-  stage: init
-  script:
-    - cd /home/gitlab-runner/environment/$env_name
-    - echo "your workdir - $(pwd)"
-    - terraform init
-  tags: [kvm]
+# job-init:
+#   stage: init
+#   script:
+#     - cd /home/gitlab-runner/environment/$env_name
+#     - echo "your workdir - $(pwd)"
+#     - terraform init
+#   tags: [kvm]
 
-job-validate:
-  stage: validate
-  script:
-    - cd /home/gitlab-runner/environment/$env_name
-    - echo "your workdir - $(pwd)"
-    - terraform validate
-  tags: [kvm]
+# job-validate:
+#   stage: validate
+#   script:
+#     - cd /home/gitlab-runner/environment/$env_name
+#     - echo "your workdir - $(pwd)"
+#     - terraform validate
+#   tags: [kvm]
 
-job-apply:
-  stage: apply
-  script:
-    - cd /home/gitlab-runner/environment/$env_name
-    - echo "your workdir - $(pwd)"
-    - id -G
-    - terraform apply -auto-approve
-    - echo "$env_name,create,$(date '+%Y-%m-%d-%H:%M:%S')" | tee ../list_env.csv
-  tags: [kvm]
+# job-apply:
+#   stage: apply
+#   script:
+#     - cd /home/gitlab-runner/environment/$env_name
+#     - echo "your workdir - $(pwd)"
+#     - id -G
+#     # - terraform apply -auto-approve
+#     # - echo "$env_name,create,$(date '+%Y-%m-%d-%H:%M:%S')" | tee ../list_env.csv
+#   tags: [kvm]
+
+# job-destroy:
+#   stage: destroy
+#   script:
+#     - destroy_env=$(cat destroy.txt)
+#     - cd /home/gitlab-runner/environment/$destroy_env
+#     - echo "your workdir - $(pwd)"
+#     # - terraform destroy_env -auto-approve
 
 
