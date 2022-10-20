@@ -21,7 +21,7 @@ job-generate:
     - echo "gitlab user - $GITLAB_USER_LOGIN "
     - echo "env name - $env_name "
     - echo "whoami - $(whoami)"
-    - echo "####################################################"
+    - echo "###################################################"
     # copy file vm.txt untuk provisioning 
     # ke folder /home/gitlab-runner/environment/
     # yang sudah disediakan script .not-tfgen.sh
