@@ -28,6 +28,7 @@ generate-environment:
     - echo $GITLAB_USER_LOGIN
     - pwd
     - whoami
+    - mkdir test-pipe
     # - echo $random_string
     # - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
     # - echo ${folder}
