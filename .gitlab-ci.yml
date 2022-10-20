@@ -2,55 +2,83 @@
 #   rules:
 #   - if: $CI_COMMIT_BRANCH == "main"
 
+# gunakan string commit untuk nama folder(environment) yang unik
 variables:
   env_name: $GITLAB_USER_LOGIN-$CI_COMMIT_SHORT_SHA
 
 stages:
+  - check
+  - generate
+  - init
   - validate
-  - gen-env
-  - tf_plan
-  - tf_apply
-  - destroying
+  - apply
+  - destroy
 
-check-file:
-  stage: validate
+job-check:
+  stage: check
   script:
-    - echo " Validating my terraform codess"
-    - terraform validate
+    - echo "checking if vm.txt is exists"
   rules:
     - exists:
         - vm.txt
     - when: never
   tags: [kvm]
 
-generate-environment:
-  stage: gen-env
+job-generate:
+  stage: generate
   script:
-    - random_string=$(echo $RANDOM | md5sum | head -c 5);
-    - echo "Generating terraform environment file"
-    - echo $GITLAB_USER_LOGIN
-    - echo $env_name
-    - whoami
-    - pwd
+    - echo "gitlab user - $GITLAB_USER_LOGIN "
+    - echo "env name - $env_name "
+    - echo "whoami - $(whoami)"
+    - echo "####################################################"
+    # copy file vm.txt untuk provisioning di folder /home/gitlab-runner/environment/
+    # yang sudah disediakan script .not-tfgen.sh
     - cp vm.txt /home/gitlab-runner/environment/vm-$env_name.txt
     - cd /home/gitlab-runner/environment
     - ./not-tfgen.sh $env_name vm-$env_name.txt
     - cd $env_name
-    - pwd
+    - echo "your workdir - $(pwd)"
     - terraform init
-    - terraform validate
-    # - echo $random_string
-    # - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
-    # - echo ${folder}
-    # - ./not-tfgen.sh ${folder} vm.txt
-    # - cd ${folder}
-    # - pwd
-    # - cp ./../provider/terraform-provider-libvirt /home/gitlab-runner/.local/share/terraform/plugins/registry.terraform.io/dmacvicar/libvirt/0.6.2/linux_amd64
-    # - terraform init
-    # - terraform plan
-    # - terraform apply --auto-approve
   rules:
     - exists:
         - vm.txt
     - when: never
   tags: [kvm]
+
+job-init:
+  stage: init
+  script:
+    - cd /home/gitlab-runner/environment/$env_name
+    - echo "your workdir - $(pwd)"
+    - terraform init
+  rules:
+    - exists:
+        - vm.txt
+    - when: never
+  tags: [kvm]
+
+job-validate:
+  stage: validate
+  script:
+    - cd /home/gitlab-runner/environment/$env_name
+    - echo "your workdir - $(pwd)"
+    - terraform validate
+  rules:
+    - exists:
+        - vm.txt
+    - when: never
+  tags: [kvm]
+
+job-apply:
+  stage: apply
+  script:
+    - cd /home/gitlab-runner/environment/$env_name
+    - echo "your workdir - $(pwd)"
+    # - terraform apply
+  rules:
+    - exists:
+        - vm.txt
+    - when: never
+  tags: [kvm]
+
+
