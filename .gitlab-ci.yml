@@ -7,16 +7,22 @@
 include:
   - template: Terraform/Base.gitlab-ci.yml  # https://gitlab.com/gitlab-org/gitlab/blob/master/lib/gitlab/ci/templates/Terraform/Base.latest.gitlab-ci.yml
 
+workflow:
+  rules:
+  - if: $CI_COMMIT_BRANCH == "main"
+
+
 stages:
   - validate
   - gen-env
   - tf_plan
   - tf_apply
+  - destroying
 
 check-file:
   stage: validate
   script:
-    - echo " Validating my terraform code"
+    - echo " Validating my terraform codes"
     - terraform validate
   rules:
     - exists:
@@ -50,9 +56,25 @@ generate-environment:
         - vm.txt
     - when: never
   tags: [kvm]
-  # artifacts:
-  #   paths:
-  #     - plan
+
+#destroy:
+#  stage: destroying
+#  script:
+#   - random_string=$(echo $RANDOM | md5sum | head -c 5)
+#   - echo "Destroying VM"
+#   - echo $GITLAB_USER_LOGIN
+#   - echo $random_string
+#   - folder=$(echo $GITLAB_USER_LOGIN-$random_string);
+#   - echo ${folder}
+#   - cd ${folder}
+#   - pwd 
+#   - terraform destroy --auto-approve
+#  rules:
+#   - exists:
+#       - vm.txt
+#   - when: manual
+#  tags: [kvm]
+
 
 # tf-plan:
 #    stage: tf_plan
