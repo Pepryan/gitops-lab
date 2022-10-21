@@ -20,7 +20,7 @@ stages:
 job-generate:
   stage: generate
   script:
-    - echo "test gen"
+    - echo $CI_COMMIT_BRANCH
     # copy file vm.txt untuk provisioning 
     # ke folder /home/gitlab-runner/environment/
     # yang sudah disediakan script .not-tfgen.sh
