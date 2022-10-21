@@ -5,7 +5,7 @@ workflow:
   # uncomment jika ingin diterapkan di branch main
   # rule hanya branch "main"
   - if: $CI_COMMIT_BRANCH == "main"
-    when: never
+    when: always
   
 # gunakan string commit untuk nama folder(environment) yang unik
 variables:
