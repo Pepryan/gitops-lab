@@ -65,6 +65,8 @@ job-destroy:
     - echo "$env_name,destroy,$(date '+%Y-%m-%d-%H:%M:%S')" >> ../list_env.csv
     - cd ..
     - echo $(pwd);
+    - echo $env_name
+    - echo env-$env_name.txt
     - rm -rf $env_name env-$env_name.txt
   when: manual
   tags: [kvm]
