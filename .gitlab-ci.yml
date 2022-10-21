@@ -1,8 +1,10 @@
 workflow:
   rules:
-  - if: $CI_COMMIT_BRANCH == "main"
   - exists:
     - vm.txt
+  - if: $CI_COMMIT_BRANCH != "main"
+    when: never
+
   
 # gunakan string commit untuk nama folder(environment) yang unik
 variables:
