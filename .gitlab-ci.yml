@@ -1,12 +1,11 @@
 workflow:
   rules:
+  # jika bukan di branch main, jangan run pipeline
   - if: $CI_COMMIT_BRANCH != "main"
     when: never
   - exists:
     - vm.txt
 
-
-  
 # gunakan string commit untuk nama folder(environment) yang unik
 variables:
   env_name: $GITLAB_USER_LOGIN-$CI_COMMIT_SHORT_SHA
