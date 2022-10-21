@@ -20,50 +20,46 @@ stages:
 job-generate:
   stage: generate
   script:
-    - echo $CI_COMMIT_BRANCH
-    # copy file vm.txt untuk provisioning 
-    # ke folder /home/gitlab-runner/environment/
-    # yang sudah disediakan script .not-tfgen.sh
-    # - echo "copying vm.txt to home/gitlab-runner/environment"
-    # - cp vm.txt /home/gitlab-runner/environment/env-$env_name.txt
-    # - cd /home/gitlab-runner/environment
-    # - echo "generate env folder and files"
-    # - ./not-tfgen.sh $env_name env-$env_name.txt
+    - echo "copying vm.txt to home/gitlab-runner/environment"
+    - cp vm.txt /home/gitlab-runner/environment/env-$env_name.txt
+    - cd /home/gitlab-runner/environment
+    - echo "generate env folder and files"
+    - ./not-tfgen.sh $env_name env-$env_name.txt
   tags: [kvm]
 
-# job-init:
-#   stage: init
-#   script:
-#     - cd /home/gitlab-runner/environment/$env_name
-#     - echo "init $(pwd)"
-#     - terraform init
-#   tags: [kvm]
+job-init:
+  stage: init
+  script:
+    - cd /home/gitlab-runner/environment/$env_name
+    - echo "init $(pwd)"
+    - terraform init
+  tags: [kvm]
 
-# job-validate:
-#   stage: validate
-#   script:
-#     - cd /home/gitlab-runner/environment/$env_name
-#     - echo "validate $(pwd)"
-#     - terraform validate
-#   tags: [kvm]
+job-validate:
+  stage: validate
+  script:
+    - cd /home/gitlab-runner/environment/$env_name
+    - echo "validate $(pwd)"
+    - terraform validate
+  tags: [kvm]
 
-# job-apply:
-#   stage: apply
-#   script:
-#     - cd /home/gitlab-runner/environment/$env_name
-#     - echo "apply $(pwd)"
-#     - terraform apply -auto-approve
-#     - echo "$env_name,create,$(date '+%Y-%m-%d-%H:%M:%S')" >> ../list_env.csv
-#   tags: [kvm]
+job-apply:
+  stage: apply
+  script:
+    - cd /home/gitlab-runner/environment/$env_name
+    - echo "apply $(pwd)"
+    - terraform apply -auto-approve
+    - echo "$env_name,create,$(date '+%Y-%m-%d-%H:%M:%S')" >> ../list_env.csv
+  tags: [kvm]
 
-# job-destroy:
-#   stage: destroy
-#   script:
-#     - cd /home/gitlab-runner/environment/$env_name
-#     - echo "destroy $(pwd)"
-#     - terraform destroy -auto-approve
-#     - echo "$env_name,destroy,$(date '+%Y-%m-%d-%H:%M:%S')" >> ../list_env.csv
-#     - echo "remove $env_name env folder and files"
-#     - rm -rf ../$env_name ../env-$env_name.txt
-#   when: manual
-#   tags: [kvm]
+job-destroy:
+  stage: destroy
+  script:
+    - cd /home/gitlab-runner/environment/$env_name
+    - echo "destroy $(pwd)"
+    - terraform destroy -auto-approve
+    - echo "$env_name,destroy,$(date '+%Y-%m-%d-%H:%M:%S')" >> ../list_env.csv
+    - echo "remove $env_name env folder and files"
+    - rm -rf ../$env_name ../env-$env_name.txt
+  when: manual
+  tags: [kvm]
