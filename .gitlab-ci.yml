@@ -19,7 +19,6 @@ stages:
   - destroy
 
 job-generate:
-  # only: [main]
   stage: generate
   script:
     - echo $CI_COMMIT_BRANCH
@@ -34,7 +33,6 @@ job-generate:
   tags: [kvm]
 
 # job-init:
-# only: [main]
 #   stage: init
 #   script:
 #     - cd /home/gitlab-runner/environment/$env_name
@@ -43,7 +41,6 @@ job-generate:
 #   tags: [kvm]
 
 # job-validate:
-# only: [main]
 #   stage: validate
 #   script:
 #     - cd /home/gitlab-runner/environment/$env_name
@@ -52,7 +49,6 @@ job-generate:
 #   tags: [kvm]
 
 # job-apply:
-# only: [main]
 #   stage: apply
 #   script:
 #     - cd /home/gitlab-runner/environment/$env_name
@@ -62,7 +58,6 @@ job-generate:
 #   tags: [kvm]
 
 # job-destroy:
-# only: [main]
 #   stage: destroy
 #   script:
 #     - cd /home/gitlab-runner/environment/$env_name
