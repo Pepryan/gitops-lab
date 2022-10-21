@@ -1,14 +1,7 @@
 workflow:
   rules:
-  - if: $CI_COMMIT_BRANCH == "main"
-    when: always
-  - if: $CI_COMMIT_BRANCH != "main"
-    when: never
   - exists:
     - vm.txt
-  # uncomment jika ingin diterapkan di branch main
-  # rule hanya branch "main"
-
   
 # gunakan string commit untuk nama folder(environment) yang unik
 variables:
@@ -22,6 +15,7 @@ stages:
   - destroy
 
 job-generate:
+  only: [main]
   stage: generate
   script:
     - echo $CI_COMMIT_BRANCH
