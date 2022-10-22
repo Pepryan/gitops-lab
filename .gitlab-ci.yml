@@ -8,7 +8,7 @@ workflow:
 
 # gunakan string commit untuk nama folder(environment) yang unik
 variables:
-  env_name: $GITLAB_USER_LOGIN-$CI_COMMIT_SHORT_SHA
+  env_name: $GITLAB_USER_LOGIN
 
 stages:
   - generate
@@ -24,7 +24,7 @@ job-generate:
     - cp vm.txt /home/gitlab-runner/environment/env-$env_name.txt
     - cd /home/gitlab-runner/environment
     - echo "generate env folder and files"
-    - ./not-tfgen.sh $env_name env-$env_name.txt
+    - ./not-tfgen2.sh $env_name env-$env_name.txt
   tags: [kvm]
 
 job-init:
