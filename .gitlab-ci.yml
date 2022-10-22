@@ -42,7 +42,7 @@ job-validate:
     - echo "validate $(pwd)"
     - terraform validate
   tags: [kvm]
-
+  
 job-apply:
   stage: apply
   script:
