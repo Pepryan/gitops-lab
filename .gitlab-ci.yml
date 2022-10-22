@@ -24,7 +24,7 @@ job-generate:
     - cp vm.txt /home/gitlab-runner/environment/env-$env_name.txt
     - cd /home/gitlab-runner/environment
     - echo "generate env folder and files"
-    - ./not-tfgen2.sh $env_name env-$env_name.txt
+    - ./not-tfgen.sh $env_name env-$env_name.txt
   tags: [kvm]
 
 job-init:
