@@ -16,7 +16,7 @@ CONSOLE: vnc
 NAME: dummy01
 OS: ubuntu-focal.img
 NESTED: n
-VCPUS: 2
+VCPUS: 4
 MEMORY: 4G
 DISK1: 4G
 IFACE_NETWORK1: 10.10.50.0
