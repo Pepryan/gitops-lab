@@ -42,7 +42,15 @@ job-validate:
     - echo "validate $(pwd)"
     - terraform validate
   tags: [kvm]
-  
+
+job-plan:
+  stage: plan
+  script:
+    - cd /home/gitlab-runner/environment/$env_name
+    - echo "planning $(pwd)"
+    - terraform plan
+  tags: [kvm]
+
 job-apply:
   stage: apply
   script:
