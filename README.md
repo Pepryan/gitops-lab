@@ -64,7 +64,57 @@ CONSOLE: vnc
 ON PROGRESS
 
 ### UPDATE/EDIT VM
-...
+
+Contoh case ingin meng-upgrade vCPU's dari yang semula 4 core menjadi 8 core dan menambah disk1 menjadi 8GB.
+
+1. Pada vm.txt edit apa yang ingin diubah, pada case ini ingin meng-upgrade vCPU's menjadi 8 core
+
+```
+$ nano vm.txt
+
+Before 
+
+[VM1]
+NAME: instance-1
+OS: ubuntu-focal.img
+NESTED: y
+VCPUS: 8
+MEMORY: 8G
+DISK1: 4G
+DISK2: 4G
+IFACE_NETWORK1: 10.10.50.0
+IFACE_IP1: 10.10.50.224
+IFACE_NETWORK2: 10.10.25.0
+IFACE_IP2: 10.10.25.24
+CONSOLE: vnc
+
+After 
+
+[VM1]
+NAME: instance-1
+OS: ubuntu-focal.img
+NESTED: y
+VCPUS: 
+MEMORY: 8G
+DISK1: 8G
+DISK2: 4G
+IFACE_NETWORK1: 10.10.50.0
+IFACE_IP1: 10.10.50.224
+IFACE_NETWORK2: 10.10.25.0
+IFACE_IP2: 10.10.25.24
+CONSOLE: vnc
+```
+2. Setelah selesai lakukan commit 
+```
+$ git commit -m "Tambah spesifikasi VM"
+```
+
+3. Lakukan push kembali 
+```
+$ git push origin main
+```
+
+
 
 
 ### DELETE VM
