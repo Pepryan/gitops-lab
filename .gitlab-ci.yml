@@ -20,6 +20,7 @@ stages:
 
 job-generate:
   stage: generate
+  allow_failure: true
   script:
     - echo "copying vm.txt to home/gitlab-runner/environment"
     - cp vm.txt /home/gitlab-runner/environment/env-$env_name.txt
