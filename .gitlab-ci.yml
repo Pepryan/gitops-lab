@@ -1,8 +1,8 @@
 workflow:
   rules:
   # jika bukan di branch main, jangan run pipeline
-  #- if: $CI_COMMIT_BRANCH != "main"
-  #  when: never
+  - if: $CI_COMMIT_BRANCH != "main"
+    when: never
   - exists:
     - vm.txt
 
@@ -14,6 +14,7 @@ stages:
   - generate
   - init
   - validate
+  - plan
   - apply
   - destroy
 
@@ -41,6 +42,14 @@ job-validate:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "validate $(pwd)"
     - terraform validate
+  tags: [kvm]
+
+job-plan:
+  stage: plan
+  script:
+    - cd /home/gitlab-runner/environment/$env_name
+    - echo "planning $(pwd)"
+    - terraform plan
   tags: [kvm]
 
 job-apply:
