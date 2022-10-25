@@ -152,7 +152,7 @@ Bisa lewat dashboard atau pilih link ketika sudah push.
 ![firefox_24-10-2022_114806](/uploads/1c494275493dbd1072d268a410af1664/firefox_24-10-2022_114806.png)
 
 ### DELETE VM
-1. Delete Spesifik VM
+1. Jika ingin Delete Spesifik VM<br>
 Edit vm.txt (nano vm.txt)
 ```yml
 [VM1]
@@ -201,6 +201,6 @@ IFACE_IP2: 10.10.25.24
 CONSOLE: vnc
 ```
 
-2. Delete Environment (semua VM)
-Pilih Job-Destroy pada pipeline, tekan tombol play.
+2. Jika ingin Delete Environment (semua VM)<br>
+Pilih Job-Destroy pada pipeline, tekan tombol play.<br>
 ![image](/uploads/b93fa92bd00e79bad1c2bec6891889fd/image.png)
