@@ -146,7 +146,9 @@ $ git push
 Bisa lewat dashboard atau pilih link ketika sudah push.
 ![firefox_25-10-2022_074534](/uploads/e216ea6c778052fda42055215861a946/firefox_25-10-2022_074534.png)
 <br>Atau<br>
-![Code_25-10-2022_074520](/uploads/a9108e8909f572a43f255847f4bc02d2/Code_25-10-2022_074520.png)
+![Code_25-10-2022_074520](/uploads/a9108e8909f572a43f255847f4bc02d2/Code_25-10-2022_074520.png)<br>
+Jangan checklist delete branch<br>
+![image](/uploads/e149a846637f1cb31d176b6d9c1915ad/image.png)
 
 5. Contoh request menunggu approval
 ![firefox_24-10-2022_114806](/uploads/1c494275493dbd1072d268a410af1664/firefox_24-10-2022_114806.png)
