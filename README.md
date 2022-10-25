@@ -141,8 +141,8 @@ $ git commit -m "Tambah spesifikasi VM"
 ```bash
 $ git push
 ```
-
-4. Lakukan request merge, dan tunggu approval.
+### MERGE REQUEST (MRs)
+1. Baik itu provisioning ataupun update VM silakan untuk melakukan request merge, dan tunggu approval.
 Bisa lewat dashboard atau pilih link ketika sudah push.
 ![firefox_25-10-2022_074534](/uploads/e216ea6c778052fda42055215861a946/firefox_25-10-2022_074534.png)
 <br>Atau<br>
@@ -150,7 +150,7 @@ Bisa lewat dashboard atau pilih link ketika sudah push.
 Jangan checklist delete branch<br>
 ![image](/uploads/e149a846637f1cb31d176b6d9c1915ad/image.png)
 
-5. Contoh request menunggu approval
+2. Contoh request menunggu approval
 ![firefox_24-10-2022_114806](/uploads/1c494275493dbd1072d268a410af1664/firefox_24-10-2022_114806.png)
 
 ### DELETE VM
