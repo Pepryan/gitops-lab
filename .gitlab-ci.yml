@@ -54,6 +54,7 @@ job-plan:
 
 job-apply:
   stage: apply
+  allow_failure: true
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "apply $(pwd)"
