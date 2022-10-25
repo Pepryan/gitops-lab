@@ -13,7 +13,7 @@ IFACE_IP1: 10.20.30.100
 CONSOLE: vnc
 
 [VM2]
-NAME: test-redhat-8.3
+NAME: test-redhat-83
 OS: template-redhat-8.3.qcow2
 NESTED: n
 VCPUS: 2
