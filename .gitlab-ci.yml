@@ -1,19 +1,20 @@
 workflow:
   rules:
   # jika bukan di branch main, jangan run pipeline
-  #- if: $CI_COMMIT_BRANCH != "main"
-  #  when: never
+  # - if: $CI_COMMIT_BRANCH != "main"
+  #   when: never
   - exists:
     - vm.txt
 
 # gunakan string commit untuk nama folder(environment) yang unik
 variables:
-  env_name: $GITLAB_USER_LOGIN-$CI_COMMIT_SHORT_SHA
+  env_name: $GITLAB_USER_LOGIN
 
 stages:
   - generate
   - init
   - validate
+  - plan
   - apply
   - destroy
 
@@ -24,7 +25,7 @@ job-generate:
     - cp vm.txt /home/gitlab-runner/environment/env-$env_name.txt
     - cd /home/gitlab-runner/environment
     - echo "generate env folder and files"
-    - ./not-tfgen.sh $env_name env-$env_name.txt
+    - ./not-tfgen2.sh $env_name env-$env_name.txt
   tags: [kvm]
 
 job-init:
@@ -43,13 +44,21 @@ job-validate:
     - terraform validate
   tags: [kvm]
 
+job-plan:
+  stage: plan
+  script:
+    - cd /home/gitlab-runner/environment/$env_name
+    - echo "planning $(pwd)"
+    - terraform plan
+  tags: [kvm]
+
 job-apply:
   stage: apply
+  allow_failure: true
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "apply $(pwd)"
-    - terraform apply -auto-approve
-    - echo "$env_name,create,$(date '+%Y-%m-%d-%H:%M:%S')" >> ../list_env.csv
+    - terraform apply -auto-approve 2>> error-$env_name.log
   tags: [kvm]
 
 job-destroy:
@@ -58,8 +67,8 @@ job-destroy:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "destroy $(pwd)"
     - terraform destroy -auto-approve
-    - echo "$env_name,destroy,$(date '+%Y-%m-%d-%H:%M:%S')" >> ../list_env.csv
     - echo "remove $env_name env folder and files"
     - rm -rf ../$env_name ../env-$env_name.txt
   when: manual
   tags: [kvm]
+
