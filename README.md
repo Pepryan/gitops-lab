@@ -156,6 +156,17 @@ Jangan checklist delete branch<br>
 2. Contoh request menunggu approval
 ![firefox_24-10-2022_114806](/uploads/1c494275493dbd1072d268a410af1664/firefox_24-10-2022_114806.png)
 
+#### Merge Conflict
+
+Jika terjadi merge conflict:
+1. Bisa pilih **Resolve Conflict** lalu cek kembali text yang diubah sudah benar atau belum.
+![firefox_26-10-2022_130334](/uploads/910406fadf627d7bf435372a558323b8/firefox_26-10-2022_130334.png)
+2. Lalu pilih **use ours** agar file vm.txt di branch main berubah dan bisa menjalankan provisioning/update. 
+![firefox_26-10-2022_130404](/uploads/0dd729cbfd528dcfd971e7930c405ce1/firefox_26-10-2022_130404.png)
+![firefox_26-10-2022_130407](/uploads/6b261a8c1b676c046bb2fe70cc5f42be/firefox_26-10-2022_130407.png)
+3. Berikan keterangan, lalu pilih **Commit to Source Branch**. Contoh:
+![firefox_26-10-2022_130515](/uploads/26122974fe01f6e8ed2c3528ae48049b/firefox_26-10-2022_130515.png)
+
 ### DELETE VM
 1. Jika ingin Delete Spesifik VM<br>
 Edit vm.txt (nano vm.txt)
