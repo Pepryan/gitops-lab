@@ -1,4 +1,4 @@
-# lab bri
+# Lab BRI
 Research dan manajemen lab BRI
 
 # DISCLAIMER
@@ -24,7 +24,9 @@ Semua ops Btech dipersilakan untuk berkontribusi seperti membuat fitur baru/impr
 
 
 # Automation Terraform VM for KVM/QEMU in lab7.btech.id
-### PROVISIONING VM/INSTANCE
+# PROVISIONING VM/INSTANCE
+Provisioning bisa dilakukan via dashboard gitlab (GUI) go.btech.id ataupun CLI.
+Berikut adalah cara jika dilakukan dengan memakai git CLI:
 1. Clone repository ke laptop masing-masing (hanya dilakukan saat pertama kali buat, jika sudah pernah lanjut ke step berikutnya)
 ```bash
 git clone https://go.btech.id/ops/lab-bri.git
@@ -144,7 +146,7 @@ $ git commit -m "Tambah spesifikasi VM"
 ```bash
 $ git push
 ```
-### MERGE REQUEST (MRs)
+# MERGE REQUEST (MRs)
 1. Baik itu provisioning ataupun update VM silakan untuk melakukan request merge, dan tunggu approval.
 Bisa lewat dashboard atau pilih link ketika sudah push.
 ![firefox_25-10-2022_074534](/uploads/e216ea6c778052fda42055215861a946/firefox_25-10-2022_074534.png)
@@ -156,7 +158,7 @@ Jangan checklist delete branch<br>
 2. Contoh request menunggu approval
 ![firefox_24-10-2022_114806](/uploads/1c494275493dbd1072d268a410af1664/firefox_24-10-2022_114806.png)
 
-#### Merge Conflict
+### Merge Conflict
 
 Jika terjadi merge conflict:
 1. Bisa pilih **Resolve Conflict** lalu cek kembali text yang diubah sudah benar atau belum.
@@ -167,7 +169,7 @@ Jika terjadi merge conflict:
 3. Berikan keterangan, lalu pilih **Commit to Source Branch**. Contoh:
 ![firefox_26-10-2022_130515](/uploads/26122974fe01f6e8ed2c3528ae48049b/firefox_26-10-2022_130515.png)
 
-### DELETE VM
+# DELETE VM
 1. Jika ingin Delete Spesifik VM<br>
 Edit vm.txt (nano vm.txt)
 ```yml
