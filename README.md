@@ -107,7 +107,7 @@ git push --set-upstream origin <nama-branch>
 `CONSOLE` > isi dengan `vnc`
 
 
-### UPDATE/EDIT VM
+# UPDATE/EDIT VM
 
 Contoh case ingin meng-upgrade vCPU's dari yang semula 4 core menjadi 8 core dan menambah disk1 menjadi 8GB.
 
