@@ -37,14 +37,17 @@ cd lab-bri
 3. Edit vm.txt
 Sesuaikan nama VM, OS, disk, dst <br>
 Isi Fixed / static ip sesuaikan dengan network yang digunakan. <br>
-<b>Notes: vm name must be unique.</b><br>
+<b>Notes: Nama VM harus unik</b><br>
+<b>Notes: Nama VM harus berupa huruf(aA-zZ), angka(0-9), underscrore(_), dan dash (-)</b><br>
+<b>Notes: Agar tidak terjadi kesalahan saat pembuatan ada baiknya nama vm format berikut:{inisial nama}-{nama-instance}
+contoh: al-centos7</b><br>
 Example configuration `vm.txt` file:
 ```yml
 [LAB]
 PUBKEY1: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
 
 [VM1]
-NAME: instance-1
+NAME: {inisial nama}-{nama-instance}
 OS: ubuntu-focal.img
 NESTED: y
 VCPUS: 4
@@ -58,7 +61,7 @@ IFACE_IP2: 10.10.25.24
 CONSOLE: vnc
 
 [VM2]
-NAME: instance-2
+NAME: {inisial nama}-{nama-instance}
 OS: ubuntu-focal.img
 NESTED: n
 VCPUS: 4
@@ -102,7 +105,7 @@ $ nano vm.txt
 Before 
 
 [VM1]
-NAME: instance-1
+NAME: {inisial nama}-{nama-instance}
 OS: ubuntu-focal.img
 NESTED: y
 VCPUS: 4
@@ -118,7 +121,7 @@ CONSOLE: vnc
 After 
 
 [VM1]
-NAME: instance-1
+NAME: {inisial nama}-{nama-instance}
 OS: ubuntu-focal.img
 NESTED: y
 VCPUS: 8
@@ -158,7 +161,7 @@ Jangan checklist delete branch<br>
 Edit vm.txt (nano vm.txt)
 ```yml
 [VM1]
-NAME: instance-1
+NAME: {inisial nama}-{nama-instance}
 OS: ubuntu-focal.img
 NESTED: y
 VCPUS: 4
@@ -172,7 +175,7 @@ IFACE_IP2: 10.10.25.24
 CONSOLE: vnc
 
 [VM2]
-NAME: instance-2
+NAME: {inisial nama}-{nama-instance}
 OS: ubuntu-focal.img
 NESTED: n
 VCPUS: 4
@@ -189,7 +192,7 @@ CONSOLE: vnc
 **After**
 ```yml
 [VM1]
-NAME: instance-1
+NAME: {inisial nama}-{nama-instance}
 OS: ubuntu-focal.img
 NESTED: y
 VCPUS: 4
