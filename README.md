@@ -76,6 +76,18 @@ IFACE_NETWORK2: 10.10.25.0
 IFACE_IP2: 10.10.25.25
 CONSOLE: vnc
 ```
+4. Setelah selesai lakukan add lalu commit 
+```bash
+$ git add vm.txt
+$ git commit -m "Tambah spesifikasi VM"
+```
+
+5. Lalu push ke remote repository (go.btech.id)
+```bash
+git push
+atau
+git push --set-upstream origin <nama-branch>
+```
 
 #### Keterangan :
 `NAME` > diisi dengan nama VM/instance yang akan digunakan sekaligus hostname.
