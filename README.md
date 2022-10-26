@@ -79,7 +79,7 @@ CONSOLE: vnc
 4. Setelah selesai lakukan add lalu commit 
 ```bash
 $ git add vm.txt
-$ git commit -m "Tambah spesifikasi VM"
+$ git commit -m "Provisioning instance-1 dan instance-2"
 ```
 
 5. Lalu push ke remote repository (go.btech.id)
