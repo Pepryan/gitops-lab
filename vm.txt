@@ -3,7 +3,7 @@ PUBKEY1: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu
 
 [VM1]
 NAME: test-tuning
-OS: ubuntu-focal.img
+OS: centos7.qcow2
 NESTED: n
 VCPUS: 2
 MEMORY: 2G
