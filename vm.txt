@@ -3,9 +3,9 @@ PUBKEY1: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu
 
 [VM1]
 NAME: test-tuning
-OS: centos7.qcow2
+OS: ubuntu-focal.img
 NESTED: n
-VCPUS: 1
+VCPUS: 2
 MEMORY: 2G
 DISK1: 4G
 DISK2: 4G
@@ -15,11 +15,12 @@ CONSOLE: vnc
 
 [VM2]
 NAME: test-template
-OS: template-redhat-8.3.qcow2
+OS: ubuntu-focal.img
 NESTED: n
 VCPUS: 2
 MEMORY: 2G
 DISK1: 4G
+DISK2: 4G
 IFACE_NETWORK1: 10.10.50.0
 IFACE_IP1: 10.10.50.159
 CONSOLE: vnc
