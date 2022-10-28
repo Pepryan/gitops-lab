@@ -58,7 +58,8 @@ job-apply:
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "apply $(pwd)"
-    - terraform apply -auto-approve 2>> error-$env_name.log
+    # - terraform apply -auto-approve 2>> error-$env_name.log
+    - terraform apply -auto-approve
   tags: [kvm]
 
 job-destroy:
