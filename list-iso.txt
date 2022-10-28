@@ -1,0 +1,7 @@
+centos-8-genericcloud.img
+centos7.qcow2
+template-redhat-7.9.qcow2
+template-redhat-8.3.qcow2
+ubuntu-bionic.img
+ubuntu-focal.img
+ubuntu-focal2.img
