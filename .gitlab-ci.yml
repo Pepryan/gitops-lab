@@ -66,8 +66,7 @@ job-apply:
 job-add-rules-iptables:
   stage: port-forwarding
   script:
-    - pwd
-    - cd ..
+    - cd /home/gitlab-runner/environment/
     - pwd
     - ./add-rules-iptables.sh
   tags: [kvm]
