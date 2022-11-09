@@ -1,8 +1,8 @@
 workflow:
   rules:
   # jika bukan di branch main, jangan run pipeline
-  - if: $CI_COMMIT_BRANCH != "main"
-    when: never
+  #- if: $CI_COMMIT_BRANCH != "main"
+  #  when: never
   - exists:
     - vm.txt
 
@@ -16,6 +16,7 @@ stages:
   - validate
   - plan
   - apply
+  - port-forwarding
   - destroy
 
 job-generate:
@@ -60,6 +61,15 @@ job-apply:
     - echo "apply $(pwd)"
     # - terraform apply -auto-approve 2>> error-$env_name.log
     - terraform apply -auto-approve
+  tags: [kvm]
+
+job-add-rules-iptables:
+  stage: port-forwarding
+  script:
+    - pwd
+    - cd ..
+    - pwd
+    - ./add-rules-iptables.sh
   tags: [kvm]
 
 job-destroy:
