@@ -68,7 +68,7 @@ job-add-rules-iptables:
   script:
     - cd /home/gitlab-runner/environment/
     - pwd
-    - sudo ./add-rules-iptables.sh
+    - chmod +x ./add-rules-iptables.sh; ./add-rules-iptables.sh
   tags: [kvm]
 
 job-destroy:
