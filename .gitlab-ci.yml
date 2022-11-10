@@ -16,6 +16,7 @@ stages:
   - validate
   - plan
   - apply
+  - nat
   - destroy
 
 job-generate:
