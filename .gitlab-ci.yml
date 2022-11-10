@@ -62,6 +62,14 @@ job-apply:
     - echo "$env_name,create,$(date '+%Y-%m-%d-%H:%M:%S')" >> ../list_env.csv
   tags: [kvm]
 
+job-nat:
+  stage: nat
+  script:
+    - cd /home/gitlab-runner/environment
+    - ./add-rules-iptables.sh
+    - echo "nat $(pwd)"
+  tags: [kvm]
+
 job-destroy:
   stage: destroy
   script:
