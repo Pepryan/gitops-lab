@@ -67,7 +67,7 @@ job-nat:
   stage: nat
   script:
     - cd /home/gitlab-runner/environment
-    - ./add-rules-iptables.sh
+    - ./add-rules-iptables.sh env-$env_name.txt
     - echo "nat $(pwd)"
   tags: [kvm]
 
