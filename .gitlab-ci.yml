@@ -1,8 +1,8 @@
 workflow:
   rules:
   # jika bukan di branch main, jangan run pipeline
-  - if: $CI_COMMIT_BRANCH != "main"
-    when: never
+  #- if: $CI_COMMIT_BRANCH != "main"
+  #  when: never
   - exists:
     - vm.txt
 
@@ -74,6 +74,9 @@ job-nat:
 job-destroy:
   stage: destroy
   script:
+    - cd /home/gitlab-runner/environment
+    - echo "Deleting Rules IPTABLES (NAT) ..."
+    - ./delete-rules-iptables.sh env-$env_name.txt
     - cd /home/gitlab-runner/environment/$env_name
     - echo "destroy $(pwd)"
     - terraform destroy -auto-approve
