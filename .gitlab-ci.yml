@@ -16,7 +16,7 @@ stages:
   - validate
   - plan
   - apply
-  - port-forwarding
+  - nat
   - destroy
 
 job-generate:
@@ -63,15 +63,12 @@ job-apply:
     - terraform apply -auto-approve
   tags: [kvm]
 
-job-add-rules-iptables:
-  stage: port-forwarding
+job-nat:
+  stage: nat
   script:
-    - cd /home/gitlab-runner/environment/
-    - pwd
-    - whoami
-    - chmod +x ./add-rules-iptables.sh
-    - ls -lah add-rules-iptables.sh
-    - ./add-rules-iptables.sh
+    - cd /home/gitlab-runner/environment
+    - ./add-rules-iptables.sh env-$env_name.txt
+    - echo "nat $(pwd)"
   tags: [kvm]
 
 job-destroy:
