@@ -79,6 +79,9 @@ job-destroy:
     - terraform destroy -auto-approve
     - echo "remove $env_name env folder and files"
     - rm -rf ../$env_name ../env-$env_name.txt
+    - cd /home/gitlab-runner/environment
+    - ./delete-rules-iptables.sh env-$env_name.txt
+    - echo "destroy success"
   when: manual
   tags: [kvm]
 
