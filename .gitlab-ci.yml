@@ -75,7 +75,6 @@ job-destroy:
   stage: destroy
   script:
     - cd /home/gitlab-runner/environment
-    - echo "Deleting Rules IPTABLES (NAT) ..."
     - ./delete-rules-iptables.sh env-$env_name.txt
     - cd /home/gitlab-runner/environment/$env_name
     - echo "destroy $(pwd)"
