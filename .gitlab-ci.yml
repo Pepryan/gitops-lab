@@ -74,7 +74,7 @@ job-nat:
     - cd /home/gitlab-runner/environment
     - ./add-rules-iptables.sh nat.txt
     - echo "nat $(pwd)"
-  tags: [kvm]
+  tags: [nat]
 
 job-destroy:
   stage: destroy
