@@ -1,8 +1,8 @@
 workflow:
   rules:
   # jika bukan di branch main, jangan run pipeline
-  - if: $CI_COMMIT_BRANCH != "main"
-    when: never
+  #- if: $CI_COMMIT_BRANCH != "main"
+  #  when: never
   - exists:
     - vm.txt
 
@@ -65,9 +65,12 @@ job-apply:
 
 job-nat:
   stage: nat
+  only:
+    changes:
+      - nat.txt
   script:
     - cd /home/gitlab-runner/environment
-    - ./add-rules-iptables.sh env-$env_name.txt
+    - ./add-rules-iptables.sh nat.txt
     - echo "nat $(pwd)"
   tags: [kvm]
 
