@@ -69,6 +69,7 @@ job-nat:
     changes:
       - nat.txt
   script:
+    - cp nat.txt /home/gitlab-runner/environment/nat.txt
     - cd /home/gitlab-runner/environment
     - ./add-rules-iptables.sh nat.txt
     - echo "nat $(pwd)"
