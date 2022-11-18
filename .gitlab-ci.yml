@@ -21,6 +21,9 @@ stages:
 
 job-generate:
   stage: generate
+  only:
+    changes:
+      - vm.txt
   script:
     - echo "copying vm.txt to home/gitlab-runner/environment"
     - cp vm.txt /home/gitlab-runner/environment/env-$env_name.txt
@@ -31,6 +34,9 @@ job-generate:
 
 job-init:
   stage: init
+  only:
+    changes:
+      - vm.txt
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "init $(pwd)"
@@ -39,6 +45,9 @@ job-init:
 
 job-validate:
   stage: validate
+  only:
+    changes:
+      - vm.txt
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "validate $(pwd)"
@@ -47,6 +56,9 @@ job-validate:
 
 job-plan:
   stage: plan
+  only:
+    changes:
+      - vm.txt
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "planning $(pwd)"
@@ -56,6 +68,9 @@ job-plan:
 job-apply:
   stage: apply
   allow_failure: true
+  only:
+    changes:
+      - vm.txt
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "apply $(pwd)"
