@@ -1,8 +1,8 @@
 workflow:
   rules:
   # jika bukan di branch main, jangan run pipeline
-  - if: $CI_COMMIT_BRANCH != "main"
-    when: never
+  #- if: $CI_COMMIT_BRANCH != "main"
+  #  when: never
   - exists:
     - vm.txt
 
@@ -21,6 +21,9 @@ stages:
 
 job-generate:
   stage: generate
+  only:
+    changes:
+      - vm.txt
   script:
     - echo "copying vm.txt to home/gitlab-runner/environment"
     - cp vm.txt /home/gitlab-runner/environment/env-$env_name.txt
@@ -31,6 +34,9 @@ job-generate:
 
 job-init:
   stage: init
+  only:
+    changes:
+      - vm.txt
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "init $(pwd)"
@@ -39,6 +45,9 @@ job-init:
 
 job-validate:
   stage: validate
+  only:
+    changes:
+      - vm.txt
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "validate $(pwd)"
@@ -47,6 +56,9 @@ job-validate:
 
 job-plan:
   stage: plan
+  only:
+    changes:
+      - vm.txt
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "planning $(pwd)"
@@ -56,6 +68,9 @@ job-plan:
 job-apply:
   stage: apply
   allow_failure: true
+  only:
+    changes:
+      - vm.txt
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "apply $(pwd)"
@@ -65,17 +80,21 @@ job-apply:
 
 job-nat:
   stage: nat
+  only:
+    changes:
+      - nat.txt
   script:
+    - cp nat.txt /home/gitlab-runner/environment/nat.txt
+    - cp add-rules-iptables.sh /home/gitlab-runner/environment/add-rules-iptables.sh
     - cd /home/gitlab-runner/environment
-    - ./add-rules-iptables.sh env-$env_name.txt
+    - ./add-rules-iptables.sh nat.txt
     - echo "nat $(pwd)"
-  tags: [kvm]
+  tags: [nat]
 
 job-destroy:
   stage: destroy
   script:
     - cd /home/gitlab-runner/environment
-    - echo "Deleting Rules IPTABLES (NAT) ..."
     - ./delete-rules-iptables.sh env-$env_name.txt
     - cd /home/gitlab-runner/environment/$env_name
     - echo "destroy $(pwd)"
