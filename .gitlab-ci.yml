@@ -82,13 +82,16 @@ job-nat:
   stage: nat
   only:
     changes:
-      - nat.txt
+      - config-nat.yaml
   script:
-    - cp nat.txt /home/gitlab-runner/environment/nat.txt
-    - cp add-rules-iptables.sh /home/gitlab-runner/environment/add-rules-iptables.sh
+    - cp config-nat.yaml /home/gitlab-runner/environment/config-nat.yaml
+    - cp apply_nat.py /home/gitlab-runner/environment/apply_nat.py
+    - cp validate_nat.py /home/gitlab-runner/environment/validate_nat.py
     - cd /home/gitlab-runner/environment
-    - ./add-rules-iptables.sh nat.txt
-    - echo "nat $(pwd)"
+    - ./validate_nat.py list-nat-used.txt config-nat.yaml
+    - ./apply_nat.py config-nat.yaml
+    - echo "LIST USED PORT in LAB7"
+    - cat list-nat-used.txt
   tags: [nat]
 
 job-destroy:
@@ -106,4 +109,5 @@ job-destroy:
     - echo "destroy success"
   when: manual
   tags: [kvm]
+
 
