@@ -1,0 +1,9 @@
+nat1:
+  forwarding: 11700
+  target_ip: 10.30.13.172
+  target_port: 22
+
+nat2:
+  forwarding: 11809
+  target_ip: 10.30.13.173
+  target_port: 22
