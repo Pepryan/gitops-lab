@@ -88,7 +88,7 @@ job-nat:
     - cp apply_nat.py /home/gitlab-runner/environment/apply_nat.py
     - cp validate_nat.py /home/gitlab-runner/environment/validate_nat.py
     - cd /home/gitlab-runner/environment
-    - ./validate.py list-nat-used.txt config-nat.yaml
+    - ./validate_nat.py list-nat-used.txt config-nat.yaml
     - ./apply_nat.py config-nat.yaml
     - echo "LIST USED PORT in LAB7"
     - cat list-nat-used.txt
