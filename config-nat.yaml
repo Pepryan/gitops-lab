@@ -1,5 +1,5 @@
 nat1:
-  forwarding: 11700
+  forwarding: 11900
   target_ip: 10.30.13.172
   target_port: 22
 
