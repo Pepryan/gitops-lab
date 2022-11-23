@@ -1,8 +1,8 @@
 workflow:
   rules:
   # jika bukan di branch main, jangan run pipeline
-  #- if: $CI_COMMIT_BRANCH != "main"
-  #  when: never
+  - if: $CI_COMMIT_BRANCH != "main"
+    when: never
   - exists:
     - vm.txt
 
@@ -84,14 +84,14 @@ job-nat:
     changes:
       - config-nat.yaml
   script:
-    - cp config-nat.yaml /home/gitlab-runner/environment/config-nat.yaml
-    - cp apply_nat.py /home/gitlab-runner/environment/apply_nat.py
-    - cp validate_nat.py /home/gitlab-runner/environment/validate_nat.py
-    - cd /home/gitlab-runner/environment
-    - ./validate_nat.py list-nat-used.txt config-nat.yaml
+    - cp config-nat.yaml /home/gitlab-runner/environment/config-nat/config-nat.yaml
+    - cp apply_nat.py /home/gitlab-runner/environment/config-nat/apply_nat.py
+    # - cp validate_nat.py /home/gitlab-runner/environment/config-nat/validate_nat.py
+    - cd /home/gitlab-runner/environment/config-nat
+    # - ./validate_nat.py list-nat-used.txt config-nat.yaml
     - ./apply_nat.py config-nat.yaml
-    - echo "LIST USED PORT in LAB7"
-    - cat list-nat-used.txt
+    # - echo "LIST USED PORT in LAB7"
+    # - cat list-nat-used.txt
   tags: [nat]
 
 job-destroy:
