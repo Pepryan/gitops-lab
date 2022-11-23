@@ -18,7 +18,7 @@ nat4:
   target_ip: 10.20.30.213
   target_port: 22
 
-nat4:
+nat5:
   forwarding: 11840
   target_ip: 10.20.30.214
   target_port: 22
