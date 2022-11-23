@@ -12,3 +12,13 @@ nat3:
   forwarding: 11820
   target_ip: 10.30.13.174
   target_port: 22
+
+nat4:
+  forwarding: 11830
+  target_ip: 10.20.30.213
+  target_port: 22
+
+nat4:
+  forwarding: 11840
+  target_ip: 10.20.30.214
+  target_port: 22
