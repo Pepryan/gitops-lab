@@ -15,12 +15,16 @@ stages:
   - init
   - validate
   - plan
+  - tele
   - apply
   - nat
   - destroy
 
 job-generate:
   stage: generate
+  only:
+    changes:
+      - vm.txt
   script:
     - echo "copying vm.txt to home/gitlab-runner/environment"
     - cp vm.txt /home/gitlab-runner/environment/env-$env_name.txt
@@ -31,6 +35,9 @@ job-generate:
 
 job-init:
   stage: init
+  only:
+    changes:
+      - vm.txt
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "init $(pwd)"
@@ -39,6 +46,9 @@ job-init:
 
 job-validate:
   stage: validate
+  only:
+    changes:
+      - vm.txt
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "validate $(pwd)"
@@ -47,15 +57,31 @@ job-validate:
 
 job-plan:
   stage: plan
+  only:
+    changes:
+      - vm.txt
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "planning $(pwd)"
     - terraform plan
   tags: [kvm]
 
+job-tele:
+  stage: tele
+  only:
+    changes:
+      - vm.txt
+  script:
+    - cd /home/gitlab-runner/environment
+    - ./notif.sh
+  tags: [kvm]
+
 job-apply:
   stage: apply
   allow_failure: true
+  only:
+    changes:
+      - vm.txt
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "apply $(pwd)"
@@ -65,17 +91,27 @@ job-apply:
 
 job-nat:
   stage: nat
+  only:
+    changes:
+      - config-nat.yaml
   script:
-    - cd /home/gitlab-runner/environment
-    - ./add-rules-iptables.sh env-$env_name.txt
-    - echo "nat $(pwd)"
-  tags: [kvm]
+    - cp config-nat.yaml /home/gitlab-runner/environment/config-nat/config-nat.yaml
+    - cp apply_nat.py /home/gitlab-runner/environment/config-nat/apply_nat.py
+    # - cp validate_nat.py /home/gitlab-runner/environment/config-nat/validate_nat.py
+    - cd /home/gitlab-runner/environment/config-nat
+    # - ./validate_nat.py list-nat-used.txt config-nat.yaml
+    - ./apply_nat.py config-nat.yaml
+    # - echo "LIST USED PORT in LAB7"
+    # - cat list-nat-used.txt
+  tags: [nat]
 
 job-destroy:
   stage: destroy
+  only:
+    changes:
+      - vm.txt
   script:
     - cd /home/gitlab-runner/environment
-    - echo "Deleting Rules IPTABLES (NAT) ..."
     - ./delete-rules-iptables.sh env-$env_name.txt
     - cd /home/gitlab-runner/environment/$env_name
     - echo "destroy $(pwd)"
@@ -85,6 +121,9 @@ job-destroy:
     - cd /home/gitlab-runner/environment
     - ./delete-rules-iptables.sh env-$env_name.txt
     - echo "destroy success"
+    - cd /home/gitlab-runner/environment
+    - ./notif-destroy.sh
   when: manual
   tags: [kvm]
+
 
