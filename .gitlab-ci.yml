@@ -66,16 +66,15 @@ job-plan:
     - terraform plan
   tags: [kvm]
 
-
-
 job-tele:
   stage: tele
-  script:
-    - 'curl -X POST -H "Content-Type: application/json" -d "{\"chat_id\": \"-1001699500768\", \"text\": \"new merge request, see: https://go.btech.id\"}" https://api.telegram.org/bot5084775471:AAHvHQY2diotIjZx9l7n1319V4Rp7MERl4w/sendMessage
- '
   only:
-    - vm.txt
-
+    changes:
+      - vm.txt
+  script:
+    - cd /home/gitlab-runner/environment
+    - ./notif.sh
+  tags: [kvm]
 
 job-apply:
   stage: apply
