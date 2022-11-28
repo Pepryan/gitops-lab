@@ -1,8 +1,8 @@
 workflow:
   rules:
-  # jika bukan di branch main, jangan run pipeline
-  - if: $CI_COMMIT_BRANCH != "main"
-    when: never
+  # # jika bukan di branch main, jangan run pipeline
+  # - if: $CI_COMMIT_BRANCH != "main"
+  #   when: never
   - exists:
     - vm.txt
 
@@ -22,6 +22,10 @@ stages:
 
 job-generate:
   stage: generate
+  rules:
+  # jika bukan di branch main, jangan run pipeline
+  - if: $CI_COMMIT_BRANCH != "main"
+    when: never
   only:
     changes:
       - vm.txt
@@ -35,6 +39,10 @@ job-generate:
 
 job-init:
   stage: init
+  rules:
+  # jika bukan di branch main, jangan run pipeline
+  - if: $CI_COMMIT_BRANCH != "main"
+    when: never
   only:
     changes:
       - vm.txt
@@ -46,6 +54,10 @@ job-init:
 
 job-validate:
   stage: validate
+  rules:
+  # jika bukan di branch main, jangan run pipeline
+  - if: $CI_COMMIT_BRANCH != "main"
+    when: never
   only:
     changes:
       - vm.txt
@@ -57,6 +69,10 @@ job-validate:
 
 job-plan:
   stage: plan
+  rules:
+  # jika bukan di branch main, jangan run pipeline
+  - if: $CI_COMMIT_BRANCH != "main"
+    when: never
   only:
     changes:
       - vm.txt
@@ -80,6 +96,10 @@ job-notif:
 
 job-apply:
   stage: apply
+  rules:
+  # jika bukan di branch main, jangan run pipeline
+  - if: $CI_COMMIT_BRANCH != "main"
+    when: never
   allow_failure: true
   only:
     changes:
@@ -93,6 +113,10 @@ job-apply:
 
 job-nat:
   stage: nat
+  rules:
+  # jika bukan di branch main, jangan run pipeline
+  - if: $CI_COMMIT_BRANCH != "main"
+    when: never
   only:
     changes:
       - config-nat.yaml
@@ -109,6 +133,10 @@ job-nat:
 
 job-destroy:
   stage: destroy
+  rules:
+  # jika bukan di branch main, jangan run pipeline
+  - if: $CI_COMMIT_BRANCH != "main"
+    when: never
   only:
     changes:
       - vm.txt
