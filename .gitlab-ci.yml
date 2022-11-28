@@ -68,9 +68,11 @@ job-plan:
 
 job-notif:
   stage: notif
-  only:
-    changes:
-      - merge_requests
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  # only:
+  #   changes:
+  #     - merge_requests
   script:
     # - cd /home/gitlab-runner/environment
     # - ./notif.sh
