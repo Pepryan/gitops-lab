@@ -1,8 +1,8 @@
 workflow:
   rules:
-  # # jika bukan di branch main, jangan run pipeline
-  # - if: $CI_COMMIT_BRANCH != "main"
-  #   when: never
+  # jika bukan di branch main, jangan run pipeline
+  - if: $CI_COMMIT_BRANCH != "main"
+    when: never
   - exists:
     - vm.txt
 
@@ -15,7 +15,7 @@ stages:
   - init
   - validate
   - plan
-  - notif
+#  - notif
   - apply
   - nat
   - destroy
@@ -66,17 +66,17 @@ job-plan:
     - terraform plan
   tags: [kvm]
 
-job-notif:
-  stage: notif
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+#job-notif:
+#  stage: notif
+#  rules:
+#    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
   # only:
   #   changes:
   #     - merge_requests
-  script:
-    - cd /home/gitlab-runner/environment
-    - ./notif.sh $GITLAB_USER_LOGIN
-  tags: [kvm]
+#  script:
+#    - cd /home/gitlab-runner/environment
+#    - ./notif.sh $GITLAB_USER_LOGIN
+#  tags: [kvm]
 
 job-apply:
   stage: apply
