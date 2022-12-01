@@ -1,8 +1,8 @@
 workflow:
   rules:
   # jika bukan di branch main, jangan run pipeline
-  - if: $CI_COMMIT_BRANCH != "main"
-    when: never
+  #- if: $CI_COMMIT_BRANCH != "main"
+  #  when: never
   - exists:
     - vm.txt
 
@@ -89,6 +89,17 @@ job-apply:
     - echo "apply $(pwd)"
     # - terraform apply -auto-approve 2>> error-$env_name.log
     - terraform apply -auto-approve
+  tags: [kvm]
+
+job-config-monitoring:
+  stage: config-monitoring
+  # allow_failure: true
+  only:
+    changes:
+      - vm.txt
+  script:
+    - cd /home/gitlab-runner/environment/scripts/
+    - ./run-config.sh /home/gitlab-runner/environment/env-$env_name.txt
   tags: [kvm]
 
 job-nat:
