@@ -98,6 +98,8 @@ job-config-monitoring:
   only:
     changes:
       - vm.txt
+  when: delayed
+  start_in: 1 minute
   script:
     - cd /home/gitlab-runner/environment/scripts
     - ./run_config.sh /home/gitlab-runner/environment/env-$env_name.txt
