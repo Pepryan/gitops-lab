@@ -13,7 +13,7 @@ IFACE_NETWORK1: 172.18.216.0
 IFACE_IP1: 172.18.216.144
 CONSOLE: vnc
 
-[VM1]
+[VM2]
 NAME: testing2
 OS: ubuntu-focal.img
 NESTED: n
