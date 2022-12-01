@@ -99,6 +99,8 @@ job-config-monitoring:
     changes:
       - vm.txt
   script:
+    - echo $(pwd)
+    - ll
     - bash /home/gitlab-runner/environment/scripts/run-config.sh /home/gitlab-runner/environment/env-$env_name.txt
   tags: [kvm]
 
