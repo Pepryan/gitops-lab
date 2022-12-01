@@ -102,7 +102,7 @@ job-config-monitoring:
     - cd /home/gitlab-runner/environment/scripts
     - echo $(pwd)
     - ls
-    - ./run-config.sh /home/gitlab-runner/environment/env-$env_name.txt
+    - ./run_config.sh /home/gitlab-runner/environment/env-$env_name.txt
   tags: [kvm]
 
 job-nat:
