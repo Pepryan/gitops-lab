@@ -135,8 +135,8 @@ job-destroy:
     - cd /home/gitlab-runner/environment
     # - ./delete-rules-iptables.sh env-$env_name.txt
     - echo "destroy success"
-    - cd /home/gitlab-runner/environment
-    - ./notif-destroy.sh
+    # - cd /home/gitlab-runner/environment
+    # - ./notif-destroy.sh
   when: manual
   tags: [kvm]
 
