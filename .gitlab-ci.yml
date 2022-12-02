@@ -15,8 +15,9 @@ stages:
   - init
   - validate
   - plan
-  - tele
+#  - notif
   - apply
+  - config-monitoring
   - nat
   - destroy
 
@@ -66,15 +67,17 @@ job-plan:
     - terraform plan
   tags: [kvm]
 
-job-tele:
-  stage: tele
-  only:
-    changes:
-      - vm.txt
-  script:
-    - cd /home/gitlab-runner/environment
-    - ./notif.sh
-  tags: [kvm]
+#job-notif:
+#  stage: notif
+#  rules:
+#    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+  # only:
+  #   changes:
+  #     - merge_requests
+#  script:
+#    - cd /home/gitlab-runner/environment
+#    - ./notif.sh $GITLAB_USER_LOGIN
+#  tags: [kvm]
 
 job-apply:
   stage: apply
@@ -89,16 +92,29 @@ job-apply:
     - terraform apply -auto-approve
   tags: [kvm]
 
+job-config-monitoring:
+  stage: config-monitoring
+  # allow_failure: true
+  only:
+    changes:
+      - vm.txt
+  when: delayed
+  start_in: 1 minute
+  script:
+    - cd /home/gitlab-runner/environment/scripts
+    - ./run_install_node_exporter.py -f /home/gitlab-runner/environment/env-$env_name.txt -k dwara.pem
+  tags: [kvm]
+
 job-nat:
   stage: nat
   only:
     changes:
       - config-nat.yaml
   script:
-    - cp config-nat.yaml /home/gitlab-runner/environment/config-nat/config-nat.yaml
-    - cp apply_nat.py /home/gitlab-runner/environment/config-nat/apply_nat.py
+    - cp config-nat.yaml /home/gitlab-runner/environment/scripts/config-nat.yaml
+    # - cp apply_nat.py /home/gitlab-runner/environment/scripts/apply_nat.py
     # - cp validate_nat.py /home/gitlab-runner/environment/config-nat/validate_nat.py
-    - cd /home/gitlab-runner/environment/config-nat
+    - cd /home/gitlab-runner/environment/scripts
     # - ./validate_nat.py list-nat-used.txt config-nat.yaml
     - ./apply_nat.py config-nat.yaml
     # - echo "LIST USED PORT in LAB7"
@@ -111,18 +127,16 @@ job-destroy:
     changes:
       - vm.txt
   script:
-    - cd /home/gitlab-runner/environment
-    - ./delete-rules-iptables.sh env-$env_name.txt
     - cd /home/gitlab-runner/environment/$env_name
     - echo "destroy $(pwd)"
     - terraform destroy -auto-approve
     - echo "remove $env_name env folder and files"
     - rm -rf ../$env_name ../env-$env_name.txt
     - cd /home/gitlab-runner/environment
-    - ./delete-rules-iptables.sh env-$env_name.txt
+    # - ./delete-rules-iptables.sh env-$env_name.txt
     - echo "destroy success"
-    - cd /home/gitlab-runner/environment
-    - ./notif-destroy.sh
+    # - cd /home/gitlab-runner/environment
+    # - ./notif-destroy.sh
   when: manual
   tags: [kvm]
 
