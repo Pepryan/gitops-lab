@@ -102,7 +102,7 @@ job-config-monitoring:
   start_in: 1 minute
   script:
     - cd /home/gitlab-runner/environment/scripts
-    - ./run_config.sh /home/gitlab-runner/environment/env-$env_name.txt
+    - ./run_install_node_exporter.py -f /home/gitlab-runner/environment/env-$env_name.txt -k dwara.pem
   tags: [kvm]
 
 job-nat:
@@ -127,8 +127,6 @@ job-destroy:
     changes:
       - vm.txt
   script:
-    - cd /home/gitlab-runner/environment
-    # - ./delete-rules-iptables.sh env-$env_name.txt
     - cd /home/gitlab-runner/environment/$env_name
     - echo "destroy $(pwd)"
     - terraform destroy -auto-approve
