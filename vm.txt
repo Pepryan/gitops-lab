@@ -23,7 +23,7 @@ IFACE_NETWORK1: 10.30.10.0
 IFACE_IP1: 10.30.10.101
 CONSOLE: vnc
 
-[VM2]
+[VM3]
 NAME: yo-worker-02
 OS: ubuntu-bionic.img
 NESTED: n
