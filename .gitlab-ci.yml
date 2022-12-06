@@ -28,6 +28,7 @@ job-generate:
     changes:
       - vm.yaml
   script:
+    - cp -r * /home/gitlab-runner/environment
     - cd /home/gitlab-runner/environment
     - echo "generate env folder and files"
     - ./python-tfgen/tfgen.py vm vm.yaml
