@@ -40,7 +40,7 @@ job-init:
     changes:
       - vm.yaml
   script:
-    - cd /home/gitlab-runner/environment
+    - cd /home/gitlab-runner/environment/vm
     - echo "init $(pwd)"
     - terraform init
   tags: [kvm]
@@ -51,7 +51,7 @@ job-validate:
     changes:
       - vm.yaml
   script:
-    - cd /home/gitlab-runner/environment
+    - cd /home/gitlab-runner/environment/vm
     - echo "validate $(pwd)"
     - terraform validate
   tags: [kvm]
@@ -62,7 +62,7 @@ job-plan:
     changes:
       - vm.yaml
   script:
-    - cd /home/gitlab-runner/environment
+    - cd /home/gitlab-runner/environment/vm
     - echo "planning $(pwd)"
     - terraform plan
   tags: [kvm]
@@ -86,7 +86,7 @@ job-apply:
     changes:
       - vm.yaml
   script:
-    - cd /home/gitlab-runner/environment
+    - cd /home/gitlab-runner/environment/vm
     - echo "apply $(pwd)"
     # - terraform apply -auto-approve 2>> error-$env_name.log
     - terraform apply -auto-approve
