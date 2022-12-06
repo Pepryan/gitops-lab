@@ -31,7 +31,7 @@ job-generate:
     - cp -r * /home/gitlab-runner/environment
     - cd /home/gitlab-runner/environment
     - echo "generate env folder and files"
-    - ./python-tfgen/tfgen.py vm vm.yaml
+    - ./python-tfgen/tfgen.py -f vm.yaml -o vm
   tags: [kvm]
 
 job-init:
