@@ -30,6 +30,8 @@ job-generate:
   script:
     - cp -r * /home/gitlab-runner/environment
     - cd /home/gitlab-runner/environment
+    - echo "Remove existing directory"
+    - rm -rf /home/gitlab-runner/environment/vm
     - echo "generate env folder and files"
     - ./python-tfgen/tfgen.py -f vm.yaml -o vm
   tags: [kvm]
