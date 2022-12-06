@@ -30,14 +30,17 @@ job-generate:
   script:
     - cp -r * /home/gitlab-runner/environment
     - cd /home/gitlab-runner/environment
-    - echo "Remove existing directory"
-    - rm -rf /home/gitlab-runner/environment/vm
-    - echo "generate env folder and files"
-    - ./python-tfgen/tfgen.py -f vm.yaml -o vm
+#    - ./python-tfgen/tfgen.py -f vm.yaml -o vm
+    - echo "generate new temp files"
+    - ./python-tfgen/tfgen.py -f vm.yaml -o vm-$CI_JOB_ID
+    - cp -r vm-CI_JOB_ID/!(terraform.*) vm
+    - echo "Remove temp generated files"
+    - rm -rf /home/gitlab-runner/environment/vm-CI_JOB_ID
   tags: [kvm]
 
 job-init:
   stage: init
+  when: manual
   only:
     changes:
       - vm.yaml
@@ -129,11 +132,9 @@ job-destroy:
     changes:
       - vm.yaml
   script:
-    - cd /home/gitlab-runner/environment/$env_name
+    - cd /home/gitlab-runner/environment/vm
     - echo "destroy $(pwd)"
     - terraform destroy -auto-approve
-    - echo "remove $env_name env folder and files"
-    - rm -rf ../$env_name ../env-$env_name.txt
     - cd /home/gitlab-runner/environment
     # - ./delete-rules-iptables.sh env-$env_name.txt
     - echo "destroy success"

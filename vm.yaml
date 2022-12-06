@@ -4,8 +4,8 @@ spec:
     hostname: iqbal-vm1
     nested_enabled: true
     os: ubuntu
-    vcpus: 2
-    memory: 2G
+    vcpus: 4
+    memory: 4G
     console: vnc
     cloud_data:
       users:
