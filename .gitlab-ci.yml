@@ -33,7 +33,7 @@ job-generate:
 #    - ./python-tfgen/tfgen.py -f vm.yaml -o vm
     - echo "generate new temp files"
     - ./python-tfgen/tfgen.py -f vm.yaml -o vm-$CI_JOB_ID
-    - cp -r vm-CI_JOB_ID/!(terraform.*) vm
+    - cp -r vm-$CI_JOB_ID/!(terraform.*) vm
     - echo "Remove temp generated files"
     - rm -rf /home/gitlab-runner/environment/vm-CI_JOB_ID
   tags: [kvm]
