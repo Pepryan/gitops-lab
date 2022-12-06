@@ -1,14 +1,15 @@
 workflow:
   rules:
   # jika bukan di branch main, jangan run pipeline
-  - if: $CI_COMMIT_BRANCH != "main"
+  - if: $CI_COMMIT_BRANCH != "python"
     when: never
   - exists:
-    - vm.txt
+    - vm.yaml
 
 # gunakan string commit untuk nama folder(environment) yang unik
-variables:
-  env_name: $GITLAB_USER_LOGIN
+
+#variables:
+#  env_name: $GITLAB_USER_LOGIN
 
 stages:
   - generate
@@ -17,7 +18,7 @@ stages:
   - plan
 #  - notif
   - apply
-  - config-monitoring
+#  - config-monitoring
   - nat
   - destroy
 
@@ -25,22 +26,20 @@ job-generate:
   stage: generate
   only:
     changes:
-      - vm.txt
+      - vm.yaml
   script:
-    - echo "copying vm.txt to home/gitlab-runner/environment"
-    - cp vm.txt /home/gitlab-runner/environment/env-$env_name.txt
     - cd /home/gitlab-runner/environment
     - echo "generate env folder and files"
-    - ./not-tfgen2.sh $env_name env-$env_name.txt
+    - ./python-tfgen/tfgen.py vm vm.yaml
   tags: [kvm]
 
 job-init:
   stage: init
   only:
     changes:
-      - vm.txt
+      - vm.yaml
   script:
-    - cd /home/gitlab-runner/environment/$env_name
+    - cd /home/gitlab-runner/environment
     - echo "init $(pwd)"
     - terraform init
   tags: [kvm]
@@ -49,9 +48,9 @@ job-validate:
   stage: validate
   only:
     changes:
-      - vm.txt
+      - vm.yaml
   script:
-    - cd /home/gitlab-runner/environment/$env_name
+    - cd /home/gitlab-runner/environment
     - echo "validate $(pwd)"
     - terraform validate
   tags: [kvm]
@@ -60,9 +59,9 @@ job-plan:
   stage: plan
   only:
     changes:
-      - vm.txt
+      - vm.yaml
   script:
-    - cd /home/gitlab-runner/environment/$env_name
+    - cd /home/gitlab-runner/environment
     - echo "planning $(pwd)"
     - terraform plan
   tags: [kvm]
@@ -84,9 +83,9 @@ job-apply:
   allow_failure: true
   only:
     changes:
-      - vm.txt
+      - vm.yaml
   script:
-    - cd /home/gitlab-runner/environment/$env_name
+    - cd /home/gitlab-runner/environment
     - echo "apply $(pwd)"
     # - terraform apply -auto-approve 2>> error-$env_name.log
     - terraform apply -auto-approve
@@ -97,7 +96,7 @@ job-config-monitoring:
   # allow_failure: true
   only:
     changes:
-      - vm.txt
+      - vm.yaml
   when: delayed
   start_in: 1 minute
   script:
@@ -125,7 +124,7 @@ job-destroy:
   stage: destroy
   only:
     changes:
-      - vm.txt
+      - vm.yaml
   script:
     - cd /home/gitlab-runner/environment/$env_name
     - echo "destroy $(pwd)"
