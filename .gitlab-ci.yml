@@ -96,17 +96,17 @@ job-apply:
   tags: [kvm]
 
 job-config-monitoring:
- stage: config-monitoring
+  stage: config-monitoring
   allow_failure: true
- only:
-   changes:
-     - vm.yaml
- when: delayed
- start_in: 1 minute
- script:
-   - cd /home/gitlab-runner/environment/scripts
-   - ./run_install_node_exporter.py -f /home/gitlab-runner/environment/vm.yaml -k dwara.pem
- tags: [kvm]
+  only:
+    changes:
+      - vm.yaml
+  when: delayed
+  start_in: 1 minute
+  script:
+    - cd /home/gitlab-runner/environment/scripts
+    - ./run_install_node_exporter.py -f /home/gitlab-runner/environment/vm.yaml -k dwara.pem
+  tags: [kvm]
 
 job-nat:
   stage: nat
