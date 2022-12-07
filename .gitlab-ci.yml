@@ -28,15 +28,13 @@ job-generate:
     changes:
       - vm.yaml
   script:
+    - echo "copy branch contents"
     - cp -r * /home/gitlab-runner/environment
+    - echo "copy python-tfgen scripts and provider locally"
+    - cp -r /home/gitlab-runner/environment/scripts/python-tfgen/ /home/gitlab-runner/environment/
+    - echo "generate updated vm.yaml"
     - cd /home/gitlab-runner/environment
     - ./python-tfgen/tfgen.py -f vm.yaml -o vm
-#    - echo "generate new temp files"
-#    - echo $CI_JOB_ID
-#    - ./python-tfgen/tfgen.py -f vm.yaml -o $CI_JOB_ID
-#    - cp -r $CI_JOB_ID/* vm
-#    - echo "Remove temp generated files"
-#    - rm -rf /home/gitlab-runner/environment/$CI_JOB_ID
   tags: [kvm]
 
 job-init:
@@ -94,7 +92,6 @@ job-apply:
   script:
     - cd /home/gitlab-runner/environment/vm
     - echo "apply $(pwd)"
-    # - terraform apply -auto-approve 2>> error-$env_name.log
     - terraform apply -auto-approve
   tags: [kvm]
 
@@ -134,7 +131,7 @@ job-destroy:
       - vm.yaml
   script:
     - cd /home/gitlab-runner/environment/vm
-    - echo "destroy $(pwd)"
+    - echo "destroying all vm.yaml"
     - terraform destroy -auto-approve
     - cd /home/gitlab-runner/environment
     # - ./delete-rules-iptables.sh env-$env_name.txt
