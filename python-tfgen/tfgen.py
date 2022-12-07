@@ -95,8 +95,9 @@ try:
 
 except FileExistsError:
     print("File already exist!")
+    print("Replacing the new one")
 #    overwrite = input("Overwrite? (y/n) ")
-    overwrite = y
+    overwrite = "y"
     if overwrite.lower() == "y":
       if values["kind"] == "vm":
         vm()

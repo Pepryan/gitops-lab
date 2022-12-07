@@ -36,7 +36,7 @@ spec:
     nested_enabled: true
     os: ubuntu
     vcpus: 4
-    memory: 2G
+    memory: 4G
     console: vnc
     cloud_data:
       users:
