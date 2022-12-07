@@ -56,7 +56,7 @@ spec:
           size: 10G
         - name: iqbal-vm2-vdb.qcow2
           size: 10G
-        - name: iqbal-vm2-vdb.qcow2
+        - name: iqbal-vm2-vdc.qcow2
           size: 10G
     networks:
       - name: net-192.168.100
