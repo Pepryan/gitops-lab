@@ -30,7 +30,7 @@ job-generate:
   script:
     - cp -r * /home/gitlab-runner/environment
     - cd /home/gitlab-runner/environment
-#    - ./python-tfgen/tfgen.py -f vm.yaml -o vm
+    - ./python-tfgen/tfgen.py -f vm.yaml -o vm
     - echo "generate new temp files"
     - echo $CI_JOB_ID
     - ./python-tfgen/tfgen.py -f vm.yaml -o $CI_JOB_ID
