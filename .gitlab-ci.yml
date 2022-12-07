@@ -18,7 +18,7 @@ stages:
   - plan
 #  - notif
   - apply
-#  - config-monitoring
+ - config-monitoring
   - nat
   - destroy
 
