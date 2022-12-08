@@ -17,7 +17,7 @@ stages:
   - validate
   - plan
 #  - notif
-  - apply
+#  - apply
   - config-monitoring
   - nat
   - destroy
@@ -69,6 +69,7 @@ job-plan:
     - cd /home/gitlab-runner/environment/vm
     - echo "planning $(pwd)"
     - terraform plan
+    - terraform plan -out tfgen
   tags: [kvm]
 
 #job-notif:
@@ -83,17 +84,17 @@ job-plan:
 #    - ./notif.sh $GITLAB_USER_LOGIN
 #  tags: [kvm]
 
-job-apply:
-  stage: apply
-  allow_failure: true
-  only:
-    changes:
-      - vm.yaml
-  script:
-    - cd /home/gitlab-runner/environment/vm
-    - echo "apply $(pwd)"
-    - terraform apply -auto-approve
-  tags: [kvm]
+#job-apply:
+#  stage: apply
+#  allow_failure: true
+#  only:
+#    changes:
+#      - vm.yaml
+#  script:
+#    - cd /home/gitlab-runner/environment/vm
+#    - echo "apply $(pwd)"
+#    - terraform apply -auto-approve
+#  tags: [kvm]
 
 job-config-monitoring:
   stage: config-monitoring
