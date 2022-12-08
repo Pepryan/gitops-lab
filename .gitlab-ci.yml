@@ -1,7 +1,7 @@
 workflow:
   rules:
   # jika bukan di branch main, jangan run pipeline
-  - if: $CI_COMMIT_BRANCH != "python"
+  - if: $CI_COMMIT_BRANCH != "main"
     when: never
   - exists:
     - vm.yaml
