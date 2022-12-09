@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+# https://go.btech.id/ops/lab-bri/-/issues/9
+
 import yaml
 import argparse
 import subprocess
