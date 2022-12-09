@@ -72,29 +72,17 @@ job-plan:
     - terraform plan -out tfgen
   tags: [kvm]
 
-#job-notif:
-#  stage: notif
-#  rules:
-#    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-  # only:
-  #   changes:
-  #     - merge_requests
-#  script:
-#    - cd /home/gitlab-runner/environment
-#    - ./notif.sh $GITLAB_USER_LOGIN
-#  tags: [kvm]
-
-#job-apply:
-#  stage: apply
-#  allow_failure: true
-#  only:
-#    changes:
-#      - vm.yaml
-#  script:
-#    - cd /home/gitlab-runner/environment/vm
-#    - echo "apply $(pwd)"
-#    - terraform apply -auto-approve
-#  tags: [kvm]
+job-apply:
+ stage: apply
+ allow_failure: true
+ only:
+   changes:
+     - vm.yaml
+ script:
+   - cd /home/gitlab-runner/environment/vm
+   - echo "apply $(pwd)"
+   - terraform apply -auto-approve
+ tags: [kvm]
 
 job-config-monitoring:
   stage: config-monitoring
@@ -113,16 +101,11 @@ job-nat:
   stage: nat
   only:
     changes:
-      - config-nat.yaml
+      - nat.yaml
   script:
-    - cp config-nat.yaml /home/gitlab-runner/environment/scripts/config-nat.yaml
-    # - cp apply_nat.py /home/gitlab-runner/environment/scripts/apply_nat.py
-    # - cp validate_nat.py /home/gitlab-runner/environment/config-nat/validate_nat.py
+    - cp nat.yaml /home/gitlab-runner/environment/scripts/nat.yaml
     - cd /home/gitlab-runner/environment/scripts
-    # - ./validate_nat.py list-nat-used.txt config-nat.yaml
-    - ./apply_nat.py config-nat.yaml
-    # - echo "LIST USED PORT in LAB7"
-    # - cat list-nat-used.txt
+    - ./apply_nat.py nat.yaml
   tags: [nat]
 
 job-destroy:
