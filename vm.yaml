@@ -36,7 +36,7 @@ spec:
         dns: [8.8.8.8, 8.8.4.4]
 ##################### VM Iqbal ##################
 
-################### VM febryan ######################
+################### VM Febryan ######################
   - name: test-feb
     hostname: test-feb
     nested_enabled: true
