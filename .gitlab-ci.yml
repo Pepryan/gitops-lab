@@ -13,6 +13,7 @@ variables:
   scripts_path: /home/gitlab-runner/environment/scripts
   vm_path: /home/gitlab-runner/environment/vm
   vm: /home/gitlab-runner/environment/vm.yaml
+  prom: /etc/prometheus/prometheus.yml
 #  env_name: $GITLAB_USER_LOGIN
 
 stages:
@@ -100,6 +101,19 @@ job-config-monitoring:
   script:
     - cd $scripts_path
     - ./run_install_node_exporter.py -f $vm -k dwara.pem
+  tags: [kvm]
+
+job-config-prom:
+  stage: prom
+  allow_failure: true
+  only:
+    changes:
+      - vm.yaml
+  when: delayed
+  start_in: 20 seconds
+  script:
+    - cd $scripts_path
+    - ./apply_prom.py -f $vm -fp $prom
   tags: [kvm]
 
 job-nat:
