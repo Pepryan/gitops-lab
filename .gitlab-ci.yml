@@ -115,7 +115,8 @@ job-config-prom:
   script:
     - cd $scripts_path
     - ./apply_prom.py -f $vm -fp $prom
-  needs: job-config-node-exporter
+  needs: 
+    - job: job-config-node-exporter
   tags: [kvm]
 
 job-nat:
