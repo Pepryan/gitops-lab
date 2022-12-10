@@ -35,7 +35,7 @@ def scp_and_install(iface1s, key):
         subprocess.run(cmdkeyscan, shell=True)
 
         print(f'============= Checking node exporter availability at {iface1} =============\n')
-        cmd = f'if [ -e /usr/local/bin/node_exporter ]; then echo "available"; else echo "unavailable"; fi'
+        cmd = f"ssh -i dwara.pem -l root 10.30.13.171 'if [ -e /usr/local/bin/node_exporter ]; then echo \"available\"; else echo \"unavailable\"; fi'"
         output = subprocess.getoutput(cmd)
 
         if output == "available":
