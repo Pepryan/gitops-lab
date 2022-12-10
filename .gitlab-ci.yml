@@ -23,8 +23,9 @@ stages:
   - plan
 #  - notif
   - apply
-  # - config-monitoring
-  - install-node-exporter
+  - config-monitoring
+  # - install-node-exporter
+  # - prom
   - nat
   - destroy
 
@@ -90,8 +91,8 @@ job-apply:
    - terraform apply -auto-approve
  tags: [kvm]
 
-job-config-monitoring:
-  stage: install-node-exporter
+job-config-node-exporter:
+  stage: config-monitoring
   allow_failure: true
   only:
     changes:
@@ -104,7 +105,7 @@ job-config-monitoring:
   tags: [kvm]
 
 job-config-prom:
-  stage: prom
+  stage: config-monitoring
   allow_failure: true
   only:
     changes:
