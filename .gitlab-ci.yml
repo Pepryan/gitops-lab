@@ -101,7 +101,6 @@ job-config-monitoring:
     - cd $scripts_path
     - ./run_install_node_exporter.py -f $vm -k dwara.pem
   tags: [kvm]
-  stage: 
 
 job-nat:
   stage: nat
