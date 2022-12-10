@@ -4,11 +4,17 @@ workflow:
   - if: $CI_COMMIT_BRANCH != "main"
     when: never
   - exists:
-    - vm.txt
+    - vm.yaml
 
 # gunakan string commit untuk nama folder(environment) yang unik
+
 variables:
-  env_name: $GITLAB_USER_LOGIN
+  env: /home/gitlab-runner/
+  scripts_path: /home/gitlab-runner/environment/scripts
+  vm_path: /home/gitlab-runner/environment/vm
+  vm: /home/gitlab-runner/environment/vm.yaml
+  prom: /etc/prometheus/prometheus.yml
+#  env_name: $GITLAB_USER_LOGIN
 
 stages:
   - generate
@@ -18,6 +24,8 @@ stages:
 #  - notif
   - apply
   - config-monitoring
+  # - install-node-exporter
+  # - prom
   - nat
   - destroy
 
@@ -25,22 +33,25 @@ job-generate:
   stage: generate
   only:
     changes:
-      - vm.txt
+      - vm.yaml
   script:
-    - echo "copying vm.txt to home/gitlab-runner/environment"
-    - cp vm.txt /home/gitlab-runner/environment/env-$env_name.txt
-    - cd /home/gitlab-runner/environment
-    - echo "generate env folder and files"
-    - ./not-tfgen2.sh $env_name env-$env_name.txt
+    - echo "copy branch contents"
+    - cp -r * $env
+    - echo "copy python-tfgen scripts and provider locally"
+    - cp -r $scripts_path/python-tfgen/ $env
+    - echo "generate updated vm.yaml"
+    - cd $env
+    - ./python-tfgen/tfgen.py -f vm.yaml -o vm
   tags: [kvm]
 
 job-init:
   stage: init
+  when: manual
   only:
     changes:
-      - vm.txt
+      - vm.yaml
   script:
-    - cd /home/gitlab-runner/environment/$env_name
+    - cd $vm_path
     - echo "init $(pwd)"
     - terraform init
   tags: [kvm]
@@ -49,9 +60,9 @@ job-validate:
   stage: validate
   only:
     changes:
-      - vm.txt
+      - vm.yaml
   script:
-    - cd /home/gitlab-runner/environment/$env_name
+    - cd $vm_path
     - echo "validate $(pwd)"
     - terraform validate
   tags: [kvm]
@@ -60,83 +71,74 @@ job-plan:
   stage: plan
   only:
     changes:
-      - vm.txt
+      - vm.yaml
   script:
-    - cd /home/gitlab-runner/environment/$env_name
+    - cd $vm_path
     - echo "planning $(pwd)"
     - terraform plan
+    - terraform plan -out tfgen
   tags: [kvm]
 
-#job-notif:
-#  stage: notif
-#  rules:
-#    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-  # only:
-  #   changes:
-  #     - merge_requests
-#  script:
-#    - cd /home/gitlab-runner/environment
-#    - ./notif.sh $GITLAB_USER_LOGIN
-#  tags: [kvm]
-
 job-apply:
-  stage: apply
+ stage: apply
+ allow_failure: true
+ only:
+   changes:
+     - vm.yaml
+ script:
+   - cd $vm_path
+   - echo "apply $(pwd)"
+   - terraform apply -auto-approve
+ tags: [kvm]
+
+job-config-node-exporter:
+  stage: config-monitoring
   allow_failure: true
   only:
     changes:
-      - vm.txt
-  script:
-    - cd /home/gitlab-runner/environment/$env_name
-    - echo "apply $(pwd)"
-    # - terraform apply -auto-approve 2>> error-$env_name.log
-    - terraform apply -auto-approve
-  tags: [kvm]
-
-job-config-monitoring:
-  stage: config-monitoring
-  # allow_failure: true
-  only:
-    changes:
-      - vm.txt
+      - vm.yaml
   when: delayed
   start_in: 1 minute
   script:
-    - cd /home/gitlab-runner/environment/scripts
-    - ./run_install_node_exporter.py -f /home/gitlab-runner/environment/env-$env_name.txt -k dwara.pem
+    - cd $scripts_path
+    - ./run_install_node_exporter.py -f $vm -k dwara.pem
+  tags: [kvm]
+
+job-config-prom:
+  stage: config-monitoring
+  allow_failure: true
+  only:
+    changes:
+      - vm.yaml
+  when: delayed
+  start_in: 20 seconds
+  script:
+    - cd $scripts_path
+    - ./apply_prom.py -f $vm -fp $prom
   tags: [kvm]
 
 job-nat:
   stage: nat
   only:
     changes:
-      - config-nat.yaml
+      - nat.yaml
   script:
-    - cp config-nat.yaml /home/gitlab-runner/environment/scripts/config-nat.yaml
-    # - cp apply_nat.py /home/gitlab-runner/environment/scripts/apply_nat.py
-    # - cp validate_nat.py /home/gitlab-runner/environment/config-nat/validate_nat.py
-    - cd /home/gitlab-runner/environment/scripts
-    # - ./validate_nat.py list-nat-used.txt config-nat.yaml
-    - ./apply_nat.py config-nat.yaml
-    # - echo "LIST USED PORT in LAB7"
-    # - cat list-nat-used.txt
+    - cp nat.yaml $scripts_path/nat.yaml
+    - cd $scripts_path
+    - ./apply_nat.py nat.yaml
   tags: [nat]
 
 job-destroy:
   stage: destroy
   only:
     changes:
-      - vm.txt
+      - vm.yaml
   script:
-    - cd /home/gitlab-runner/environment/$env_name
-    - echo "destroy $(pwd)"
+    - cd $vm_path
+    - echo "destroying all vm.yaml"
     - terraform destroy -auto-approve
-    - echo "remove $env_name env folder and files"
-    - rm -rf ../$env_name ../env-$env_name.txt
-    - cd /home/gitlab-runner/environment
-    # - ./delete-rules-iptables.sh env-$env_name.txt
+    - cd $env
     - echo "destroy success"
-    # - cd /home/gitlab-runner/environment
-    # - ./notif-destroy.sh
   when: manual
   tags: [kvm]
 

@@ -3,19 +3,14 @@ Research dan manajemen lab BRI
 
 # DISCLAIMER
 Disclaimer (updated 25-10-2022)
-1. 1 ops hanya bisa membuat 1 environment, meskipun ops bisa saja punya banyak branch tetapi akan
-tetap terdeteksi sebagai 1 environment pada lab7.
+1. VM yang ada di repo sama dengan VM yang saat ini running di server lab7.
 2. Nama VM dan IP address (harus unique) tidak boleh ada yang sama.
 VM dengan nama yang sama akan terdeteksi oleh log sebagai error, nanti bisa diliat pada proses job di pipeline. 
 Jika error maka harap perbaiki sendiri vm.txt lalu lakukan request ulang.
 3. Ketika ada ops memakai nama VM yang sama dengan ops lain, maka terraform akan mendeteksi VM tersebut already exist, 
 dan muncul error. VM dengan nama yang sudah ada (begitu pun IP address), tidak akan diproses provisioning.
-4. Ketika sudah pernah buat branch sebelumnya dan sudah ada di local repository masing-masing, 
-silakan simpan/ingat baik-baik file txt sebagai env. Jika ada konflik file vm.txt di repository local,
-maka silakan resolve/fix sendiri dengan tetap mempertahankan config asli kepunyaan masing-masing ops.
-Jika sampai ter-overwrite oleh env ops lain silakan perbaiki/revert sendiri. 
-5. Gitlab menjalankan proses manajemen VM (Create, Request, Update, Delete), automation tools, dan bisa sebagai penyimpanan history,
-sedangkan config env adalah kebebasan masing-masing ops, jangan sampai ada yang sama/tertukar/ter-overwrite/dsb oleh environment ops lain.
+4. Buat repo masing-masing ketika ingin manage resource di lab7, hapus setelah merge request diapprove.
+5. Gitlab menjalankan proses manajemen VM (Create, Request, Update, Delete), automation tools, dan bisa sebagai penyimpanan history.
 6. bagi yang mengaktifkan 2-Factor Authentication (2FA), personal access token-nya bisa buat terlebih dahulu di halaman berikut, 
 lalu jika ingin melakukan push/pull sertakan token tersebut pada saat login.
 https://go.btech.id/-/profile/personal_access_tokens
@@ -88,6 +83,9 @@ git push
 atau
 git push --set-upstream origin <nama-branch>
 ```
+
+6. Buat Merge Request lewat dashboard.
+
 
 #### Keterangan :
 `NAME` > diisi dengan nama VM/instance yang akan digunakan sekaligus hostname.

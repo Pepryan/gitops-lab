@@ -1,0 +1,102 @@
+kind: vm
+spec:
+##################### VM Iqbal ##################
+  - name: iqbal-vm2
+    hostname: iqbal-vm2
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 4
+    memory: 4G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+        - name: iqbal
+          password: gladiators88
+          sudo: true
+    base_image:
+      storage_pool: isos
+      name: ubuntu-bionic.img
+    disks:
+      storage_pool: vms
+      disks:
+        - name: iqbal-vm2-vda.qcow2
+          size: 10G
+        - name: iqbal-vm2-vdb.qcow2
+          size: 10G
+        - name: iqbal-vm2-vdc.qcow2
+          size: 10G
+    networks:
+      - name: net-192.168.100
+        address: 192.168.100.200/24
+        mtu: 1500
+        gateway: 192.168.100.1
+        dns: [8.8.8.8, 8.8.4.4]
+##################### VM Iqbal ##################
+
+################### VM febryan ######################
+  - name: test-feb
+    hostname: test-feb
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 2
+    memory: 4G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+        - name: ryan
+          password: gladiators88
+          sudo: true
+    base_image:
+      storage_pool: isos
+      name: ubuntu-bionic.img
+    disks:
+      storage_pool: vms
+      disks:
+        - name: test-feb-vda.qcow2
+          size: 10G
+        - name: test-feb-vdb.qcow2
+          size: 10G
+    networks:
+      - name: net-192.168.100
+        address: 192.168.100.202/24
+        mtu: 1500
+        gateway: 192.168.100.1
+        dns: [8.8.8.8, 8.8.4.4]
+  - name: test-feb2
+    hostname: test-feb2
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 2
+    memory: 4G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+        - name: ryan
+          password: gladiators88
+          sudo: true
+    base_image:
+      storage_pool: isos
+      name: ubuntu-bionic.img
+    disks:
+      storage_pool: vms
+      disks:
+        - name: test-feb2-vda.qcow2
+          size: 10G
+        - name: test-feb2-vdb.qcow2
+          size: 10G
+    networks:
+      - name: net-192.168.100
+        address: 192.168.100.203/24
+        mtu: 1500
+        gateway: 192.168.100.1
+        dns: [8.8.8.8, 8.8.4.4]
+################### VM febryan #####################
