@@ -115,6 +115,7 @@ job-config-prom:
   script:
     - cd $scripts_path
     - ./apply_prom.py -f $vm -fp $prom
+  needs: job-config-node-exporter
   tags: [kvm]
 
 job-nat:
@@ -125,7 +126,7 @@ job-nat:
   script:
     - cp nat.yaml $scripts_path/nat.yaml
     - cd $scripts_path
-    - ./apply_nat.py nat.yaml
+    - ./apply_nat.py -f nat.yaml
   tags: [nat]
 
 job-destroy:
