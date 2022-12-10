@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # https://go.btech.id/ops/lab-bri/-/issues/9
+# https://go.btech.id/ops/lab-bri/-/issues/6
+# https://go.btech.id/ops/lab-bri/-/issues/1
 
 import yaml
 import argparse
@@ -37,6 +39,7 @@ def replace_all_targets(configs, ip_vm):
     return configs
 
 def write_config(final_config):
+    print(f'============= Adding entry target for all instances in vm.yaml =============\n')
     with open(args.file_prome, 'w') as fp:
         yaml.dump(final_config, fp)
 
@@ -44,4 +47,6 @@ ip_vm = get_ip_vm(read_config(args.file))
 prome_conf = read_config(args.file_prome)
 final_config = replace_all_targets(prome_conf, ip_vm)
 write_config(final_config)
+
+# restart prome without donwntime service, when --web.enable-lifecycle flag is enabled
 subprocess.getoutput("curl -X POST localhost:9090/-/reload")
