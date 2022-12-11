@@ -41,7 +41,7 @@ job-generate:
     - cp -r $scripts_path/python-tfgen/ $env
     - echo "generate updated vm.yaml"
     - cd $env
-    - ./python-tfgen/tfgen.py -f vm.yaml -o vm
+    - echo yes | ./python-tfgen/tfgen.py -f vm.yaml -o vm
     - cat vm.yaml
   tags: [kvm]
 
