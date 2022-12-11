@@ -45,104 +45,104 @@ job-generate:
     - cat vm.yaml
   tags: [kvm]
 
-# job-init:
-#   stage: init
-#   when: manual
-#   only:
-#     changes:
-#       - vm.yaml
-#   script:
-#     - cd $vm_path
-#     - echo "init $(pwd)"
-#     - terraform init
-#   tags: [kvm]
+job-init:
+  stage: init
+  when: manual
+  only:
+    changes:
+      - vm.yaml
+  script:
+    - cd $vm_path
+    - echo "init $(pwd)"
+    - terraform init
+  tags: [kvm]
 
-# job-validate:
-#   stage: validate
-#   only:
-#     changes:
-#       - vm.yaml
-#   script:
-#     - cd $vm_path
-#     - echo "validate $(pwd)"
-#     - terraform validate
-#   tags: [kvm]
+job-validate:
+  stage: validate
+  only:
+    changes:
+      - vm.yaml
+  script:
+    - cd $vm_path
+    - echo "validate $(pwd)"
+    - terraform validate
+  tags: [kvm]
 
-# job-plan:
-#   stage: plan
-#   only:
-#     changes:
-#       - vm.yaml
-#   script:
-#     - cd $vm_path
-#     - echo "planning $(pwd)"
-#     - terraform plan
-#     - terraform plan -out tfgen
-#   tags: [kvm]
+job-plan:
+  stage: plan
+  only:
+    changes:
+      - vm.yaml
+  script:
+    - cd $vm_path
+    - echo "planning $(pwd)"
+    - terraform plan
+    - terraform plan -out tfgen
+  tags: [kvm]
 
-# job-apply:
-#  stage: apply
-#  allow_failure: true
-#  only:
-#    changes:
-#      - vm.yaml
-#  script:
-#    - cd $vm_path
-#    - echo "apply $(pwd)"
-#    - terraform apply -auto-approve
-#  tags: [kvm]
+job-apply:
+ stage: apply
+ allow_failure: true
+ only:
+   changes:
+     - vm.yaml
+ script:
+   - cd $vm_path
+   - echo "apply $(pwd)"
+   - terraform apply -auto-approve
+ tags: [kvm]
 
-# job-config-node-exporter:
-#   stage: config-monitoring
-#   allow_failure: true
-#   only:
-#     changes:
-#       - vm.yaml
-#   when: delayed
-#   start_in: 1 minute
-#   script:
-#     - cd $scripts_path
-#     - ./run_install_node_exporter.py -f $vm -k dwara.pem
-#   tags: [kvm]
+job-config-node-exporter:
+  stage: config-monitoring
+  allow_failure: true
+  only:
+    changes:
+      - vm.yaml
+  when: delayed
+  start_in: 1 minute
+  script:
+    - cd $scripts_path
+    - ./run_install_node_exporter.py -f $vm -k dwara.pem
+  tags: [kvm]
 
-# job-config-prom:
-#   stage: config-monitoring
-#   allow_failure: true
-#   only:
-#     changes:
-#       - vm.yaml
-#   when: delayed
-#   start_in: 20 seconds
-#   script:
-#     - cd $scripts_path
-#     - ./apply_prom.py -f $vm -fp $prom
-#   needs: 
-#     - job: job-config-node-exporter
-#   tags: [kvm]
+job-config-prom:
+  stage: config-monitoring
+  allow_failure: true
+  only:
+    changes:
+      - vm.yaml
+  when: delayed
+  start_in: 20 seconds
+  script:
+    - cd $scripts_path
+    - ./apply_prom.py -f $vm -fp $prom
+  needs: 
+    - job: job-config-node-exporter
+  tags: [kvm]
 
-# job-nat:
-#   stage: nat
-#   only:
-#     changes:
-#       - nat.yaml
-#   script:
-#     - cp nat.yaml $scripts_path/nat.yaml
-#     - cd $scripts_path
-#     - ./apply_nat.py -f nat.yaml
-#   tags: [nat]
+job-nat:
+  stage: nat
+  only:
+    changes:
+      - nat.yaml
+  script:
+    - cp nat.yaml $scripts_path/nat.yaml
+    - cd $scripts_path
+    - ./apply_nat.py -f nat.yaml
+  tags: [nat]
 
-# job-destroy:
-#   stage: destroy
-#   only:
-#     changes:
-#       - vm.yaml
-#   script:
-#     - cd $vm_path
-#     - echo "destroying all vm.yaml"
-#     - terraform destroy -auto-approve
-#     - cd $env
-#     - echo "destroy success"
-#   when: manual
-#   tags: [kvm]
+job-destroy:
+  stage: destroy
+  only:
+    changes:
+      - vm.yaml
+  script:
+    - cd $vm_path
+    - echo "destroying all vm.yaml"
+    - terraform destroy -auto-approve
+    - cd $env
+    - echo "destroy success"
+  when: manual
+  tags: [kvm]
 
 
