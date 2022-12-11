@@ -43,6 +43,9 @@ job-generate:
     - cd $env
     - echo yes | ./python-tfgen/tfgen.py -f vm.yaml -o vm
     - cat vm.yaml
+    - ls
+    - pwd
+    - whoami
   tags: [kvm]
 
 # job-init:
