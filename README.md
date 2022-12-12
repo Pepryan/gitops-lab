@@ -3,6 +3,7 @@
 - Edit file `vm.yaml` as per your specification
   - Change your instance name. Ensure you write the unique name and use the initial your name
   - You can be looking for **isos** and **networks** available in the **inventory** 
+    <br>Example :</br>
 
 ```
 # ################### VM Ahsan #####################
