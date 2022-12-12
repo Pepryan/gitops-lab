@@ -137,7 +137,7 @@ spec:
   - name: al-ubuntu-focal
     hostname: al-ubuntu-focal
     nested_enabled: true
-    os: centos
+    os: ubuntu
     vcpus: 2
     memory: 2G
     console: vnc
