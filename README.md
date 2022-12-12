@@ -2,6 +2,7 @@
 
 - Edit file `vm.yaml` as per your specification. You can be looking for **isos** and **networks** available in the **inventory** 
 
+```
 # ################### VM Ahsan #####################
 #   - name: ahs-vm1
 #     hostname: ahs-vm1
@@ -33,4 +34,5 @@
 #         gateway: 10.30.13.1
 #         dns: [8.8.8.8, 8.8.4.4]
 # ################### VM Ahsan ###################
+```
 
