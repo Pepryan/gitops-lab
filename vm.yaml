@@ -134,8 +134,8 @@ spec:
 # ################### VM Ahsan ###################
 
 ################### VM Ali #####################
-  - name: al-centos-8
-    hostname: al-centos-8
+  - name: al-ubuntu-focal
+    hostname: al-ubuntu-focal
     nested_enabled: true
     os: centos
     vcpus: 2
@@ -146,18 +146,18 @@ spec:
         - name: root
           public_key:
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-        - name: centos
-          password: centos
+        - name: ubuntu
+          password: ubuntu
           sudo: true
     base_image:
       storage_pool: isos
-      name: centos-8-genericcloud.img
+      name: ubuntu-focal.img
     disks:
       storage_pool: vms
       disk_format: qcow2
       disks:
-        - name: al-centos-8-vda.qcow2
-          size: 8G
+        - name: al-ubuntu-focal-vda.qcow2
+          size: 4G
     networks:
       - name: net-10.30.13
         address: 10.30.13.172/24
