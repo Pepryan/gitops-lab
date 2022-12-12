@@ -134,8 +134,8 @@ spec:
 # ################### VM Ahsan ###################
 
 ################### VM Ali #####################
-  - name: al-ubuntu-focal
-    hostname: al-ubuntu-focal
+  - name: al-ubuntu-test
+    hostname: al-ubuntu-test
     nested_enabled: true
     os: ubuntu
     vcpus: 2
@@ -156,8 +156,8 @@ spec:
       storage_pool: vms
       disk_format: qcow2
       disks:
-        - name: al-ubuntu-focal-vda.qcow2
-          size: 4G
+        - name: al-ubuntu-test-vda.qcow2
+          size: 10G
     networks:
       - name: net-192.168.10
         address: 192.168.10.11/24
