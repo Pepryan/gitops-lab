@@ -159,8 +159,8 @@ spec:
         - name: al-ubuntu-focal-vda.qcow2
           size: 4G
     networks:
-      - name: net-192.168.12
-        address: 192.168.12.12/24
-        gateway: 192.168.12
+      - name: net-192.168.10
+        address: 192.168.10.11/24
+        gateway: 192.168.10
         dns: [8.8.8.8, 8.8.4.4]
 ################### VM Ali ###################
