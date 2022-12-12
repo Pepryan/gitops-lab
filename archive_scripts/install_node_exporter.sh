@@ -9,7 +9,7 @@ else
     useradd -rs /bin/false node_exporter
     rm /etc/systemd/system/node_exporter.service -f
 
-    cat << EOF > /tmp/node_exporter.service
+    cat <<EOF>/tmp/node_exporter.service
     [Unit]
     Description=Node Exporter
     After=network.target
@@ -20,7 +20,7 @@ else
     ExecStart=/usr/local/bin/node_exporter
     [Install]
     WantedBy=multi-user.target
-    EOF
+EOF
 
     case "$OS" in
         "fedora"|fedora|"rhel fedora")
