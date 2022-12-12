@@ -156,7 +156,7 @@ spec:
       storage_pool: vms
       disk_format: qcow2
       disks:
-        - name: centos-8-genericcloud-vda.qcow2
+        - name: al-centos-8-vda.qcow2
           size: 8G
     networks:
       - name: net-10.30.13
