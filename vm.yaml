@@ -166,8 +166,8 @@ spec:
 # ################### VM Ali ###################
 
 ################### VM Enden #####################
-  - name: test_ubuntu_focal
-    hostname: test_ubuntu_focal
+  - name: ubuntu_focal
+    hostname: ubuntu_focal
     nested_enabled: true
     os: ubuntu
     vcpus: 2
