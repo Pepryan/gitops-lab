@@ -1,15 +1,15 @@
 workflow:
   rules:
-  # jika bukan di branch main, jangan run pipeline
-  - if: $CI_COMMIT_BRANCH != "main"
-    when: never
+  # # jika bukan di branch main, jangan run pipeline
+  # - if: $CI_COMMIT_BRANCH != "main"
+  #   when: never
   - exists:
     - vm.yaml
 
 # gunakan string commit untuk nama folder(environment) yang unik
 
 variables:
-  env: /home/gitlab-runner/
+  env: /home/gitlab-runner/environment
   scripts_path: /home/gitlab-runner/environment/scripts
   vm_path: /home/gitlab-runner/environment/vm
   vm: /home/gitlab-runner/environment/vm.yaml
@@ -41,7 +41,11 @@ job-generate:
     - cp -r $scripts_path/python-tfgen/ $env
     - echo "generate updated vm.yaml"
     - cd $env
-    - ./python-tfgen/tfgen.py -f vm.yaml -o vm
+    - echo yes | ./python-tfgen/tfgen.py -f vm.yaml -o $vm_path
+    - cat vm.yaml
+    - ls
+    - pwd
+    - whoami
   tags: [kvm]
 
 job-init:
@@ -143,5 +147,3 @@ job-destroy:
     - echo "destroy success"
   when: manual
   tags: [kvm]
-
-
