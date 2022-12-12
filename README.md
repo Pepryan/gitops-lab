@@ -1,6 +1,8 @@
 ### How to create instance on lab7.btech.id? ###
 
-- Edit file `vm.yaml` as per your specification. You can be looking for **isos** and **networks** available in the **inventory** 
+- Edit file `vm.yaml` as per your specification
+  - Change your instance name. Ensure you write the unique name and use the initial your name
+  - You can be looking for **isos** and **networks** available in the **inventory** 
 
 ```
 # ################### VM Ahsan #####################
@@ -35,4 +37,7 @@
 #         dns: [8.8.8.8, 8.8.4.4]
 # ################### VM Ahsan ###################
 ```
+
+- Pipeline will be running by some jobs, please waiting until job successed
+  ![image.png](./image.png)
 
