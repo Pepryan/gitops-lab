@@ -1,166 +1,168 @@
-# kind: vm
-# spec:
-# ##################### VM Iqbal ##################
-#   - name: iqbal-vm2
-#     hostname: iqbal-vm2
-#     nested_enabled: true
-#     os: ubuntu
-#     vcpus: 4
-#     memory: 4G
-#     console: vnc
-#     cloud_data:
-#       users:
-#         - name: root
-#           public_key:
-#             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-#         - name: iqbal
-#           password: gladiators88
-#           sudo: true
-#     base_image:
-#       storage_pool: isos
-#       name: ubuntu-bionic.img
-#     disks:
-#       storage_pool: vms
-#       disks:
-#         - name: iqbal-vm2-vda.qcow2
-#           size: 10G
-#         - name: iqbal-vm2-vdb.qcow2
-#           size: 10G
-#         - name: iqbal-vm2-vdc.qcow2
-#           size: 10G
-#     networks:
-#       - name: net-192.168.100
-#         address: 192.168.100.200/24
-#         mtu: 1500
-#         gateway: 192.168.100.1
-#         dns: [8.8.8.8, 8.8.4.4]
-# ##################### VM Iqbal ##################
+kind: vm
+spec:
+##################### VM Iqbal ##################
+  - name: iqbal-vm2
+    hostname: iqbal-vm2
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 4
+    memory: 4G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+        - name: iqbal
+          password: gladiators88
+          sudo: true
+    base_image:
+      storage_pool: isos
+      name: ubuntu-bionic.img
+    disks:
+      storage_pool: vms
+      disks:
+        - name: iqbal-vm2-vda.qcow2
+          size: 10G
+        - name: iqbal-vm2-vdb.qcow2
+          size: 10G
+        - name: iqbal-vm2-vdc.qcow2
+          size: 10G
+    networks:
+      - name: net-192.168.100
+        address: 192.168.100.200/24
+        mtu: 1500
+        gateway: 192.168.100.1
+        dns: [8.8.8.8, 8.8.4.4]
+##################### VM Iqbal ##################
 
-# ################### VM Febryan ######################
-#   - name: test-feb
-#     hostname: test-feb
-#     nested_enabled: true
-#     os: ubuntu
-#     vcpus: 2
-#     memory: 4G
-#     console: vnc
-#     cloud_data:
-#       users:
-#         - name: root
-#           public_key:
-#             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-#         - name: ryan
-#           password: gladiators88
-#           sudo: true
-#     base_image:
-#       storage_pool: isos
-#       name: ubuntu-bionic.img
-#     disks:
-#       storage_pool: vms
-#       disks:
-#         - name: test-feb-vda.qcow2
-#           size: 10G
-#         - name: test-feb-vdb.qcow2
-#           size: 10G
-#     networks:
-#       - name: net-192.168.100
-#         address: 192.168.100.202/24
-#         mtu: 1500
-#         gateway: 192.168.100.1
-#         dns: [8.8.8.8, 8.8.4.4]
-#   - name: test-feb2
-#     hostname: test-feb2
-#     nested_enabled: true
-#     os: ubuntu
-#     vcpus: 2
-#     memory: 4G
-#     console: vnc
-#     cloud_data:
-#       users:
-#         - name: root
-#           public_key:
-#             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-#         - name: ryan
-#           password: gladiators88
-#           sudo: true
-#     base_image:
-#       storage_pool: isos
-#       name: ubuntu-bionic.img
-#     disks:
-#       storage_pool: vms
-#       disks:
-#         - name: test-feb2-vda.qcow2
-#           size: 10G
-#         - name: test-feb2-vdb.qcow2
-#           size: 10G
-#     networks:
-#       - name: net-192.168.100
-#         address: 192.168.100.203/24
-#         mtu: 1500
-#         gateway: 192.168.100.1
-#         dns: [8.8.8.8, 8.8.4.4]
-# ################### VM febryan #####################
+################### VM Febryan ######################
+  - name: test-feb
+    hostname: test-feb
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 2
+    memory: 4G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+        - name: ryan
+          password: gladiators88
+          sudo: true
+    base_image:
+      storage_pool: isos
+      name: ubuntu-bionic.img
+    disks:
+      storage_pool: vms
+      disks:
+        - name: test-feb-vda.qcow2
+          size: 10G
+        - name: test-feb-vdb.qcow2
+          size: 10G
+    networks:
+      - name: net-192.168.100
+        address: 192.168.100.202/24
+        mtu: 1500
+        gateway: 192.168.100.1
+        dns: [8.8.8.8, 8.8.4.4]
+  - name: test-feb3
+    hostname: test-feb3
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 2
+    memory: 4G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+        - name: ryan
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDCYcgkEinq6rey379Rcnz1oisovQFr9vC4c8W32fXT9ky3d6+38K3MQvYBAsi8x73CvDcZCk8c9vNEPqmFVBJjhEb3rK4djjhjaRATqpjEnZHmXN/0aKTk0DT9iFswP/310ObkeEMCEO75CQWfqXuXNBVNUdlIbukqxdmUwE/21cVoXZxb+ZyPsba9emArdU8S8jeK+OO4BHbnmQD1yBrb299BQcsnfYjDCj4LFHJVWl+pHthg+0mMSkgFG1uRgDPqKvtTn/Knr7HvFPliv/zdqPnXNQs29YOTNk/z+8SFhGvZEH+RtXVYWcjuFGkNLnzMshKZguPIgVnzxdBWuqvlwtzowNSgctD1yXooT0UXEb6nGAf2BrJaykowB6/rFl2dtIydtHVDg9kax3tnWBvLuVi7r0kpHwy1DCw2aDv10xUB7M3mdwB+0GnaFObNPuBNGm/Ll5EoWoqZwNzfJD5xZEQsW8eUSM6HE8OfTznpE2NEX8KD33F2syt2XyokzEc= ryan@DESKTOP-R25RDBL
+          password: gladiators88
+          sudo: true
+    base_image:
+      storage_pool: isos
+      name: ubuntu-bionic.img
+    disks:
+      storage_pool: vms
+      disks:
+        - name: test-feb3-vda.qcow2
+          size: 10G
+        - name: test-feb3-vdb.qcow2
+          size: 10G
+    networks:
+      - name: net-192.168.100
+        address: 192.168.100.123/24
+        mtu: 1500
+        gateway: 192.168.100.1
+        dns: [8.8.8.8, 8.8.4.4]
+################### VM febryan #####################
 
-# ################### VM Ahsan #####################
-#   - name: ahs-vm1
-#     hostname: ahs-vm1
-#     nested_enabled: true
-#     os: ubuntu
-#     vcpus: 1
-#     memory: 2G
-#     console: vnc
-#     cloud_data:
-#       users:
-#         - name: root
-#           public_key:
-#             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-#         - name: ubuntu
-#           password: ubuntu
-#           sudo: true
-#     base_image:
-#       storage_pool: isos
-#       name: ubuntu-focal.img
-#     disks:
-#       storage_pool: vms
-#       disk_format: qcow2
-#       disks:
-#         - name: ahs-vm1-vda.qcow2
-#           size: 4G
-#     networks:
-#       - name: net-10.30.13
-#         address: 10.30.13.171/24
-#         gateway: 10.30.13.1
-#         dns: [8.8.8.8, 8.8.4.4]
-# ################### VM Ahsan ###################
+################### VM Ahsan #####################
+  - name: ahs-vm1
+    hostname: ahs-vm1
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 1
+    memory: 2G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+        - name: ubuntu
+          password: ubuntu
+          sudo: true
+    base_image:
+      storage_pool: isos
+      name: ubuntu-focal.img
+    disks:
+      storage_pool: vms
+      disk_format: qcow2
+      disks:
+        - name: ahs-vm1-vda.qcow2
+          size: 4G
+    networks:
+      - name: net-10.30.13
+        address: 10.30.13.171/24
+        gateway: 10.30.13.1
+        dns: [8.8.8.8, 8.8.4.4]
+################### VM Ahsan ###################
 
 ################### VM Ali #####################
-  # - name: al-ubuntu-test
-  #   hostname: al-ubuntu-test
-  #   nested_enabled: true
-  #   os: ubuntu
-  #   vcpus: 2
-  #   memory: 2G
-  #   console: vnc
-  #   cloud_data:
-  #     users:
-  #       - name: root
-  #         public_key:
-  #           - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-  #       - name: ubuntu
-  #         password: ubuntu
-  #         sudo: true
-  #   base_image:
-  #     storage_pool: isos
-  #     name: ubuntu-focal.img
-  #   disks:
-  #     storage_pool: vms
-  #     disk_format: qcow2
-  #     disks:
-  #       - name: al-ubuntu-test-vda.qcow2
-  #         size: 10G
-  #   networks:
-  #     - name: net-192.168.10
-  #       address: 192.168.10.11/24
-  #       gateway: 192.168.10.1
-  #       dns: [8.8.8.8, 8.8.4.4]
+  - name: al-ubuntu-test
+    hostname: al-ubuntu-test
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 2
+    memory: 2G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+        - name: ubuntu
+          password: ubuntu
+          sudo: true
+    base_image:
+      storage_pool: isos
+      name: ubuntu-focal.img
+    disks:
+      storage_pool: vms
+      disk_format: qcow2
+      disks:
+        - name: al-ubuntu-test-vda.qcow2
+          size: 10G
+    networks:
+      - name: net-192.168.10
+        address: 192.168.10.11/24
+        gateway: 192.168.10.1
+        dns: [8.8.8.8, 8.8.4.4]
 ################### VM Ali ###################
