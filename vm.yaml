@@ -1,5 +1,5 @@
-kind: vm
-spec:
+# kind: vm
+# spec:
 # ##################### VM Iqbal ##################
 #   - name: iqbal-vm2
 #     hostname: iqbal-vm2
