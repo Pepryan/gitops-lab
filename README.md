@@ -1,9 +1,21 @@
-### How to create instance on lab7.btech.id? ###
+## About Lab BRI Project
+This repository is used for BRI project research purposes. Furthermore, this CI/CD is applied for instance provisioning
 
+## Build With
+- <a href="https://www.terraform.io/" target="_blank">Terraform</a>
+- <a href="https://www.python.org/" target="_blank">Python</a>
+- <a href="https://docs.gitlab.com/runner/" target="_blank">Gitlab-Runner</a>
+
+## Prerequisites
+- You have read `isos.txt` on inventory directory for choose the OS image
+- You have read `networks.txt` on inventory directory for select the network
+- You have looking `vm.yaml` is existing for checking IP address had been used before
+
+## Getting Started
+### How to create instance on lab7.btech.id? ###
 - Edit file `vm.yaml` as per your specification
   - Change your instance name. Ensure you write the unique name and use the initial your name
-  - You can be looking for **isos** and **networks** available in the **inventory** 
-    <br>Example :</br>
+    <br>The below for example :</br>
 
 ```
 # ################### VM Ahsan #####################
