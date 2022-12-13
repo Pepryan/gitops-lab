@@ -1,12 +1,9 @@
 workflow:
   rules:
-  # # jika bukan di branch main, jangan run pipeline
   - if: $CI_COMMIT_BRANCH != "main"
     when: never
   - exists:
     - vm.yaml
-
-# gunakan string commit untuk nama folder(environment) yang unik
 
 variables:
   env: /home/gitlab-runner/environment
@@ -17,7 +14,6 @@ variables:
 
 stages:
   - generate
-  - init
   - validate
   - plan
   - apply
@@ -37,18 +33,6 @@ job-generate:
     - echo "generate updated vm.yaml"
     - cd $env
     - echo yes | ./python-tfgen/tfgen.py -f vm.yaml -o $vm_path
-  tags: [kvm]
-
-job-init:
-  stage: init
-  when: manual
-  only:
-    changes:
-      - vm.yaml
-  script:
-    - cd $vm_path
-    - echo "init $(pwd)"
-    - terraform init
   tags: [kvm]
 
 job-validate:
