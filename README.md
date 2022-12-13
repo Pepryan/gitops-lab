@@ -39,6 +39,6 @@
 # ################### VM Ahsan ###################
 ```
 
-- Pipeline will be running by some jobs, please waiting until job successed
+- Pipeline will be running by some jobs, please waiting until passed status
   ![image.png](./image.png)
 
