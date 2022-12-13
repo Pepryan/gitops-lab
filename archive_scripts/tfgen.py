@@ -83,8 +83,10 @@ def pool():
 try:
     if values is None:
       print("Error yaml file")
+      exit(1)
     elif values["spec"] == None:
       print("Error yaml file")
+      exit(1)
     elif values["kind"] == "vm":
       os.makedirs(args.output)
       vm()
