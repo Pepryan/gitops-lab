@@ -17,11 +17,12 @@ This repository is used for BRI project research purposes. Furthermore, this CI/
 - Create your branch
 - Edit file `vm.yaml` as per your specification
   - Change vm name and specifications. Ensure you write the unique name.
-    <br>The below for example :</br>
   - Add new line if you want to provisioning new vm.
   - Delete line if you want to delete existing vm.
+  - Change all options you need it, see **python-templates** folder.
 ```
-# ################### VM Ahsan #####################
+<!-- Begin of One VM Info -->
+################### VM Ahsan #####################
    - name: ahs-vm1
      hostname: ahs-vm1
      nested_enabled: true
@@ -52,6 +53,7 @@ This repository is used for BRI project research purposes. Furthermore, this CI/
          gateway: 10.30.13.1
          dns: [8.8.8.8, 8.8.4.4]
 ################### VM Ahsan ###################
+<!-- End of One VM Info -->
 ```
 - Push to your branch repository (dont push to main)
 - Create merge request to main. set your reviewer to L2 and approval to TL.
