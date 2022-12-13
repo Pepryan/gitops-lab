@@ -61,7 +61,7 @@ spec:
       storage_pool: vms
       disks:
         - name: test-feb3-vda.qcow2
-          size: 10G
+          size: 20G
         - name: test-feb3-vdb.qcow2
           size: 10G
     networks:
