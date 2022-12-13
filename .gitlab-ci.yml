@@ -14,20 +14,15 @@ variables:
   vm_path: /home/gitlab-runner/environment/vm
   vm: /home/gitlab-runner/environment/vm.yaml
   prom: /etc/prometheus/prometheus.yml
-#  env_name: $GITLAB_USER_LOGIN
 
 stages:
   - generate
   - init
   - validate
   - plan
-#  - notif
   - apply
   - config-monitoring
-  # - install-node-exporter
-  # - prom
   - nat
-  - destroy
 
 job-generate:
   stage: generate
@@ -129,17 +124,3 @@ job-nat:
     - cd $scripts_path
     - ./apply_nat.py -f nat.yaml
   tags: [nat]
-
-job-destroy:
-  stage: destroy
-  only:
-    changes:
-      - vm.yaml
-  script:
-    - cd $vm_path
-    - echo "destroying all vm.yaml"
-    - terraform destroy -auto-approve
-    - cd $env
-    - echo "destroy success"
-  when: manual
-  tags: [kvm]
