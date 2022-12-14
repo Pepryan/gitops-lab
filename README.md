@@ -12,15 +12,17 @@ This repository is used for BRI project research purposes. Furthermore, this CI/
 - You have looking `vm.yaml` is existing for checking IP address had been used before
 
 ## Getting Started
-### How to create instance on lab7.btech.id? ###
+### How to manage vm on lab7.btech.id? ###
 - Clone repository
 - Create your branch
 - Edit file `vm.yaml` as per your specification
   - Change vm name and specifications. Ensure you write the unique name.
-    <br>The below for example :</br>
-
+  - Add new line if you want to provisioning new vm.
+  - Delete line if you want to delete existing vm.
+  - Change all options you need it, see **python-templates** folder.
 ```
-# ################### VM Ahsan #####################
+<!-- Begin of One VM Info -->
+################### VM Ahsan #####################
    - name: ahs-vm1
      hostname: ahs-vm1
      nested_enabled: true
@@ -51,16 +53,19 @@ This repository is used for BRI project research purposes. Furthermore, this CI/
          gateway: 10.30.13.1
          dns: [8.8.8.8, 8.8.4.4]
 ################### VM Ahsan ###################
+<!-- End of One VM Info -->
 ```
 - Push to your branch repository (dont push to main)
 - Create merge request to main. set your reviewer to L2 and approval to TL.
-- Merge request will be approve soon and vm will be created automatically.
+- Merge request will be approve soon and vm will be created/deleted automatically.
 
 
-### How to delete instance on lab7.btech.id? ###
+### How to access vm running on lab7.btech.id? ###
 - Clone repository
 - Create your branch
-- Edit file `vm.yaml` and delete your vm resource.
+- Edit file `nat.yaml`. Add or delete your forwarding port.
 - Push to your branch repository (dont push to main)
 - Create merge request to main. set your reviewer to L2 and approval to TL.
-- Merge request will be approve soon and vm will be deleted automatically.
+- Merge request will be approve soon and lab7 will created/deleted firewall nat automatically.
+- Access to vm
+    `ssh <user>@lab7.btech.id:<dnat-port>`
