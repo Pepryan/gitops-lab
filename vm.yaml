@@ -30,7 +30,7 @@ spec:
           size: 10G
     networks:
       - name: net-192.168.100
-        address: 192.168.100.101/24
+        address: 192.168.100.201/24
         mtu: 1500
         gateway: 192.168.100.1
         dns: [8.8.8.8, 8.8.4.4]
