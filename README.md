@@ -60,6 +60,25 @@ This repository is used for BRI project research purposes. Furthermore, this CI/
 - Create merge request to main. set your reviewer to L2 and approval to TL.
 - Merge request will be approve soon and vm will be created/deleted automatically.
 
+## Have an existing repository and branch on your machine? ##
+```
+cd lab-bri
+git pull
+git checkout <your-branch-name>
+
+- Make sure it's already on your branch
+git status
+
+- Merge the main branch to your branch
+git merge origin/main
+
+- Edit the vm.yaml/nat.yaml as your need it, then commit it.
+
+- Push to your remote branch
+git push
+
+Then make a merge request, and wait to be approved by L2/Leads.
+```
 
 ### How to access vm running on lab7.btech.id? ###
 - Clone repository
