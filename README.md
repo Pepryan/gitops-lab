@@ -69,8 +69,8 @@ git checkout <your-branch-name>
 - Make sure it's already on your branch
 git status
 
-- Merge the main branch to your branch
-git merge origin/main
+- Rebase the main branch to your branch (you can also use git merge)
+git rebase origin/main <your-branch-name>
 
 - Edit the vm.yaml/nat.yaml as your need it, then commit it.
 
