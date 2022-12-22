@@ -105,33 +105,192 @@ spec:
 ################### VM Ahsan ###################
 
 ################### VM Ali #####################
-  # - name: al-ubuntu-test
-  #   hostname: al-ubuntu-test
-  #   nested_enabled: true
-  #   os: ubuntu
-  #   vcpus: 2
-  #   memory: 2G
-  #   console: vnc
-  #   cloud_data:
-  #     users:
-  #       - name: root
-  #         public_key:
-  #           - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-  #       - name: ubuntu
-  #         password: ubuntu
-  #         sudo: true
-  #   base_image:
-  #     storage_pool: isos
-  #     name: ubuntu-focal.img
-  #   disks:
-  #     storage_pool: vms
-  #     disk_format: qcow2
-  #     disks:
-  #       - name: al-ubuntu-test-vda.qcow2
-  #         size: 10G
-  #   networks:
-  #     - name: net-192.168.10
-  #       address: 192.168.10.11/24
-  #       gateway: 192.168.10.1
-  #       dns: [8.8.8.8, 8.8.4.4]
+### Controller ###
+
+  - name: al-oscontroller-1
+    hostname: al-oscontroller-1
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 4
+    memory: 4G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+        - name: ubuntu
+          password: ubuntu
+          sudo: true
+    base_image:
+      storage_pool: isos
+      name: ubuntu-focal.img
+    disks:
+      storage_pool: vms
+      disk_format: qcow2
+      disks:
+        - name: al-oscontroller-1-vda.qcow2
+          size: 25G
+          disk_format: qcow2
+        - name: al-oscontroller-1-vdb.qcow2
+          size: 25G
+          disk_format: qcow2
+    networks:
+      - name: net-192.168.10
+        address: 192.168.10.100/24
+        gateway: 192.168.10.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-192.168.11
+        address: 192.168.11.100/24
+        gateway: 192.168.11.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-192.168.12
+        # address: 192.168.12.100/24
+        # gateway: 192.168.12.1
+        # dns: [8.8.8.8, 8.8.4.4]
+      - name: net-192.168.13
+        # address: 192.168.13.100/24
+        # gateway: 192.168.13.1
+        # dns: [8.8.8.8, 8.8.4.4]
+
+### Compute-1 ###
+  - name: al-oscompute-1
+    hostname: al-oscompute-1
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 4
+    memory: 4G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+        - name: ubuntu
+          password: ubuntu
+          sudo: true
+    base_image:
+      storage_pool: isos
+      name: ubuntu-focal.img
+    disks:
+      storage_pool: vms
+      disk_format: qcow2
+      disks:
+        - name: al-oscompute-1-vda.qcow2
+          size: 20G
+          disk_format: qcow2
+        - name: al-oscompute-1-vdb.qcow2
+          size: 20G
+          disk_format: qcow2
+    networks:
+      - name: net-192.168.10
+        address: 192.168.10.100/24
+        gateway: 192.168.10.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-192.168.11
+        address: 192.168.11.100/24
+        gateway: 192.168.11.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-192.168.12
+        # address: 192.168.12.100/24
+        # gateway: 192.168.12.1
+        # dns: [8.8.8.8, 8.8.4.4]
+      - name: net-192.168.13
+        # address: 192.168.13.100/24
+        # gateway: 192.168.13.1
+        # dns: [8.8.8.8, 8.8.4.4]
+
+### Compute-2 ###
+  - name: al-oscompute-2
+    hostname: al-oscompute-2
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 4
+    memory: 4G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+        - name: ubuntu
+          password: ubuntu
+          sudo: true
+    base_image:
+      storage_pool: isos
+      name: ubuntu-focal.img
+    disks:
+      storage_pool: vms
+      disk_format: qcow2
+      disks:
+        - name: al-oscompute-2-vda.qcow2
+          size: 20G
+          disk_format: qcow2
+        - name: al-oscompute-2-vdb.qcow2
+          size: 20G
+          disk_format: qcow2
+    networks:
+      - name: net-192.168.10
+        address: 192.168.10.100/24
+        gateway: 192.168.10.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-192.168.11
+        address: 192.168.11.100/24
+        gateway: 192.168.11.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-192.168.12
+        # address: 192.168.12.100/24
+        # gateway: 192.168.12.1
+        # dns: [8.8.8.8, 8.8.4.4]
+      - name: net-192.168.13
+        # address: 192.168.13.100/24
+        # gateway: 192.168.13.1
+        # dns: [8.8.8.8, 8.8.4.4]
+
+### Compute-3 ###
+  - name: al-oscompute-3
+    hostname: al-oscompute-3
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 4
+    memory: 4G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+        - name: ubuntu
+          password: ubuntu
+          sudo: true
+    base_image:
+      storage_pool: isos
+      name: ubuntu-focal.img
+    disks:
+      storage_pool: vms
+      disk_format: qcow2
+      disks:
+        - name: al-oscompute-3-vda.qcow2
+          size: 20G
+          disk_format: qcow2
+        - name: al-oscompute-3-vdb.qcow2
+          size: 20G
+          disk_format: qcow2
+    networks:
+      - name: net-192.168.10
+        address: 192.168.10.100/24
+        gateway: 192.168.10.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-192.168.11
+        address: 192.168.11.100/24
+        gateway: 192.168.11.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-192.168.12
+        # address: 192.168.12.100/24
+        # gateway: 192.168.12.1
+        # dns: [8.8.8.8, 8.8.4.4]
+      - name: net-192.168.13
+        # address: 192.168.13.100/24
+        # gateway: 192.168.13.1
+        # dns: [8.8.8.8, 8.8.4.4]
 ################### VM Ali ###################
