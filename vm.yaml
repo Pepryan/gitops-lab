@@ -1,114 +1,6 @@
 kind: vm
 spec:
-##################### VM Iqbal ##################
-  - name: iqbal-vm3
-    hostname: iqbal-vm3
-    nested_enabled: true
-    os: ubuntu
-    vcpus: 4
-    memory: 4G
-    console: vnc
-    cloud_data:
-      users:
-        - name: root
-          public_key:
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-        - name: iqbal
-          password: gladiators88
-          sudo: true
-    base_image:
-      storage_pool: isos
-      name: ubuntu-bionic.img
-    disks:
-      storage_pool: vms
-      disks:
-        - name: iqbal-vm3-vda.qcow2
-          size: 10G
-        - name: iqbal-vm3-vdb.qcow2
-          size: 10G
-        - name: iqbal-vm3-vdc.qcow2
-          size: 10G
-    networks:
-      - name: net-192.168.100
-        address: 192.168.100.201/24
-        mtu: 1500
-        gateway: 192.168.100.1
-        dns: [8.8.8.8, 8.8.4.4]
-##################### VM Iqbal ##################
-
-################### VM Febryan ######################
-  - name: test-feb3
-    hostname: test-feb3
-    nested_enabled: true
-    os: ubuntu
-    vcpus: 2
-    memory: 4G
-    console: vnc
-    cloud_data:
-      users:
-        - name: root
-          public_key:
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-        - name: ryan
-          public_key:
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDCYcgkEinq6rey379Rcnz1oisovQFr9vC4c8W32fXT9ky3d6+38K3MQvYBAsi8x73CvDcZCk8c9vNEPqmFVBJjhEb3rK4djjhjaRATqpjEnZHmXN/0aKTk0DT9iFswP/310ObkeEMCEO75CQWfqXuXNBVNUdlIbukqxdmUwE/21cVoXZxb+ZyPsba9emArdU8S8jeK+OO4BHbnmQD1yBrb299BQcsnfYjDCj4LFHJVWl+pHthg+0mMSkgFG1uRgDPqKvtTn/Knr7HvFPliv/zdqPnXNQs29YOTNk/z+8SFhGvZEH+RtXVYWcjuFGkNLnzMshKZguPIgVnzxdBWuqvlwtzowNSgctD1yXooT0UXEb6nGAf2BrJaykowB6/rFl2dtIydtHVDg9kax3tnWBvLuVi7r0kpHwy1DCw2aDv10xUB7M3mdwB+0GnaFObNPuBNGm/Ll5EoWoqZwNzfJD5xZEQsW8eUSM6HE8OfTznpE2NEX8KD33F2syt2XyokzEc= ryan@DESKTOP-R25RDBL
-          password: gladiators88
-          sudo: true
-    base_image:
-      storage_pool: isos
-      name: ubuntu-bionic.img
-    disks:
-      storage_pool: vms
-      disks:
-        - name: test-feb3-vda.qcow2
-          size: 20G
-        - name: test-feb3-vdb.qcow2
-          size: 10G
-    networks:
-      - name: net-192.168.100
-        address: 192.168.100.123/24
-        mtu: 1500
-        gateway: 192.168.100.1
-        dns: [8.8.8.8, 8.8.4.4]
-################### VM febryan #####################
-
-################### VM Ahsan #####################
-  - name: ahs-vm1
-    hostname: ahs-vm1
-    nested_enabled: true
-    os: ubuntu
-    vcpus: 1
-    memory: 2G
-    console: vnc
-    cloud_data:
-      users:
-        - name: root
-          public_key:
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-        - name: ubuntu
-          password: ubuntu
-          sudo: true
-    base_image:
-      storage_pool: isos
-      name: ubuntu-focal.img
-    disks:
-      storage_pool: vms
-      disk_format: qcow2
-      disks:
-        - name: ahs-vm1-vda.qcow2
-          size: 4G
-    networks:
-      - name: net-10.30.13
-        address: 10.30.13.171/24
-        gateway: 10.30.13.1
-        dns: [8.8.8.8, 8.8.4.4]
-################### VM Ahsan ###################
-
-################### VM Ali #####################
-
-################### VM Ali ###################
-
-################### VM Rijal ###################
+############## VM LAB OPENSTACK ###############
   - name: lab-r01-oscontroller-01
     hostname: lab-r01-oscontroller-01
     nested_enabled: true
@@ -122,15 +14,9 @@ spec:
           public_key:
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCwSHQw+90RX8It+SxQ2A3B5fInFNBQBkwtJUo9/8hx/0uUlpxt1Uru5hiA7zqooNb2TtqxQ1caIRaJuwRZs7Q6dL/ekGIGBljGqBHnrmvm29y/7kYkZV3ORa2cigLQivvCwOusxwhgs1Zrs8yOCfxgyDHdC9o7oN4SAC1MHnSCa8pHMsfcLry3j0q8pgN27EdFIJlVaaxbCZd4SSeSUq3HyakNntltWxr3cPMWBQkv9HTB9cA0yM5nUSa13JKleccLltRx0tUllLFvymdAYyoMKSscm8bmwvggcc/UawOoSSt88bwi/bB3eU8oR5+BHOyjClLFMXBF1BItBsydDrOUDguRRcrbSdP8RSvUbmHGpokCCp7o9ePGc0FEBv0NjejIHJT4x7nk+BrLGKmbugwv5l4rJUsU0Ce0fapAIj+DocloY7UCzFCCHF7jc71AmfCH+MdkxeIbjT13m2va19vzASVS0Lc1dPcwMhW8yQca/bdMCPyS75n34sXLkH0ihbM= root@lab-r01-oscontroller-01
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDLw+7DBdCzguG9Kx1Ga2ieutaNJPf90xHZSJbCSKn0XlaO2SszopMxIZzadyeo6oBk0r6kyaHk+sd1Qy61qzOhakBJJaiFPyQYRi+9Z5Ntk+6X/cKeXW4KsufyLBA0uvqHKWa7v4/bUSwaciiCq95l5PnCZ1HcUF/Mli40XvsNbYT3D/mKPRQfW9ihmbXTiNjw5FaZLbAk/lmnO0agCICBaeSK4vgJ8cER5g8sPIz2Pxzfhz8wkyc96lgy1rUU1B+TGLs4eI4NN6hCIluvvdkNBH1zHBY5ogCDx65A7f+LbUwb7eABkjrlhIEEJ1Npx4ro+Hle/sUbaa0hs3RE40sMIOgtMn/0eFa5s/2TQy8DBJnrO7imblN+NzSGdfeCsXVNeJL2qUdY+mLYuK8vUkvc6tBOk/v1e0HAW+b5luhNTxcnqlHgK13e3bfhcnozVP5p5ceecLRxPjbygAmxySc9ijbyfiVk/ya2ZEuM/2gmecgL1QJ2t1ZiQfX7+AfTSv8= root@lab-r02-oscontroller-02
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDSJnOQJq86wdB9Njs7o5s6j/y0kEMa2QyKoAg+162Q4OeHBh/QYpOQqCsJ1Jr0Z/wtkZKluupqJY/882HHfkDJ3SlnhsCp4h3Pw3xyrHDNIqylSTsTwkDko0uPWiCuX16vXrk2cKMDqGE3mMZzu1pXxhHWtGoRgAVT6ZzeM2lHmbJEIBXnEodrOBxdmRxCE3O1kz8kdom7hXHxZZSsBVeZit8q5RSTS19IrBct3X70N+n0tT8/h1kqYTXsAc/yaNUAI8yhrYxFw+IqOejqJ9cWD/o1Qytl/SW7oadHbw22v2DnQCKcgB1GOfJ49ySXfQUz5eU434FfjEJirsaBqCL7GEQFvJvh1s276dt7HfATT7MRh5eTrjJEISajdgAbUv/a7dhSufITxD3V/EsHw4rMYKlVUtQ5BHsxc/na8XMo7gmV81Q65kA7p+UiZmTBPuXxo6XjqXw9uWowj+H1BNo5EW6ABfDfwyhFVV13gRHxmFv10LRRFGd3wWwU7JWxQVk= root@lab-r03-oscontroller-03
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCwSHQw+90RX8It+SxQ2A3B5fInFNBQBkwtJUo9/8hx/0uUlpxt1Uru5hiA7zqooNb2TtqxQ1caIRaJuwRZs7Q6dL/ekGIGBljGqBHnrmvm29y/7kYkZV3ORa2cigLQivvCwOusxwhgs1Zrs8yOCfxgyDHdC9o7oN4SAC1MHnSCa8pHMsfcLry3j0q8pgN27EdFIJlVaaxbCZd4SSeSUq3HyakNntltWxr3cPMWBQkv9HTB9cA0yM5nUSa13JKleccLltRx0tUllLFvymdAYyoMKSscm8bmwvggcc/UawOoSSt88bwi/bB3eU8oR5+BHOyjClLFMXBF1BItBsydDrOUDguRRcrbSdP8RSvUbmHGpokCCp7o9ePGc0FEBv0NjejIHJT4x7nk+BrLGKmbugwv5l4rJUsU0Ce0fapAIj+DocloY7UCzFCCHF7jc71AmfCH+MdkxeIbjT13m2va19vzASVS0Lc1dPcwMhW8yQca/bdMCPyS75n34sXLkH0ihbM= root@lab-r01-oscontroller-01
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDLw+7DBdCzguG9Kx1Ga2ieutaNJPf90xHZSJbCSKn0XlaO2SszopMxIZzadyeo6oBk0r6kyaHk+sd1Qy61qzOhakBJJaiFPyQYRi+9Z5Ntk+6X/cKeXW4KsufyLBA0uvqHKWa7v4/bUSwaciiCq95l5PnCZ1HcUF/Mli40XvsNbYT3D/mKPRQfW9ihmbXTiNjw5FaZLbAk/lmnO0agCICBaeSK4vgJ8cER5g8sPIz2Pxzfhz8wkyc96lgy1rUU1B+TGLs4eI4NN6hCIluvvdkNBH1zHBY5ogCDx65A7f+LbUwb7eABkjrlhIEEJ1Npx4ro+Hle/sUbaa0hs3RE40sMIOgtMn/0eFa5s/2TQy8DBJnrO7imblN+NzSGdfeCsXVNeJL2qUdY+mLYuK8vUkvc6tBOk/v1e0HAW+b5luhNTxcnqlHgK13e3bfhcnozVP5p5ceecLRxPjbygAmxySc9ijbyfiVk/ya2ZEuM/2gmecgL1QJ2t1ZiQfX7+AfTSv8= root@lab-r02-oscontroller-02
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDSJnOQJq86wdB9Njs7o5s6j/y0kEMa2QyKoAg+162Q4OeHBh/QYpOQqCsJ1Jr0Z/wtkZKluupqJY/882HHfkDJ3SlnhsCp4h3Pw3xyrHDNIqylSTsTwkDko0uPWiCuX16vXrk2cKMDqGE3mMZzu1pXxhHWtGoRgAVT6ZzeM2lHmbJEIBXnEodrOBxdmRxCE3O1kz8kdom7hXHxZZSsBVeZit8q5RSTS19IrBct3X70N+n0tT8/h1kqYTXsAc/yaNUAI8yhrYxFw+IqOejqJ9cWD/o1Qytl/SW7oadHbw22v2DnQCKcgB1GOfJ49ySXfQUz5eU434FfjEJirsaBqCL7GEQFvJvh1s276dt7HfATT7MRh5eTrjJEISajdgAbUv/a7dhSufITxD3V/EsHw4rMYKlVUtQ5BHsxc/na8XMo7gmV81Q65kA7p+UiZmTBPuXxo6XjqXw9uWowj+H1BNo5EW6ABfDfwyhFVV13gRHxmFv10LRRFGd3wWwU7JWxQVk= root@lab-r03-oscontroller-03
     base_image:
       storage_pool: isos
-      name: ubuntu-focal.img
+      name: ubuntu-bionic.img
     disks:
       storage_pool: vms
       disk_format: qcow2
@@ -182,12 +68,9 @@ spec:
           public_key:
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCwSHQw+90RX8It+SxQ2A3B5fInFNBQBkwtJUo9/8hx/0uUlpxt1Uru5hiA7zqooNb2TtqxQ1caIRaJuwRZs7Q6dL/ekGIGBljGqBHnrmvm29y/7kYkZV3ORa2cigLQivvCwOusxwhgs1Zrs8yOCfxgyDHdC9o7oN4SAC1MHnSCa8pHMsfcLry3j0q8pgN27EdFIJlVaaxbCZd4SSeSUq3HyakNntltWxr3cPMWBQkv9HTB9cA0yM5nUSa13JKleccLltRx0tUllLFvymdAYyoMKSscm8bmwvggcc/UawOoSSt88bwi/bB3eU8oR5+BHOyjClLFMXBF1BItBsydDrOUDguRRcrbSdP8RSvUbmHGpokCCp7o9ePGc0FEBv0NjejIHJT4x7nk+BrLGKmbugwv5l4rJUsU0Ce0fapAIj+DocloY7UCzFCCHF7jc71AmfCH+MdkxeIbjT13m2va19vzASVS0Lc1dPcwMhW8yQca/bdMCPyS75n34sXLkH0ihbM= root@lab-r01-oscontroller-01
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDLw+7DBdCzguG9Kx1Ga2ieutaNJPf90xHZSJbCSKn0XlaO2SszopMxIZzadyeo6oBk0r6kyaHk+sd1Qy61qzOhakBJJaiFPyQYRi+9Z5Ntk+6X/cKeXW4KsufyLBA0uvqHKWa7v4/bUSwaciiCq95l5PnCZ1HcUF/Mli40XvsNbYT3D/mKPRQfW9ihmbXTiNjw5FaZLbAk/lmnO0agCICBaeSK4vgJ8cER5g8sPIz2Pxzfhz8wkyc96lgy1rUU1B+TGLs4eI4NN6hCIluvvdkNBH1zHBY5ogCDx65A7f+LbUwb7eABkjrlhIEEJ1Npx4ro+Hle/sUbaa0hs3RE40sMIOgtMn/0eFa5s/2TQy8DBJnrO7imblN+NzSGdfeCsXVNeJL2qUdY+mLYuK8vUkvc6tBOk/v1e0HAW+b5luhNTxcnqlHgK13e3bfhcnozVP5p5ceecLRxPjbygAmxySc9ijbyfiVk/ya2ZEuM/2gmecgL1QJ2t1ZiQfX7+AfTSv8= root@lab-r02-oscontroller-02
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDSJnOQJq86wdB9Njs7o5s6j/y0kEMa2QyKoAg+162Q4OeHBh/QYpOQqCsJ1Jr0Z/wtkZKluupqJY/882HHfkDJ3SlnhsCp4h3Pw3xyrHDNIqylSTsTwkDko0uPWiCuX16vXrk2cKMDqGE3mMZzu1pXxhHWtGoRgAVT6ZzeM2lHmbJEIBXnEodrOBxdmRxCE3O1kz8kdom7hXHxZZSsBVeZit8q5RSTS19IrBct3X70N+n0tT8/h1kqYTXsAc/yaNUAI8yhrYxFw+IqOejqJ9cWD/o1Qytl/SW7oadHbw22v2DnQCKcgB1GOfJ49ySXfQUz5eU434FfjEJirsaBqCL7GEQFvJvh1s276dt7HfATT7MRh5eTrjJEISajdgAbUv/a7dhSufITxD3V/EsHw4rMYKlVUtQ5BHsxc/na8XMo7gmV81Q65kA7p+UiZmTBPuXxo6XjqXw9uWowj+H1BNo5EW6ABfDfwyhFVV13gRHxmFv10LRRFGd3wWwU7JWxQVk= root@lab-r03-oscontroller-03
     base_image:
       storage_pool: isos
-      name: ubuntu-focal.img
+      name: ubuntu-bionic.img
     disks:
       storage_pool: vms
       disk_format: qcow2
@@ -239,12 +122,9 @@ spec:
           public_key:
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCwSHQw+90RX8It+SxQ2A3B5fInFNBQBkwtJUo9/8hx/0uUlpxt1Uru5hiA7zqooNb2TtqxQ1caIRaJuwRZs7Q6dL/ekGIGBljGqBHnrmvm29y/7kYkZV3ORa2cigLQivvCwOusxwhgs1Zrs8yOCfxgyDHdC9o7oN4SAC1MHnSCa8pHMsfcLry3j0q8pgN27EdFIJlVaaxbCZd4SSeSUq3HyakNntltWxr3cPMWBQkv9HTB9cA0yM5nUSa13JKleccLltRx0tUllLFvymdAYyoMKSscm8bmwvggcc/UawOoSSt88bwi/bB3eU8oR5+BHOyjClLFMXBF1BItBsydDrOUDguRRcrbSdP8RSvUbmHGpokCCp7o9ePGc0FEBv0NjejIHJT4x7nk+BrLGKmbugwv5l4rJUsU0Ce0fapAIj+DocloY7UCzFCCHF7jc71AmfCH+MdkxeIbjT13m2va19vzASVS0Lc1dPcwMhW8yQca/bdMCPyS75n34sXLkH0ihbM= root@lab-r01-oscontroller-01
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDLw+7DBdCzguG9Kx1Ga2ieutaNJPf90xHZSJbCSKn0XlaO2SszopMxIZzadyeo6oBk0r6kyaHk+sd1Qy61qzOhakBJJaiFPyQYRi+9Z5Ntk+6X/cKeXW4KsufyLBA0uvqHKWa7v4/bUSwaciiCq95l5PnCZ1HcUF/Mli40XvsNbYT3D/mKPRQfW9ihmbXTiNjw5FaZLbAk/lmnO0agCICBaeSK4vgJ8cER5g8sPIz2Pxzfhz8wkyc96lgy1rUU1B+TGLs4eI4NN6hCIluvvdkNBH1zHBY5ogCDx65A7f+LbUwb7eABkjrlhIEEJ1Npx4ro+Hle/sUbaa0hs3RE40sMIOgtMn/0eFa5s/2TQy8DBJnrO7imblN+NzSGdfeCsXVNeJL2qUdY+mLYuK8vUkvc6tBOk/v1e0HAW+b5luhNTxcnqlHgK13e3bfhcnozVP5p5ceecLRxPjbygAmxySc9ijbyfiVk/ya2ZEuM/2gmecgL1QJ2t1ZiQfX7+AfTSv8= root@lab-r02-oscontroller-02
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDSJnOQJq86wdB9Njs7o5s6j/y0kEMa2QyKoAg+162Q4OeHBh/QYpOQqCsJ1Jr0Z/wtkZKluupqJY/882HHfkDJ3SlnhsCp4h3Pw3xyrHDNIqylSTsTwkDko0uPWiCuX16vXrk2cKMDqGE3mMZzu1pXxhHWtGoRgAVT6ZzeM2lHmbJEIBXnEodrOBxdmRxCE3O1kz8kdom7hXHxZZSsBVeZit8q5RSTS19IrBct3X70N+n0tT8/h1kqYTXsAc/yaNUAI8yhrYxFw+IqOejqJ9cWD/o1Qytl/SW7oadHbw22v2DnQCKcgB1GOfJ49ySXfQUz5eU434FfjEJirsaBqCL7GEQFvJvh1s276dt7HfATT7MRh5eTrjJEISajdgAbUv/a7dhSufITxD3V/EsHw4rMYKlVUtQ5BHsxc/na8XMo7gmV81Q65kA7p+UiZmTBPuXxo6XjqXw9uWowj+H1BNo5EW6ABfDfwyhFVV13gRHxmFv10LRRFGd3wWwU7JWxQVk= root@lab-r03-oscontroller-03
     base_image:
       storage_pool: isos
-      name: ubuntu-focal.img
+      name: ubuntu-bionic.img
     disks:
       storage_pool: vms
       disk_format: qcow2
@@ -296,12 +176,9 @@ spec:
           public_key:
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCwSHQw+90RX8It+SxQ2A3B5fInFNBQBkwtJUo9/8hx/0uUlpxt1Uru5hiA7zqooNb2TtqxQ1caIRaJuwRZs7Q6dL/ekGIGBljGqBHnrmvm29y/7kYkZV3ORa2cigLQivvCwOusxwhgs1Zrs8yOCfxgyDHdC9o7oN4SAC1MHnSCa8pHMsfcLry3j0q8pgN27EdFIJlVaaxbCZd4SSeSUq3HyakNntltWxr3cPMWBQkv9HTB9cA0yM5nUSa13JKleccLltRx0tUllLFvymdAYyoMKSscm8bmwvggcc/UawOoSSt88bwi/bB3eU8oR5+BHOyjClLFMXBF1BItBsydDrOUDguRRcrbSdP8RSvUbmHGpokCCp7o9ePGc0FEBv0NjejIHJT4x7nk+BrLGKmbugwv5l4rJUsU0Ce0fapAIj+DocloY7UCzFCCHF7jc71AmfCH+MdkxeIbjT13m2va19vzASVS0Lc1dPcwMhW8yQca/bdMCPyS75n34sXLkH0ihbM= root@lab-r01-oscontroller-01
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDLw+7DBdCzguG9Kx1Ga2ieutaNJPf90xHZSJbCSKn0XlaO2SszopMxIZzadyeo6oBk0r6kyaHk+sd1Qy61qzOhakBJJaiFPyQYRi+9Z5Ntk+6X/cKeXW4KsufyLBA0uvqHKWa7v4/bUSwaciiCq95l5PnCZ1HcUF/Mli40XvsNbYT3D/mKPRQfW9ihmbXTiNjw5FaZLbAk/lmnO0agCICBaeSK4vgJ8cER5g8sPIz2Pxzfhz8wkyc96lgy1rUU1B+TGLs4eI4NN6hCIluvvdkNBH1zHBY5ogCDx65A7f+LbUwb7eABkjrlhIEEJ1Npx4ro+Hle/sUbaa0hs3RE40sMIOgtMn/0eFa5s/2TQy8DBJnrO7imblN+NzSGdfeCsXVNeJL2qUdY+mLYuK8vUkvc6tBOk/v1e0HAW+b5luhNTxcnqlHgK13e3bfhcnozVP5p5ceecLRxPjbygAmxySc9ijbyfiVk/ya2ZEuM/2gmecgL1QJ2t1ZiQfX7+AfTSv8= root@lab-r02-oscontroller-02
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDSJnOQJq86wdB9Njs7o5s6j/y0kEMa2QyKoAg+162Q4OeHBh/QYpOQqCsJ1Jr0Z/wtkZKluupqJY/882HHfkDJ3SlnhsCp4h3Pw3xyrHDNIqylSTsTwkDko0uPWiCuX16vXrk2cKMDqGE3mMZzu1pXxhHWtGoRgAVT6ZzeM2lHmbJEIBXnEodrOBxdmRxCE3O1kz8kdom7hXHxZZSsBVeZit8q5RSTS19IrBct3X70N+n0tT8/h1kqYTXsAc/yaNUAI8yhrYxFw+IqOejqJ9cWD/o1Qytl/SW7oadHbw22v2DnQCKcgB1GOfJ49ySXfQUz5eU434FfjEJirsaBqCL7GEQFvJvh1s276dt7HfATT7MRh5eTrjJEISajdgAbUv/a7dhSufITxD3V/EsHw4rMYKlVUtQ5BHsxc/na8XMo7gmV81Q65kA7p+UiZmTBPuXxo6XjqXw9uWowj+H1BNo5EW6ABfDfwyhFVV13gRHxmFv10LRRFGd3wWwU7JWxQVk= root@lab-r03-oscontroller-03
     base_image:
       storage_pool: isos
-      name: ubuntu-focal.img
+      name: ubuntu-bionic.img
     disks:
       storage_pool: vms
       disk_format: qcow2
@@ -361,12 +238,9 @@ spec:
           public_key:
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCwSHQw+90RX8It+SxQ2A3B5fInFNBQBkwtJUo9/8hx/0uUlpxt1Uru5hiA7zqooNb2TtqxQ1caIRaJuwRZs7Q6dL/ekGIGBljGqBHnrmvm29y/7kYkZV3ORa2cigLQivvCwOusxwhgs1Zrs8yOCfxgyDHdC9o7oN4SAC1MHnSCa8pHMsfcLry3j0q8pgN27EdFIJlVaaxbCZd4SSeSUq3HyakNntltWxr3cPMWBQkv9HTB9cA0yM5nUSa13JKleccLltRx0tUllLFvymdAYyoMKSscm8bmwvggcc/UawOoSSt88bwi/bB3eU8oR5+BHOyjClLFMXBF1BItBsydDrOUDguRRcrbSdP8RSvUbmHGpokCCp7o9ePGc0FEBv0NjejIHJT4x7nk+BrLGKmbugwv5l4rJUsU0Ce0fapAIj+DocloY7UCzFCCHF7jc71AmfCH+MdkxeIbjT13m2va19vzASVS0Lc1dPcwMhW8yQca/bdMCPyS75n34sXLkH0ihbM= root@lab-r01-oscontroller-01
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDLw+7DBdCzguG9Kx1Ga2ieutaNJPf90xHZSJbCSKn0XlaO2SszopMxIZzadyeo6oBk0r6kyaHk+sd1Qy61qzOhakBJJaiFPyQYRi+9Z5Ntk+6X/cKeXW4KsufyLBA0uvqHKWa7v4/bUSwaciiCq95l5PnCZ1HcUF/Mli40XvsNbYT3D/mKPRQfW9ihmbXTiNjw5FaZLbAk/lmnO0agCICBaeSK4vgJ8cER5g8sPIz2Pxzfhz8wkyc96lgy1rUU1B+TGLs4eI4NN6hCIluvvdkNBH1zHBY5ogCDx65A7f+LbUwb7eABkjrlhIEEJ1Npx4ro+Hle/sUbaa0hs3RE40sMIOgtMn/0eFa5s/2TQy8DBJnrO7imblN+NzSGdfeCsXVNeJL2qUdY+mLYuK8vUkvc6tBOk/v1e0HAW+b5luhNTxcnqlHgK13e3bfhcnozVP5p5ceecLRxPjbygAmxySc9ijbyfiVk/ya2ZEuM/2gmecgL1QJ2t1ZiQfX7+AfTSv8= root@lab-r02-oscontroller-02
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDSJnOQJq86wdB9Njs7o5s6j/y0kEMa2QyKoAg+162Q4OeHBh/QYpOQqCsJ1Jr0Z/wtkZKluupqJY/882HHfkDJ3SlnhsCp4h3Pw3xyrHDNIqylSTsTwkDko0uPWiCuX16vXrk2cKMDqGE3mMZzu1pXxhHWtGoRgAVT6ZzeM2lHmbJEIBXnEodrOBxdmRxCE3O1kz8kdom7hXHxZZSsBVeZit8q5RSTS19IrBct3X70N+n0tT8/h1kqYTXsAc/yaNUAI8yhrYxFw+IqOejqJ9cWD/o1Qytl/SW7oadHbw22v2DnQCKcgB1GOfJ49ySXfQUz5eU434FfjEJirsaBqCL7GEQFvJvh1s276dt7HfATT7MRh5eTrjJEISajdgAbUv/a7dhSufITxD3V/EsHw4rMYKlVUtQ5BHsxc/na8XMo7gmV81Q65kA7p+UiZmTBPuXxo6XjqXw9uWowj+H1BNo5EW6ABfDfwyhFVV13gRHxmFv10LRRFGd3wWwU7JWxQVk= root@lab-r03-oscontroller-03
     base_image:
       storage_pool: isos
-      name: ubuntu-focal.img
+      name: ubuntu-bionic.img
     disks:
       storage_pool: vms
       disk_format: qcow2
@@ -426,12 +300,9 @@ spec:
           public_key:
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCwSHQw+90RX8It+SxQ2A3B5fInFNBQBkwtJUo9/8hx/0uUlpxt1Uru5hiA7zqooNb2TtqxQ1caIRaJuwRZs7Q6dL/ekGIGBljGqBHnrmvm29y/7kYkZV3ORa2cigLQivvCwOusxwhgs1Zrs8yOCfxgyDHdC9o7oN4SAC1MHnSCa8pHMsfcLry3j0q8pgN27EdFIJlVaaxbCZd4SSeSUq3HyakNntltWxr3cPMWBQkv9HTB9cA0yM5nUSa13JKleccLltRx0tUllLFvymdAYyoMKSscm8bmwvggcc/UawOoSSt88bwi/bB3eU8oR5+BHOyjClLFMXBF1BItBsydDrOUDguRRcrbSdP8RSvUbmHGpokCCp7o9ePGc0FEBv0NjejIHJT4x7nk+BrLGKmbugwv5l4rJUsU0Ce0fapAIj+DocloY7UCzFCCHF7jc71AmfCH+MdkxeIbjT13m2va19vzASVS0Lc1dPcwMhW8yQca/bdMCPyS75n34sXLkH0ihbM= root@lab-r01-oscontroller-01
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDLw+7DBdCzguG9Kx1Ga2ieutaNJPf90xHZSJbCSKn0XlaO2SszopMxIZzadyeo6oBk0r6kyaHk+sd1Qy61qzOhakBJJaiFPyQYRi+9Z5Ntk+6X/cKeXW4KsufyLBA0uvqHKWa7v4/bUSwaciiCq95l5PnCZ1HcUF/Mli40XvsNbYT3D/mKPRQfW9ihmbXTiNjw5FaZLbAk/lmnO0agCICBaeSK4vgJ8cER5g8sPIz2Pxzfhz8wkyc96lgy1rUU1B+TGLs4eI4NN6hCIluvvdkNBH1zHBY5ogCDx65A7f+LbUwb7eABkjrlhIEEJ1Npx4ro+Hle/sUbaa0hs3RE40sMIOgtMn/0eFa5s/2TQy8DBJnrO7imblN+NzSGdfeCsXVNeJL2qUdY+mLYuK8vUkvc6tBOk/v1e0HAW+b5luhNTxcnqlHgK13e3bfhcnozVP5p5ceecLRxPjbygAmxySc9ijbyfiVk/ya2ZEuM/2gmecgL1QJ2t1ZiQfX7+AfTSv8= root@lab-r02-oscontroller-02
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDSJnOQJq86wdB9Njs7o5s6j/y0kEMa2QyKoAg+162Q4OeHBh/QYpOQqCsJ1Jr0Z/wtkZKluupqJY/882HHfkDJ3SlnhsCp4h3Pw3xyrHDNIqylSTsTwkDko0uPWiCuX16vXrk2cKMDqGE3mMZzu1pXxhHWtGoRgAVT6ZzeM2lHmbJEIBXnEodrOBxdmRxCE3O1kz8kdom7hXHxZZSsBVeZit8q5RSTS19IrBct3X70N+n0tT8/h1kqYTXsAc/yaNUAI8yhrYxFw+IqOejqJ9cWD/o1Qytl/SW7oadHbw22v2DnQCKcgB1GOfJ49ySXfQUz5eU434FfjEJirsaBqCL7GEQFvJvh1s276dt7HfATT7MRh5eTrjJEISajdgAbUv/a7dhSufITxD3V/EsHw4rMYKlVUtQ5BHsxc/na8XMo7gmV81Q65kA7p+UiZmTBPuXxo6XjqXw9uWowj+H1BNo5EW6ABfDfwyhFVV13gRHxmFv10LRRFGd3wWwU7JWxQVk= root@lab-r03-oscontroller-03
     base_image:
       storage_pool: isos
-      name: ubuntu-focal.img
+      name: ubuntu-bionic.img
     disks:
       storage_pool: vms
       disk_format: qcow2
@@ -491,12 +362,9 @@ spec:
           public_key:
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCwSHQw+90RX8It+SxQ2A3B5fInFNBQBkwtJUo9/8hx/0uUlpxt1Uru5hiA7zqooNb2TtqxQ1caIRaJuwRZs7Q6dL/ekGIGBljGqBHnrmvm29y/7kYkZV3ORa2cigLQivvCwOusxwhgs1Zrs8yOCfxgyDHdC9o7oN4SAC1MHnSCa8pHMsfcLry3j0q8pgN27EdFIJlVaaxbCZd4SSeSUq3HyakNntltWxr3cPMWBQkv9HTB9cA0yM5nUSa13JKleccLltRx0tUllLFvymdAYyoMKSscm8bmwvggcc/UawOoSSt88bwi/bB3eU8oR5+BHOyjClLFMXBF1BItBsydDrOUDguRRcrbSdP8RSvUbmHGpokCCp7o9ePGc0FEBv0NjejIHJT4x7nk+BrLGKmbugwv5l4rJUsU0Ce0fapAIj+DocloY7UCzFCCHF7jc71AmfCH+MdkxeIbjT13m2va19vzASVS0Lc1dPcwMhW8yQca/bdMCPyS75n34sXLkH0ihbM= root@lab-r01-oscontroller-01
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDLw+7DBdCzguG9Kx1Ga2ieutaNJPf90xHZSJbCSKn0XlaO2SszopMxIZzadyeo6oBk0r6kyaHk+sd1Qy61qzOhakBJJaiFPyQYRi+9Z5Ntk+6X/cKeXW4KsufyLBA0uvqHKWa7v4/bUSwaciiCq95l5PnCZ1HcUF/Mli40XvsNbYT3D/mKPRQfW9ihmbXTiNjw5FaZLbAk/lmnO0agCICBaeSK4vgJ8cER5g8sPIz2Pxzfhz8wkyc96lgy1rUU1B+TGLs4eI4NN6hCIluvvdkNBH1zHBY5ogCDx65A7f+LbUwb7eABkjrlhIEEJ1Npx4ro+Hle/sUbaa0hs3RE40sMIOgtMn/0eFa5s/2TQy8DBJnrO7imblN+NzSGdfeCsXVNeJL2qUdY+mLYuK8vUkvc6tBOk/v1e0HAW+b5luhNTxcnqlHgK13e3bfhcnozVP5p5ceecLRxPjbygAmxySc9ijbyfiVk/ya2ZEuM/2gmecgL1QJ2t1ZiQfX7+AfTSv8= root@lab-r02-oscontroller-02
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDSJnOQJq86wdB9Njs7o5s6j/y0kEMa2QyKoAg+162Q4OeHBh/QYpOQqCsJ1Jr0Z/wtkZKluupqJY/882HHfkDJ3SlnhsCp4h3Pw3xyrHDNIqylSTsTwkDko0uPWiCuX16vXrk2cKMDqGE3mMZzu1pXxhHWtGoRgAVT6ZzeM2lHmbJEIBXnEodrOBxdmRxCE3O1kz8kdom7hXHxZZSsBVeZit8q5RSTS19IrBct3X70N+n0tT8/h1kqYTXsAc/yaNUAI8yhrYxFw+IqOejqJ9cWD/o1Qytl/SW7oadHbw22v2DnQCKcgB1GOfJ49ySXfQUz5eU434FfjEJirsaBqCL7GEQFvJvh1s276dt7HfATT7MRh5eTrjJEISajdgAbUv/a7dhSufITxD3V/EsHw4rMYKlVUtQ5BHsxc/na8XMo7gmV81Q65kA7p+UiZmTBPuXxo6XjqXw9uWowj+H1BNo5EW6ABfDfwyhFVV13gRHxmFv10LRRFGd3wWwU7JWxQVk= root@lab-r03-oscontroller-03
     base_image:
       storage_pool: isos
-      name: ubuntu-focal.img
+      name: ubuntu-bionic.img
     disks:
       storage_pool: vms
       disk_format: qcow2
@@ -556,12 +424,9 @@ spec:
           public_key:
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCwSHQw+90RX8It+SxQ2A3B5fInFNBQBkwtJUo9/8hx/0uUlpxt1Uru5hiA7zqooNb2TtqxQ1caIRaJuwRZs7Q6dL/ekGIGBljGqBHnrmvm29y/7kYkZV3ORa2cigLQivvCwOusxwhgs1Zrs8yOCfxgyDHdC9o7oN4SAC1MHnSCa8pHMsfcLry3j0q8pgN27EdFIJlVaaxbCZd4SSeSUq3HyakNntltWxr3cPMWBQkv9HTB9cA0yM5nUSa13JKleccLltRx0tUllLFvymdAYyoMKSscm8bmwvggcc/UawOoSSt88bwi/bB3eU8oR5+BHOyjClLFMXBF1BItBsydDrOUDguRRcrbSdP8RSvUbmHGpokCCp7o9ePGc0FEBv0NjejIHJT4x7nk+BrLGKmbugwv5l4rJUsU0Ce0fapAIj+DocloY7UCzFCCHF7jc71AmfCH+MdkxeIbjT13m2va19vzASVS0Lc1dPcwMhW8yQca/bdMCPyS75n34sXLkH0ihbM= root@lab-r01-oscontroller-01
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDLw+7DBdCzguG9Kx1Ga2ieutaNJPf90xHZSJbCSKn0XlaO2SszopMxIZzadyeo6oBk0r6kyaHk+sd1Qy61qzOhakBJJaiFPyQYRi+9Z5Ntk+6X/cKeXW4KsufyLBA0uvqHKWa7v4/bUSwaciiCq95l5PnCZ1HcUF/Mli40XvsNbYT3D/mKPRQfW9ihmbXTiNjw5FaZLbAk/lmnO0agCICBaeSK4vgJ8cER5g8sPIz2Pxzfhz8wkyc96lgy1rUU1B+TGLs4eI4NN6hCIluvvdkNBH1zHBY5ogCDx65A7f+LbUwb7eABkjrlhIEEJ1Npx4ro+Hle/sUbaa0hs3RE40sMIOgtMn/0eFa5s/2TQy8DBJnrO7imblN+NzSGdfeCsXVNeJL2qUdY+mLYuK8vUkvc6tBOk/v1e0HAW+b5luhNTxcnqlHgK13e3bfhcnozVP5p5ceecLRxPjbygAmxySc9ijbyfiVk/ya2ZEuM/2gmecgL1QJ2t1ZiQfX7+AfTSv8= root@lab-r02-oscontroller-02
-            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDSJnOQJq86wdB9Njs7o5s6j/y0kEMa2QyKoAg+162Q4OeHBh/QYpOQqCsJ1Jr0Z/wtkZKluupqJY/882HHfkDJ3SlnhsCp4h3Pw3xyrHDNIqylSTsTwkDko0uPWiCuX16vXrk2cKMDqGE3mMZzu1pXxhHWtGoRgAVT6ZzeM2lHmbJEIBXnEodrOBxdmRxCE3O1kz8kdom7hXHxZZSsBVeZit8q5RSTS19IrBct3X70N+n0tT8/h1kqYTXsAc/yaNUAI8yhrYxFw+IqOejqJ9cWD/o1Qytl/SW7oadHbw22v2DnQCKcgB1GOfJ49ySXfQUz5eU434FfjEJirsaBqCL7GEQFvJvh1s276dt7HfATT7MRh5eTrjJEISajdgAbUv/a7dhSufITxD3V/EsHw4rMYKlVUtQ5BHsxc/na8XMo7gmV81Q65kA7p+UiZmTBPuXxo6XjqXw9uWowj+H1BNo5EW6ABfDfwyhFVV13gRHxmFv10LRRFGd3wWwU7JWxQVk= root@lab-r03-oscontroller-03
     base_image:
       storage_pool: isos
-      name: ubuntu-focal.img
+      name: ubuntu-bionic.img
     disks:
       storage_pool: vms
       disk_format: qcow2
@@ -607,4 +472,4 @@ spec:
         address: 172.18.239.25/24
         gateway: 172.18.239.1
         dns: [8.8.8.8, 8.8.4.4]
-################### VM Rijal ###################
+############## VM LAB OPENSTACK ###############
