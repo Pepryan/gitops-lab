@@ -479,7 +479,7 @@ spec:
     hostname: test-vm1
     nested_enabled: true
     os: ubuntu
-    vcpus: 1
+    vcpus: 2
     memory: 2G
     console: vnc
     cloud_data:
