@@ -604,9 +604,9 @@ spec:
       storage_pool: vms
       disk_format: qcow2
       disks:
-        - name: lab-r03-oscontroller-03-vda.qcow2
+        - name: lab-r30-oscontroller-03-vda.qcow2
           size: 50G
-        - name: lab-r03-oscontroller-03-vdb.qcow2
+        - name: lab-r30-oscontroller-03-vdb.qcow2
           size: 100G
     networks:
       - name: net-172.18.251
