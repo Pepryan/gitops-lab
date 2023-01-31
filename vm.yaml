@@ -476,455 +476,455 @@ spec:
 
 
 ############## VM LAB Upgrade OPENSTACK ###############
-- name: lab-r10-oscontroller-01
-  hostname: lab-r10-oscontroller-01
-  nested_enabled: true
-  os: ubuntu
-  vcpus: 8
-  memory: 32G
-  console: vnc
-  cloud_data:
-    users:
-      - name: root
-        public_key:
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
-  base_image:
-    storage_pool: isos
-    name: ubuntu-bionic.img
-  disks:
-    storage_pool: vms
-    disk_format: qcow2
+  - name: lab-r10-oscontroller-01
+    hostname: lab-r10-oscontroller-01
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 8
+    memory: 32G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
+    base_image:
+      storage_pool: isos
+      name: ubuntu-bionic.img
     disks:
-      - name: lab-r10-oscontroller-01-vda.qcow2
-        size: 50G
-      - name: lab-r10-oscontroller-01-vdb.qcow2
-        size: 100G
-  networks:
-    - name: net-172.18.251
-      address: 172.18.251.101/24
-      gateway: 172.18.251.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.236
-      address: 172.18.236.101/24
-      gateway: 172.18.236.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.237
-      address: 172.18.237.101/24
-      gateway: 172.18.237.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.216
-      address: 172.18.216.101/24
-      gateway: 172.18.216.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.224
-      address: 172.18.224.101/24
-      gateway: 172.18.251.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.238
-      address: 172.18.238.101/24
-      gateway: 172.18.238.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.239
-      address: 172.18.239.101/24
-      gateway: 172.18.239.1
-      dns: [8.8.8.8, 8.8.4.4]
+      storage_pool: vms
+      disk_format: qcow2
+      disks:
+        - name: lab-r10-oscontroller-01-vda.qcow2
+          size: 50G
+        - name: lab-r10-oscontroller-01-vdb.qcow2
+          size: 100G
+    networks:
+      - name: net-172.18.251
+        address: 172.18.251.101/24
+        gateway: 172.18.251.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.236
+        address: 172.18.236.101/24
+        gateway: 172.18.236.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.237
+        address: 172.18.237.101/24
+        gateway: 172.18.237.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.216
+        address: 172.18.216.101/24
+        gateway: 172.18.216.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.224
+        address: 172.18.224.101/24
+        gateway: 172.18.251.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.238
+        address: 172.18.238.101/24
+        gateway: 172.18.238.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.239
+        address: 172.18.239.101/24
+        gateway: 172.18.239.1
+        dns: [8.8.8.8, 8.8.4.4]
 
-- name: lab-r20-oscontroller-02
-  hostname: lab-r20-oscontroller-02
-  nested_enabled: true
-  os: ubuntu
-  vcpus: 8
-  memory: 32G
-  console: vnc
-  cloud_data:
-    users:
-      - name: root
-        public_key:
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
-  base_image:
-    storage_pool: isos
-    name: ubuntu-bionic.img
-  disks:
-    storage_pool: vms
-    disk_format: qcow2
+  - name: lab-r20-oscontroller-02
+    hostname: lab-r20-oscontroller-02
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 8
+    memory: 32G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
+    base_image:
+      storage_pool: isos
+      name: ubuntu-bionic.img
     disks:
-      - name: lab-r20-oscontroller-02-vda.qcow2
-        size: 50G
-      - name: lab-r20-oscontroller-02-vdb.qcow2
-        size: 100G
-  networks:
-    - name: net-172.18.251
-      address: 172.18.251.102/24
-      gateway: 172.18.251.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.236
-      address: 172.18.236.102/24
-      gateway: 172.18.236.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.237
-      address: 172.18.237.102/24
-      gateway: 172.18.237.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.216
-      address: 172.18.216.102/24
-      gateway: 172.18.216.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.224
-      address: 172.18.224.102/24
-      gateway: 172.18.251.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.238
-      address: 172.18.238.102/24
-      gateway: 172.18.238.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.239
-      address: 172.18.239.102/24
-      gateway: 172.18.239.1
-      dns: [8.8.8.8, 8.8.4.4]
+      storage_pool: vms
+      disk_format: qcow2
+      disks:
+        - name: lab-r20-oscontroller-02-vda.qcow2
+          size: 50G
+        - name: lab-r20-oscontroller-02-vdb.qcow2
+          size: 100G
+    networks:
+      - name: net-172.18.251
+        address: 172.18.251.102/24
+        gateway: 172.18.251.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.236
+        address: 172.18.236.102/24
+        gateway: 172.18.236.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.237
+        address: 172.18.237.102/24
+        gateway: 172.18.237.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.216
+        address: 172.18.216.102/24
+        gateway: 172.18.216.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.224
+        address: 172.18.224.102/24
+        gateway: 172.18.251.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.238
+        address: 172.18.238.102/24
+        gateway: 172.18.238.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.239
+        address: 172.18.239.102/24
+        gateway: 172.18.239.1
+        dns: [8.8.8.8, 8.8.4.4]
 
-- name: lab-r30-oscontroller-03
-  hostname: lab-r30-oscontroller-03
-  nested_enabled: true
-  os: ubuntu
-  vcpus: 8
-  memory: 32G
-  console: vnc
-  cloud_data:
-    users:
-      - name: root
-        public_key:
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
-  base_image:
-    storage_pool: isos
-    name: ubuntu-bionic.img
-  disks:
-    storage_pool: vms
-    disk_format: qcow2
+  - name: lab-r30-oscontroller-03
+    hostname: lab-r30-oscontroller-03
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 8
+    memory: 32G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
+    base_image:
+      storage_pool: isos
+      name: ubuntu-bionic.img
     disks:
-      - name: lab-r03-oscontroller-03-vda.qcow2
-        size: 50G
-      - name: lab-r03-oscontroller-03-vdb.qcow2
-        size: 100G
-  networks:
-    - name: net-172.18.251
-      address: 172.18.251.103/24
-      gateway: 172.18.251.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.236
-      address: 172.18.236.103/24
-      gateway: 172.18.236.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.237
-      address: 172.18.237.103/24
-      gateway: 172.18.237.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.216
-      address: 172.18.216.103/24
-      gateway: 172.18.216.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.224
-      address: 172.18.224.103/24
-      gateway: 172.18.251.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.238
-      address: 172.18.238.103/24
-      gateway: 172.18.238.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.239
-      address: 172.18.239.103/24
-      gateway: 172.18.239.1
-      dns: [8.8.8.8, 8.8.4.4]
+      storage_pool: vms
+      disk_format: qcow2
+      disks:
+        - name: lab-r03-oscontroller-03-vda.qcow2
+          size: 50G
+        - name: lab-r03-oscontroller-03-vdb.qcow2
+          size: 100G
+    networks:
+      - name: net-172.18.251
+        address: 172.18.251.103/24
+        gateway: 172.18.251.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.236
+        address: 172.18.236.103/24
+        gateway: 172.18.236.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.237
+        address: 172.18.237.103/24
+        gateway: 172.18.237.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.216
+        address: 172.18.216.103/24
+        gateway: 172.18.216.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.224
+        address: 172.18.224.103/24
+        gateway: 172.18.251.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.238
+        address: 172.18.238.103/24
+        gateway: 172.18.238.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.239
+        address: 172.18.239.103/24
+        gateway: 172.18.239.1
+        dns: [8.8.8.8, 8.8.4.4]
 
-- name: lab-r10-oscompute-01
-  hostname: lab-r10-oscompute-01
-  nested_enabled: true
-  os: ubuntu
-  vcpus: 16
-  memory: 32G
-  console: vnc
-  cloud_data:
-    users:
-      - name: root
-        public_key:
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
-  base_image:
-    storage_pool: isos
-    name: ubuntu-bionic.img
-  disks:
-    storage_pool: vms
-    disk_format: qcow2
+  - name: lab-r10-oscompute-01
+    hostname: lab-r10-oscompute-01
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 16
+    memory: 32G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
+    base_image:
+      storage_pool: isos
+      name: ubuntu-bionic.img
     disks:
-      - name: lab-r10-oscompute-01-vda.qcow2
-        size: 50G
-      - name: lab-r10-oscompute-01-vdb.qcow2
-        size: 10G
-      - name: lab-r10-oscompute-01-vdc.qcow2
-        size: 10G
-      - name: lab-r10-oscompute-01-vdd.qcow2
-        size: 10G
-  networks:
-    - name: net-172.18.251
-      address: 172.18.251.201/24
-      gateway: 172.18.251.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.236
-      address: 172.18.236.201/24
-      gateway: 172.18.236.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.237
-      address: 172.18.237.201/24
-      gateway: 172.18.237.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.216
-      address: 172.18.216.201/24
-      gateway: 172.18.216.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.224
-      address: 172.18.224.201/24
-      gateway: 172.18.251.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.238
-      address: 172.18.238.201/24
-      gateway: 172.18.238.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.239
-      address: 172.18.239.201/24
-      gateway: 172.18.239.1
-      dns: [8.8.8.8, 8.8.4.4]
+      storage_pool: vms
+      disk_format: qcow2
+      disks:
+        - name: lab-r10-oscompute-01-vda.qcow2
+          size: 50G
+        - name: lab-r10-oscompute-01-vdb.qcow2
+          size: 10G
+        - name: lab-r10-oscompute-01-vdc.qcow2
+          size: 10G
+        - name: lab-r10-oscompute-01-vdd.qcow2
+          size: 10G
+    networks:
+      - name: net-172.18.251
+        address: 172.18.251.201/24
+        gateway: 172.18.251.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.236
+        address: 172.18.236.201/24
+        gateway: 172.18.236.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.237
+        address: 172.18.237.201/24
+        gateway: 172.18.237.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.216
+        address: 172.18.216.201/24
+        gateway: 172.18.216.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.224
+        address: 172.18.224.201/24
+        gateway: 172.18.251.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.238
+        address: 172.18.238.201/24
+        gateway: 172.18.238.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.239
+        address: 172.18.239.201/24
+        gateway: 172.18.239.1
+        dns: [8.8.8.8, 8.8.4.4]
 
-- name: lab-r10-oscompute-02
-  hostname: lab-r10-oscompute-02
-  nested_enabled: true
-  os: ubuntu
-  vcpus: 16
-  memory: 32G
-  console: vnc
-  cloud_data:
-    users:
-      - name: root
-        public_key:
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
-  base_image:
-    storage_pool: isos
-    name: ubuntu-bionic.img
-  disks:
-    storage_pool: vms
-    disk_format: qcow2
+  - name: lab-r10-oscompute-02
+    hostname: lab-r10-oscompute-02
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 16
+    memory: 32G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
+    base_image:
+      storage_pool: isos
+      name: ubuntu-bionic.img
     disks:
-      - name: lab-r10-oscompute-02-vda.qcow2
-        size: 50G
-      - name: lab-r10-oscompute-02-vdb.qcow2
-        size: 10G
-      - name: lab-r10-oscompute-02-vdc.qcow2
-        size: 10G
-      - name: lab-r10-oscompute-02-vdd.qcow2
-        size: 10G
-  networks:
-    - name: net-172.18.251
-      address: 172.18.251.202/24
-      gateway: 172.18.251.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.236
-      address: 172.18.236.202/24
-      gateway: 172.18.236.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.237
-      address: 172.18.237.202/24
-      gateway: 172.18.237.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.216
-      address: 172.18.216.202/24
-      gateway: 172.18.216.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.224
-      address: 172.18.224.202/24
-      gateway: 172.18.251.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.238
-      address: 172.18.238.202/24
-      gateway: 172.18.238.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.239
-      address: 172.18.239.202/24
-      gateway: 172.18.239.1
-      dns: [8.8.8.8, 8.8.4.4]
+      storage_pool: vms
+      disk_format: qcow2
+      disks:
+        - name: lab-r10-oscompute-02-vda.qcow2
+          size: 50G
+        - name: lab-r10-oscompute-02-vdb.qcow2
+          size: 10G
+        - name: lab-r10-oscompute-02-vdc.qcow2
+          size: 10G
+        - name: lab-r10-oscompute-02-vdd.qcow2
+          size: 10G
+    networks:
+      - name: net-172.18.251
+        address: 172.18.251.202/24
+        gateway: 172.18.251.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.236
+        address: 172.18.236.202/24
+        gateway: 172.18.236.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.237
+        address: 172.18.237.202/24
+        gateway: 172.18.237.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.216
+        address: 172.18.216.202/24
+        gateway: 172.18.216.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.224
+        address: 172.18.224.202/24
+        gateway: 172.18.251.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.238
+        address: 172.18.238.202/24
+        gateway: 172.18.238.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.239
+        address: 172.18.239.202/24
+        gateway: 172.18.239.1
+        dns: [8.8.8.8, 8.8.4.4]
 
-- name: lab-r10-oscompute-03
-  hostname: lab-r10-oscompute-03
-  nested_enabled: true
-  os: ubuntu
-  vcpus: 16
-  memory: 32G
-  console: vnc
-  cloud_data:
-    users:
-      - name: root
-        public_key:
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
-  base_image:
-    storage_pool: isos
-    name: ubuntu-bionic.img
-  disks:
-    storage_pool: vms
-    disk_format: qcow2
+  - name: lab-r10-oscompute-03
+    hostname: lab-r10-oscompute-03
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 16
+    memory: 32G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
+    base_image:
+      storage_pool: isos
+      name: ubuntu-bionic.img
     disks:
-      - name: lab-r1-oscompute-03-vda.qcow2
-        size: 50G
-      - name: lab-r1-oscompute-03-vdb.qcow2
-        size: 10G
-      - name: lab-r1-oscompute-03-vdc.qcow2
-        size: 10G
-      - name: lab-r1-oscompute-03-vdd.qcow2
-        size: 10G
-  networks:
-    - name: net-172.18.251
-      address: 172.18.251.203/24
-      gateway: 172.18.251.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.236
-      address: 172.18.236.203/24
-      gateway: 172.18.236.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.237
-      address: 172.18.237.203/24
-      gateway: 172.18.237.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.216
-      address: 172.18.216.203/24
-      gateway: 172.18.216.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.224
-      address: 172.18.224.203/24
-      gateway: 172.18.251.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.238
-      address: 172.18.238.203/24
-      gateway: 172.18.238.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.239
-      address: 172.18.239.203/24
-      gateway: 172.18.239.1
-      dns: [8.8.8.8, 8.8.4.4]
+      storage_pool: vms
+      disk_format: qcow2
+      disks:
+        - name: lab-r1-oscompute-03-vda.qcow2
+          size: 50G
+        - name: lab-r1-oscompute-03-vdb.qcow2
+          size: 10G
+        - name: lab-r1-oscompute-03-vdc.qcow2
+          size: 10G
+        - name: lab-r1-oscompute-03-vdd.qcow2
+          size: 10G
+    networks:
+      - name: net-172.18.251
+        address: 172.18.251.203/24
+        gateway: 172.18.251.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.236
+        address: 172.18.236.203/24
+        gateway: 172.18.236.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.237
+        address: 172.18.237.203/24
+        gateway: 172.18.237.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.216
+        address: 172.18.216.203/24
+        gateway: 172.18.216.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.224
+        address: 172.18.224.203/24
+        gateway: 172.18.251.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.238
+        address: 172.18.238.203/24
+        gateway: 172.18.238.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.239
+        address: 172.18.239.203/24
+        gateway: 172.18.239.1
+        dns: [8.8.8.8, 8.8.4.4]
 
-- name: lab-r10-oscompute-04
-  hostname: lab-r10-oscompute-04
-  nested_enabled: true
-  os: ubuntu
-  vcpus: 16
-  memory: 32G
-  console: vnc
-  cloud_data:
-    users:
-      - name: root
-        public_key:
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
-  base_image:
-    storage_pool: isos
-    name: ubuntu-bionic.img
-  disks:
-    storage_pool: vms
-    disk_format: qcow2
+  - name: lab-r10-oscompute-04
+    hostname: lab-r10-oscompute-04
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 16
+    memory: 32G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
+    base_image:
+      storage_pool: isos
+      name: ubuntu-bionic.img
     disks:
-      - name: lab-r10-oscompute-04-vda.qcow2
-        size: 50G
-      - name: lab-r10-oscompute-04-vdb.qcow2
-        size: 10G
-      - name: lab-r10-oscompute-04-vdc.qcow2
-        size: 10G
-      - name: lab-r10-oscompute-04-vdd.qcow2
-        size: 10G
-  networks:
-    - name: net-172.18.251
-      address: 172.18.251.204/24
-      gateway: 172.18.251.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.236
-      address: 172.18.236.204/24
-      gateway: 172.18.236.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.237
-      address: 172.18.237.204/24
-      gateway: 172.18.237.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.216
-      address: 172.18.216.204/24
-      gateway: 172.18.216.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.224
-      address: 172.18.224.204/24
-      gateway: 172.18.251.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.238
-      address: 172.18.238.204/24
-      gateway: 172.18.238.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.239
-      address: 172.18.239.204/24
-      gateway: 172.18.239.1
-      dns: [8.8.8.8, 8.8.4.4]
+      storage_pool: vms
+      disk_format: qcow2
+      disks:
+        - name: lab-r10-oscompute-04-vda.qcow2
+          size: 50G
+        - name: lab-r10-oscompute-04-vdb.qcow2
+          size: 10G
+        - name: lab-r10-oscompute-04-vdc.qcow2
+          size: 10G
+        - name: lab-r10-oscompute-04-vdd.qcow2
+          size: 10G
+    networks:
+      - name: net-172.18.251
+        address: 172.18.251.204/24
+        gateway: 172.18.251.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.236
+        address: 172.18.236.204/24
+        gateway: 172.18.236.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.237
+        address: 172.18.237.204/24
+        gateway: 172.18.237.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.216
+        address: 172.18.216.204/24
+        gateway: 172.18.216.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.224
+        address: 172.18.224.204/24
+        gateway: 172.18.251.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.238
+        address: 172.18.238.204/24
+        gateway: 172.18.238.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.239
+        address: 172.18.239.204/24
+        gateway: 172.18.239.1
+        dns: [8.8.8.8, 8.8.4.4]
 
-- name: lab-r1-oscompute-05
-  hostname: lab-r1-oscompute-05
-  nested_enabled: true
-  os: ubuntu
-  vcpus: 16
-  memory: 32G
-  console: vnc
-  cloud_data:
-    users:
-      - name: root
-        public_key:
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
-  base_image:
-    storage_pool: isos
-    name: ubuntu-bionic.img
-  disks:
-    storage_pool: vms
-    disk_format: qcow2
+  - name: lab-r1-oscompute-05
+    hostname: lab-r1-oscompute-05
+    nested_enabled: true
+    os: ubuntu
+    vcpus: 16
+    memory: 32G
+    console: vnc
+    cloud_data:
+      users:
+        - name: root
+          public_key:
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDKvMhH1eVLL1Ev98fuEujYqj/KIoJFrzu7vxj96Usc7qZp+W1n9kVTREjA6D63ko5RRD6QWl0k7oZhIfBy5vFJk+a/tzpVELb+bKutgoIgxtCZjyuVfIkw2sU40q3maA/kBAp4MEaupYxE4zQ9COpRev2Oqz+R6wchEl9FkAOVVZeWL1X0/lA6SG5VTf5vwj8FU7+yUcK+I8w/+rL+r/dJrPdXvKwSWsU0UnfVx4G1yroXcW0oaVYNplLK6IHxDuAyEsVkCy9ojyWuhBC39/w6ORDQJTRVp9njhil8TbT6EoruyvXDG6D62O5HahV10y0GIGzRc6xAHzzcscnBETjMLaOnRDg8qmlH+aXwTv0OfbLEtYQ6ZY16nTMAvoGIZ9kD7YscQdiKoYsF6tyYW4F1ezoJYCb67w30wRRdUByZ8k8wtF6wUwDZdjGJT7VlaH2KrEQsFVZkwi5NypXS5iyGjpjHsBRehGFfWqDIHWjN9+vJ5VpDEVc6Xb/5px+0Xjc= root@dwara
+            - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC++3JVj1lfHxU6DL6E7cheI66KLsVHI/zjU7DCg7Kbz0R3BMwP3cN4fhkXK+kW7uEm0n54KMZVVYe3Bd/1zqdX2winy1M+Bn0wUG+SiuZYAU29mI2pDsTKsIAos3+26wL930E1mVPM8tQZytnVPKKbz5SYTjYxko9uay0JtvXEJtCL4WsGpBaJgDEOux4bZ8t4z0Hl4FUcdMDiEaiPCIny8BQTIcL/pafy+F2pFYeqXquI5jkes+A3bnHeKqRn9YqCjS9bzh6hr1CXfnSGIffdjFGEkD6PxLJGMI7boKO25ku2m9MYqV0e7YK1jwQx6ftH1wf7+0NQd35lQbtbQFK01zGhgYKxJo1ncLFYQuBLxjcRpSjsyF8YIqUmnj9edT7TIiFUO2w1CNXPJboeLA5jkgPzRqYqG//RNguuCo7ejrziK9Vc2f91F5EuNG4/0K8IKCOPCPGy+mImoyVPNkP5+yaHwBxph33LUkTZxkvVl1jgCBBckr4r4gt8y+TmUuk= r@molantis
+    base_image:
+      storage_pool: isos
+      name: ubuntu-bionic.img
     disks:
-      - name: lab-r10-oscompute-05-vda.qcow2
-        size: 50G
-      - name: lab-r10-oscompute-05-vdb.qcow2
-        size: 10G
-      - name: lab-r10-oscompute-05-vdc.qcow2
-        size: 10G
-      - name: lab-r10-oscompute-05-vdd.qcow2
-        size: 10G
-  networks:
-    - name: net-172.18.251
-      address: 172.18.251.205/24
-      gateway: 172.18.251.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.236
-      address: 172.18.236.205/24
-      gateway: 172.18.236.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.237
-      address: 172.18.237.205/24
-      gateway: 172.18.237.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.216
-      address: 172.18.216.205/24
-      gateway: 172.18.216.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.224
-      address: 172.18.224.205/24
-      gateway: 172.18.251.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.238
-      address: 172.18.238.205/24
-      gateway: 172.18.238.1
-      dns: [8.8.8.8, 8.8.4.4]
-    - name: net-172.18.239
-      address: 172.18.239.205/24
-      gateway: 172.18.239.1
-      dns: [8.8.8.8, 8.8.4.4]
+      storage_pool: vms
+      disk_format: qcow2
+      disks:
+        - name: lab-r10-oscompute-05-vda.qcow2
+          size: 50G
+        - name: lab-r10-oscompute-05-vdb.qcow2
+          size: 10G
+        - name: lab-r10-oscompute-05-vdc.qcow2
+          size: 10G
+        - name: lab-r10-oscompute-05-vdd.qcow2
+          size: 10G
+    networks:
+      - name: net-172.18.251
+        address: 172.18.251.205/24
+        gateway: 172.18.251.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.236
+        address: 172.18.236.205/24
+        gateway: 172.18.236.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.237
+        address: 172.18.237.205/24
+        gateway: 172.18.237.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.216
+        address: 172.18.216.205/24
+        gateway: 172.18.216.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.224
+        address: 172.18.224.205/24
+        gateway: 172.18.251.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.238
+        address: 172.18.238.205/24
+        gateway: 172.18.238.1
+        dns: [8.8.8.8, 8.8.4.4]
+      - name: net-172.18.239
+        address: 172.18.239.205/24
+        gateway: 172.18.239.1
+        dns: [8.8.8.8, 8.8.4.4]
 ############## VM LAB Upgrade OPENSTACK ###############
