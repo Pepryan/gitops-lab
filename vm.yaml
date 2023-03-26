@@ -1,5 +1,37 @@
 kind: vm
 spec:
+################### VM Febryan #####################
+   - name: feb-vm1
+     hostname: feb-vm1
+     nested_enabled: true
+     os: ubuntu
+     vcpus: 1
+     memory: 2G
+     console: vnc
+     cloud_data:
+       users:
+         - name: root
+           public_key:
+             - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDCYcgkEinq6rey379Rcnz1oisovQFr9vC4c8W32fXT9ky3d6+38K3MQvYBAsi8x73CvDcZCk8c9vNEPqmFVBJjhEb3rK4djjhjaRATqpjEnZHmXN/0aKTk0DT9iFswP/310ObkeEMCEO75CQWfqXuXNBVNUdlIbukqxdmUwE/21cVoXZxb+ZyPsba9emArdU8S8jeK+OO4BHbnmQD1yBrb299BQcsnfYjDCj4LFHJVWl+pHthg+0mMSkgFG1uRgDPqKvtTn/Knr7HvFPliv/zdqPnXNQs29YOTNk/z+8SFhGvZEH+RtXVYWcjuFGkNLnzMshKZguPIgVnzxdBWuqvlwtzowNSgctD1yXooT0UXEb6nGAf2BrJaykowB6/rFl2dtIydtHVDg9kax3tnWBvLuVi7r0kpHwy1DCw2aDv10xUB7M3mdwB+0GnaFObNPuBNGm/Ll5EoWoqZwNzfJD5xZEQsW8eUSM6HE8OfTznpE2NEX8KD33F2syt2XyokzEc= ryan@DESKTOP-R25RDBL
+         - name: ubuntu
+           password: ubuntu
+           sudo: true
+     base_image:
+       storage_pool: isos
+       name: ubuntu-focal.img
+     disks:
+       storage_pool: vms
+       disk_format: qcow2
+       disks:
+         - name: ahs-vm1-vda.qcow2
+           size: 4G
+     networks:
+       - name: net-10.30.13
+         address: 10.30.13.177/24
+         gateway: 10.30.13.1
+         dns: [8.8.8.8, 8.8.4.4]
+################### VM Febryan ###################
+
 ############## VM LAB OPENSTACK ###############
 
 ############## VM LAB OPENSTACK ###############
